@@ -11,7 +11,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self' storage.djdavid98.art vitals.vercel-insights.com; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: furrycdn.org s.gravatar.com storage.djdavid98.art; font-src fonts.gstatic.com; connect-src 'self'; media-src 'self'; object-src 'none'; prefetch-src 'none'; child-src 'none'; frame-src 'none'; worker-src 'self'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests; block-all-mixed-content"
+          "value": "default-src 'self' storage.djdavid98.art; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: furrycdn.org s.gravatar.com storage.djdavid98.art; font-src fonts.gstatic.com; connect-src 'self' vitals.vercel-insights.com; media-src 'self'; object-src 'none'; prefetch-src 'none'; child-src 'none'; frame-src 'none'; worker-src 'self'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests; block-all-mixed-content"
         }
       ]
     }
