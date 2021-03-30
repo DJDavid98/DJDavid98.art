@@ -1,0 +1,41 @@
+$font-family-base: 'Catamaran', sans-serif;
+$font-family-monospace: 'Source Code Pro', 'Consolas', monospace;
+
+$secondary: #6181b6;
+$deviantart: #05ae40;
+$discord: #7289da;
+$protonmail: #8b8cc1;
+$facebook: #3b5998;
+$soundcloud: #ff5500;
+$steam: #171a21;
+$twitter: #458bc0;
+$youtube: #e52d27;
+$inkbunny: #f9cce4;
+$newgrounds: #ffb50e;
+$kongregate: #990000;
+$picarto: #1e1e1e;
+$telegram: #27a7e5;
+$furbooru: #756ac2;
+$mastodon: #3088d4;
+$pillowfort: #030303;
+$guilded: #f5c400;
+$source-filmmaker: darken(#ad9b6e, 10%);
+$xbox: #107c10;
+$playstation: #003791;
+$patreon: #ff424d;
+$furaffinity: #faaf39;
+
+$body-bg: transparent;
+
+$theme-colors: (
+  deviantart: $deviantart,
+  furbooru: $furbooru,
+  sfm: $source-filmmaker,
+);
+
+$spacer: 1rem;
+$spacers: (
+  6: (
+    $spacer * 5,
+  ),
+);

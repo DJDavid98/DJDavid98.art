@@ -1,0 +1,17 @@
+{
+  "changeLanguage": "Change language",
+  "current": "Current",
+  "welcome": "Welcome!",
+  "redirecting": "Redirecting…",
+  "notFound": {
+    "heading": "Not Found",
+    "content": "Nothing to see here."
+  },
+  "builtWith": {
+    "t1": "Website built with unicorn magic and ",
+    "t2": " "
+  },
+  "openSource": "This website is open-source software",
+  "viewSource": "View source code",
+  "avatarImageAlt": "Profile picture of {{name}}"
+}

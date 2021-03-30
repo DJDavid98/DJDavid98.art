@@ -1,0 +1,574 @@
+/*!
+ * Copyright (c) 2016 DJDavid98
+ * All rights reserved
+ */
+$CoatOutline: #4e4e4e;
+$CoatBGFill: #696969;
+$CoatFill: #888888;
+$ManeOutline: #9f9f9f;
+$ManeDark: #c6c6c6;
+$ManeLight: #e7e7e7;
+$ManePink: #f8b7ff;
+$Pupil: #0f2730;
+$EyeGrTop: #1a5d75;
+$EyeGrBot: #006d96;
+$EyeHLDark: #007fad;
+$EyeHLLight: #40a3c7;
+
+$SiteBG: darken($ManeLight, 10);
+$HeaderBG: darken($CoatOutline, 10);
+$HeaderColor: $ManeLight;
+$HeaderTitleShadow: rgba($HeaderColor, 0.2);
+$HeaderPadding: 10px;
+$HeaderBorder: darken($ManePink, 10);
+$HeaderSize: 116px;
+$PageWidth: 520px;
+$LinkColor: $EyeGrTop;
+$PostBG: rgba(white, 0.95);
+$SideBoxWidth: 180px;
+
+@import url('https://fonts.googleapis.com/css?family=Signika:400,700');
+
+// Mobile
+@media all and (max-width: 950px) {
+  #page {
+    padding-top: $HeaderPadding;
+    overflow: hidden;
+
+    > header {
+      margin-bottom: 10px;
+
+      .left-wrap,
+      .middle {
+        position: initial;
+        width: 100%;
+        display: block;
+      }
+
+      .left-wrap {
+        .left {
+          padding: 0;
+
+          .avatar img {
+            display: block;
+            margin: 0 auto;
+            height: 128px;
+            width: 128px;
+          }
+
+          .description {
+            display: none;
+          }
+        }
+
+        svg {
+          display: none;
+        }
+      }
+
+      .right {
+        display: none;
+      }
+    }
+  }
+}
+
+// Desktop
+@media all and (min-width: 950px) {
+  #page {
+    padding-top: $HeaderSize + $HeaderPadding;
+
+    > header {
+      position: fixed;
+      top: 0;
+      margin-left: -$HeaderPadding;
+      z-index: 2;
+      width: $PageWidth + 2 * $HeaderPadding;
+      height: $HeaderSize;
+      display: flex;
+      align-items: center;
+
+      .left-wrap,
+      .right {
+        position: absolute;
+        top: 0;
+        z-index: 3;
+        width: $SideBoxWidth;
+
+        svg {
+          .top {
+            fill: $HeaderBorder;
+          }
+
+          .bottom {
+            fill: $HeaderBG;
+          }
+        }
+      }
+
+      .left-wrap .left {
+        padding: $HeaderPadding;
+
+        > * {
+          display: block;
+
+          &:not(:last-child) {
+            margin-bottom: 10px;
+          }
+        }
+
+        .description {
+          display: block;
+          font-size: 0.9em;
+          text-align: center;
+        }
+
+        .avatar img {
+          display: block;
+          margin: 0 auto;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+:focus {
+  outline: 0;
+}
+
+//noinspection CssOptimizeSimilarProperties
+body {
+  font-family: 'Signika', sans-serif;
+  width: 100%;
+  max-width: $PageWidth;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+  background-color: black;
+  box-sizing: border-box;
+}
+
+#page {
+  > header {
+    color: $HeaderColor;
+    background: $HeaderBG;
+    border-bottom: 10px solid $HeaderBorder;
+
+    a {
+      color: $ManePink;
+    }
+
+    .left-wrap {
+      left: -$SideBoxWidth;
+
+      .left {
+        width: 100%;
+        box-sizing: border-box;
+        background: $HeaderBG;
+        color: $HeaderColor;
+      }
+    }
+
+    .middle {
+      display: block;
+      width: 100%;
+      padding: $HeaderPadding;
+      text-align: center;
+
+      .title {
+        margin: 0;
+        font-weight: normal;
+        font-size: 3em;
+        line-height: 1em;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        text-shadow: 2px 3px 0 $HeaderTitleShadow;
+
+        a {
+          text-decoration: none;
+          color: $ManeDark;
+        }
+      }
+
+      .subtitle {
+        display: block;
+        font-size: 0.9em;
+        color: rgba($ManeDark, 0.8);
+        margin: 0 0 10px;
+        text-transform: uppercase;
+      }
+
+      nav {
+        display: block;
+        font-size: 0;
+
+        ul {
+          display: block;
+          padding: 0;
+          margin: 0;
+
+          li {
+            $PaddingVert: 0;
+            $PaddingHoriz: 5px;
+            display: inline-block;
+            padding: $PaddingVert $PaddingHoriz;
+
+            &:not(:last-child):after {
+              content: '//';
+              padding-left: $PaddingHoriz * 2;
+              font-size: 16px;
+              opacity: 0.8;
+            }
+
+            a {
+              display: inline-block;
+              text-decoration: none;
+              text-transform: uppercase;
+              font-size: 16px;
+              line-height: 1em;
+              position: relative;
+
+              &:hover:before {
+                $TargetHeight: 140%;
+                $TargetTop: -($TargetHeight - 100%)/2;
+                $TargetOpacity: 1;
+                $TargetBG: rgba(black, 0.1);
+
+                content: '';
+                position: absolute;
+                left: -4px;
+                top: $TargetTop;
+                height: $TargetHeight;
+                width: calc(100% + 8px);
+                opacity: $TargetOpacity;
+                background-color: $TargetBG;
+                box-sizing: border-box;
+                border-width: 2px 0;
+                border-style: solid;
+                border-color: rgba($HeaderColor, 0.6);
+                animation: hover 0.2s ease-out;
+
+                @keyframes hover {
+                  0% {
+                    top: 50%;
+                    height: 0;
+                    opacity: 0;
+                    background-color: transparent;
+                  }
+                  100% {
+                    top: $TargetTop;
+                    height: $TargetHeight;
+                    opacity: $TargetOpacity;
+                    background-color: $TargetBG;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      right: -$SideBoxWidth;
+      font-size: 0;
+
+      img {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        border: 10px solid $HeaderBG;
+        border-bottom: 0;
+        background: $HeaderBG;
+        border-radius: 0 0 40px 40px;
+      }
+
+      svg {
+        position: relative;
+        top: -50px;
+      }
+    }
+  }
+
+  #posts {
+    a {
+      color: $LinkColor;
+    }
+
+    article {
+      display: block;
+      margin-bottom: 10px;
+
+      .reblog-header {
+        display: block;
+        padding: 10px;
+        background: $EyeHLLight;
+        border: 1px solid darken($EyeHLDark, 10);
+        border-bottom: 0;
+
+        &:before {
+          content: 'Reblogged from ';
+          opacity: 0.95;
+        }
+
+        &,
+        a {
+          color: #fff !important;
+        }
+
+        a {
+          text-decoration: none;
+          font-weight: bold;
+        }
+
+        ~ .post-wrap {
+          border-top: 0;
+        }
+      }
+
+      .post-wrap {
+        display: block;
+        padding: 10px 10px 7px;
+        background: $PostBG;
+        color: $HeaderBG;
+        border: 1px solid #aaa;
+
+        .post > :not(:last-child) {
+          margin-bottom: 10px;
+        }
+
+        footer {
+          margin-top: 10px;
+          border-top: 1px solid rgba($LinkColor, 0.5);
+          padding-top: 5px;
+        }
+
+        .tags {
+          margin: 0;
+          display: block;
+          font-size: 0.7em;
+          line-height: 1em;
+
+          a {
+            display: inline-block;
+            color: $CoatOutline;
+
+            &:before {
+              content: '#';
+              opacity: 0.7;
+            }
+
+            &:not(:last-child) {
+              margin-right: 7px;
+            }
+          }
+        }
+
+        .post-controls {
+          display: flex;
+
+          > :first-child {
+            flex: 1 1 auto;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            line-height: 24px;
+            text-decoration: none;
+          }
+
+          .reblog-control {
+            flex: 0 0 auto;
+
+            path {
+              fill: $LinkColor;
+            }
+          }
+        }
+
+        .notes-wrap {
+          margin-top: 5px;
+          padding-top: 5px;
+          border-top: 1px solid rgba($LinkColor, 0.5);
+
+          &:empty {
+            display: none;
+          }
+
+          > span {
+            display: block;
+            font-size: 1.2em;
+          }
+
+          ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            .note {
+              display: block;
+              font-size: 16px;
+              line-height: 1.2em;
+              box-sizing: border-box;
+              padding: 7px;
+
+              > * {
+                vertical-align: middle;
+              }
+
+              a,
+              a > img {
+                display: inline-block;
+                height: 16px;
+              }
+
+              a > img {
+                margin-right: 6px;
+              }
+
+              blockquote {
+                border-left: 5px solid $CoatFill;
+                background: $ManeLight;
+                font-size: 0.9em;
+                padding: 5px;
+                margin: 5px 0 0;
+
+                a {
+                  color: inherit;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // Post type specific styles
+      &.quote blockquote {
+        border-left: 5px solid $EyeGrTop;
+        background: rgba($EyeHLLight, 0.2);
+        padding: 8px;
+        margin: 0 0 10px;
+      }
+
+      &.photo .post-content {
+        display: block;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+
+        .photo-wrapper {
+          margin-bottom: 15px;
+
+          a {
+            display: inline-block;
+            max-width: 100%;
+
+            img {
+              display: block;
+              margin: 0 auto;
+              max-width: 100%;
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            }
+          }
+        }
+
+        figcaption p {
+          margin: 0 0 10px;
+        }
+      }
+
+      &.link h2 {
+        margin: 0 0 10px;
+      }
+
+      &.text {
+        .title {
+          margin: 0 0 10px;
+          text-align: center;
+          font-size: 22px;
+          line-height: 1em;
+          text-transform: uppercase;
+
+          a {
+            text-decoration: none;
+          }
+        }
+
+        .body-text > * {
+          margin: 0;
+
+          &:not(:last-child) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+
+      &.audio .post-content:before {
+        display: block;
+        content: 'This theme does not support audio posts!';
+        color: red;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      &.chat ul {
+        list-style: none;
+        display: block;
+        padding: 0;
+        margin: 0;
+        border: 1px solid $ManeDark;
+
+        li {
+          padding: 4px;
+
+          &.chat-even {
+            background: rgba(0, 0, 0, 0.05);
+          }
+
+          .label {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  > footer {
+    display: block;
+    width: auto;
+    color: $HeaderColor;
+    background: $HeaderBG;
+    border-bottom: 5px solid $HeaderBorder;
+    padding: 5px;
+    font-size: 10px;
+    text-align: center;
+    text-transform: uppercase;
+
+    a {
+      color: $ManePink;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+#pagination {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+
+  a:not(:last-child) {
+    margin-right: 1em;
+  }
+}
+
+blockquote {
+  border-left: 2px solid rgba(0, 0, 0, 0.15);
+  padding-left: 10px;
+  margin: 10px 0 0;
+}
+
+.link-thumbnail img {
+  max-width: 100%;
+}

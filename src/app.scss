@@ -1,0 +1,33 @@
+@import 'scss/vars';
+@import 'scss/functions';
+@import 'scss/fonts';
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-svg-core/styles.css';
+
+@import 'scss/mixins';
+@import 'scss/common';
+@import 'scss/components/navbar';
+@import 'scss/components/app-header';
+@import 'scss/components/app-content';
+@import 'scss/components/app-footer';
+@import 'scss/components/contact-card';
+@import 'scss/pages/oc';
+
+* {
+  outline: none;
+}
+
+html {
+  background-color: $white;
+  font-size: 100%;
+  min-height: 100vh;
+}
+
+#wrap {
+  background: $secondary;
+}
+
+// Gallery view content
+.ril__inner {
+  user-select: none;
+}

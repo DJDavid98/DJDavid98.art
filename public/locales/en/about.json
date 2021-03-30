@@ -1,0 +1,69 @@
+{
+  "title": "Homepage",
+  "seoDesc": "Hobbyist Digital Artist from Hungary - My artwork, OCs, and contact information",
+  "years": "y/o",
+  "yearsOld": "years old",
+  "gender": "pronouns",
+  "genderPlacement": "prepend",
+  "male": "he/him",
+  "livesIn": "lives in",
+  "hungary": "Hungary",
+  "localTime": "local time",
+  "favoriteColor": "favorite color",
+  "avatarBy": "Current avatar by",
+  "quote": {
+    "text": "Creativity is contagious. Pass it on.",
+    "from": "Albert Einstein"
+  },
+  "hoursFormat": "h",
+  "minutesFormat": "mm a",
+  "summary": "Summary",
+  "aboutMe": {
+    "heading": "About Me",
+    "p1": {
+      "t1": "I’m a hobbyist digital artist mostly creating artwork in relation to the TV show ",
+      "t2": "My Little Pony: Friendship is Magic",
+      "t3": " and taking part in various art-related events that happen in its fandom. Sometimes I might offer to help out with Hungarian translations for certain community projects as well."
+    },
+    "mlpWikipediaUrl": "https://en.wikipedia.org/wiki/My_Little_Pony:_Friendship_Is_Magic",
+    "p2": "In addition to creating art I also have a tendency to support independent artists from the fandom in the form of purchasing commissions featuring various original characters, ranging from my own to friends’ or even the artists’.",
+    "p3": "My favorite character from the show is Vinyl Scratch, also known as DJ P0n-3. As obvious it might seem given my name, the reason is actually the simple fact that I really like her color scheme. If I had to pick from the Mane 6 I’d choose Rainbow Dash."
+  },
+  "artwork": {
+    "heading": "Recent Artwork",
+    "navLabel": "Artwork",
+    "viewFullGallery": "View full gallery",
+    "source": "Source",
+    "tagged": "Tags",
+    "p1": "Normally this section would display a neat gallery of my recent artwork from Furbooru but it seems for one reason or another it could not be loaded at the moment. Maybe their servers are overwhelmed or there's a glitch in the Matrix, we may never know.",
+    "p2": "Fear not, for this placeholder text shall bring your attention to the button below which links to my artist tag where you will be able to see all the same works (provided the site itself is still alive and well).",
+    "p3": "It might not be as fancy as this awesome gallery I had set up for you here, but it is what it is, I don't make the rules. It's a shame really, I would have loved for you to see it. Maybe check back a bit later? Sorry :("
+  },
+  "myOC": {
+    "artBy": "Art by",
+    "heading": "My Original Characters",
+    "navLabel": "My OCs",
+    "artAlt": "A light blue pony and fox standing on opposite sides of a transparent barrier, placing their feet on said barrier at the same height on their own side",
+    "p1": "I'm a proud owner of not one, but two original characters. Or, well, depends on how you define “original”. While their color schemes might be exactly the same and they might have very similar personality traits… Okay, fine, you caught me, she's basically a single character with two different forms, but the two forms count as separate characters in my book.",
+    "p2": {
+      "t1": "Her name is {{name}}, but her friends just call her Paamayim or ",
+      "t2": " (pronounced: double colon). If you want to know more about her I suggest you check out the reference sheet linked below. It will also explain the strange name choice if you are curious about the reasoning behind it."
+    },
+    "refSheet": "Reference Sheet"
+  },
+  "contact": {
+    "contact": "Contact",
+    "heading": "Contact & Social Media",
+    "p1": "Here you’ll find a list of websites and apps I have accounts on. If you need to get in touch with me use whichever one is closest to the top when possible.",
+    "sendEmail": "Send E-mail",
+    "visitProfile": "Profile",
+    "visitPage": "Page",
+    "visitChannel": "Channel",
+    "visitStream": "Stream",
+    "sendMessage": "Send Message",
+    "copyStatus": {
+      "info": "Click to copy",
+      "copied": "Copied to clipboard"
+    }
+  }
+}

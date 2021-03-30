@@ -1,0 +1,64 @@
+{
+  "heading": "{{name}} Referencia Lap",
+  "seoDesc": "Referencia lap a sajt {{species}} eredeti karakteremhez",
+  "speciesSelect": "Válassz alakot",
+  "fox": "Furry",
+  "pony": "Póni",
+  "detail": {
+    "heading": "{{form}} Alak",
+    "foxFewWords": {
+      "heading": "Néhány szó magamról",
+      "selfIntroStart": "A nevem héberül „dupla kettőspont”-ot jelent, de a barátaim csak Paamayim-nak hívnak. Egy magányos nőstény róka vagyok, és időtöltésképp egymagamban fel-alá járkálok a szülőerdőmben, felfedezek és keresem az életem célját. Introvertáltnak tartom magam; nagyon félénk vagyok és nehezen ismerkedem meg új teremtményekkel. Ha őszintén meg akarsz ismerni, csak add önmagad és légy őszinte, és ha látom, hogy jó szándékkal közeledsz, nem félek megnyílni. Ha csak ki akarsz használni, akkor biztos lehetsz benne, hogy átlátok rajtad, és szerencsés leszel, ha nem kelek fel és állok odébb azonnal. Az egész erdőmben csak a virágokban bízok feltétel nélkül, akikkel mióta az eszemet tudom egy társaságban vagyunk. Arra szenteltem az életem, hogy megismerjem őket és minden vágyukat kielégítsem a képességeimhez mérten, és cserébe ők is ugyanezt teszik velem. Akár azt is mondhatnánk, hogy egy igencsak… ",
+      "symbiotic": "szimbiotikus",
+      "selfIntroEnd": " kapcsolat van mindnyájunk közt~"
+    },
+    "p1": "A neve furcsa választásnak tűnhet, de tükrözi a PHP programozási nyelv, illetve úgy általában a kódolás iránti érdeklődésem. Az élesebb szeműek akár némi hasonlóságot is felfedezhetnek a karakter kinézete és a <0>PHP nyelv logója</0> közt. Ez az elnevezés konkrétan olyan hibaüzenetekben látható, amelyek az alkalmazás kódjában a hatókör feloldó operátor (<1>::</1>) helytelen használatára figyelmeztetnek. <2>További Infó</2>",
+    "moreInfoUrl": "http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=10#section_3_20",
+    "p2": "Ha azért tévedtél ide, mert rajzot akarsz készíteni erről a karakterről, akkor kérlek használd ezt a referencia lapot, ami tartalmazza a kinézetével kapcsolatos összes információt.",
+    "p3": "A színsegéd egy listát tartalmaz az összes színnel, ahonnan azok könnyen kimásolhatóak.",
+    "p4": "A korábbi rajzok pedig átvisz az OC címkéjének az oldalára a Furbooru-n, ami lényegében egy képgaléria oldal, ahol elérhetővé próbálom tenni az összes róla készült képet.",
+    "p4Lewd": {
+      "select": "A nem munkahely-biztonságos rajzok megtekintéséhez ki kell választanod a ",
+      "toSee": "szűrőt a Furbooru-n, ha még nics saját szűrőd ami láthatóvá teszi az ilyen képeket."
+    },
+    "downloadRefSheet": "Lap Letöltése ({{format}})",
+    "cutieMark": "Szépségjegy",
+    "cutieMarkRaster": "Letöltés PNG formátumban (raszter)",
+    "cutieMarkVector": "Letöltés SVG formátumban (vektor)",
+    "colorGuide": "Színsegéd",
+    "previousArt": "Kész Rajzok",
+    "species": "Faj",
+    "gender": "Neme",
+    "female": "Nőstény",
+    "orientation": "Szexuális Beállítottság",
+    "lesbian": "Leszbikus",
+    "lesbianPrideFlag": "Leszbikus Büszkeség zászló",
+    "occupation": "Foglalkozás",
+    "pony": {
+      "species": "Egyszarvú Póni",
+      "occupation": "Művész"
+    },
+    "fox": {
+      "species": "Róka",
+      "occupation": "Botanikus"
+    },
+    "additionalResources": "További Erőforrások",
+    "sfmModel": "SFM Modell",
+    "sfmModelTooltip": "3D-s modell Source Filmmaker művészek számára",
+    "sfmModelSfw": "Munkahely-biztonságos (nemi szervek nélkül)",
+    "sfmModelNsfw": "Nem munkahely-biztonságos (kanca  nemi szervekkel)",
+    "artworkBy": "Rajzokat Készítette"
+  },
+  "ageGate": {
+    "title": "Életkor ellenőrzés",
+    "explanation": "Nem munkahely-biztonságos tartalmat próbálsz megtekinteni. Kérlek add meg a születési dátumod, hogy megerősítsd, elég idős vagy az ilyen tartalmak megtekintéséhez.",
+    "year": "Év",
+    "month": "Hónap",
+    "day": "Nap",
+    "invalidDate": "Kérlek, létező dátumot adj meg!",
+    "remember": "Jegyezd meg ezt a dátumot ebben a böngészőben",
+    "storageNotice": "Ez a dátum csak a böngésződben kerül tárolásra (ideiglenesen vagy véglegesen, a fenti jelölőnégyzettől függően), semmilyen szerver vagy harmadik fél számára nem kerül elküldésre.",
+    "verify": "Életkor megerősítése",
+    "close": "Vissza"
+  }
+}

@@ -1,0 +1,12 @@
+$gutter-size: 0.5rem;
+
+.masonry-wrapper {
+  display: flex;
+  margin-left: -$gutter-size;
+  width: auto;
+}
+
+.masonry-column {
+  padding-left: $gutter-size;
+  background-clip: padding-box;
+}

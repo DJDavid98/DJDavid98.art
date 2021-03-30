@@ -1,0 +1,18 @@
+@function rem($px) {
+  $unit: unit($px);
+  @if ($unit != 'px') {
+    @if ($unit != 'rem') {
+      @error 'rem() only accepts pixel units';
+    }
+    @return $px;
+  }
+  @return 1rem * ($px / 16px);
+}
+
+@function bumpy-bg-width($height) {
+  @return (32 / 12) * $height;
+}
+
+@function stampy-bg-width($height) {
+  @return 2 * $height;
+}

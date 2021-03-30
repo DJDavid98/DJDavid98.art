@@ -1,0 +1,27 @@
+#header {
+  background-color: $secondary;
+  height: 50vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  .logo {
+    background-attachment: fixed;
+    background-image: url('/logos/djdavid98.svg');
+    background-position: 50% 16.75%;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      background-size: 50%;
+    }
+  }
+}

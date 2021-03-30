@@ -1,0 +1,244 @@
+$about-section-bg: $light;
+$artwork-section-bg: lighten($secondary, 40%);
+
+#lightboxBackdrop button {
+  filter: drop-shadow(0 0 1px black);
+}
+
+#content {
+  background: #fff !important;
+  margin-top: 50vh;
+  position: relative;
+  z-index: 2 !important;
+
+  &:before {
+    $height: rem(12px);
+    content: '';
+    display: block;
+    height: $height;
+    position: absolute;
+    top: -$height;
+    width: 100%;
+    @include bumpy-background('white', $height);
+  }
+
+  $avatar-size-mobile: 35vh;
+  $avatar-size-desktop: 25vh;
+
+  .summary {
+    padding-top: $avatar-size-mobile/2;
+    position: relative;
+
+    @include media-breakpoint-up(md) {
+      padding-top: $avatar-size-desktop/2;
+    }
+
+    .avatar-wrap {
+      display: block;
+      height: $avatar-size-mobile;
+      left: 0;
+      position: absolute;
+      top: -$avatar-size-mobile/2;
+      width: 100%;
+
+      @include media-breakpoint-up(md) {
+        height: $avatar-size-desktop;
+        top: -$avatar-size-desktop/2;
+      }
+
+      .avatar-container {
+        // https://easings.net/en#easeOutBack
+        animation: fade-appear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        background: rgba(#fff, 0.9);
+        border: rem(3px) solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 rem(5px) rgba(#000, 0.3);
+        box-sizing: border-box;
+        display: block;
+        height: $avatar-size-mobile;
+        margin: 0 auto;
+        overflow: hidden;
+        width: $avatar-size-mobile;
+        will-change: transform;
+
+        @include media-breakpoint-up(md) {
+          height: $avatar-size-desktop;
+          width: $avatar-size-desktop;
+        }
+
+        @keyframes fade-appear {
+          from {
+            transform: scale(0);
+            opacity: 0;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .detail {
+      display: inline-block;
+      margin-top: rem(5px);
+      user-select: none;
+
+      @include media-breakpoint-up(md) {
+        br {
+          display: none;
+        }
+      }
+
+      .detail-block {
+        display: inline-block;
+        font-size: rem(26px);
+        line-height: 1em;
+        padding: rem(5px);
+        vertical-align: middle;
+
+        .detail-block-label {
+          color: rgba(black, 0.6);
+          display: block;
+          font-size: rem(14px);
+          line-height: 1em;
+          white-space: pre-wrap;
+        }
+
+        .detail-block-content > * {
+          display: block;
+        }
+      }
+
+      .loc .country-container {
+        font-size: 0;
+
+        > div {
+          display: block !important;
+        }
+      }
+
+      .color .color-holder {
+        color: $secondary;
+
+        &:before {
+          $size: rem(20px);
+          background: $secondary;
+          content: '';
+          display: inline-block;
+          height: $size;
+          margin-right: rem(6px);
+          width: $size;
+        }
+      }
+    }
+  }
+
+  .oc-image-wrap {
+    max-width: rem(250px);
+
+    @include media-breakpoint-up(md) {
+      max-width: rem(300px);
+    }
+  }
+
+  $divider-size-mobile: 1rem;
+  $divider-size-desktop: 3rem;
+
+  #about-me {
+    position: relative;
+  }
+
+  .about-section {
+    background-color: $about-section-bg;
+    margin-top: $divider-size-mobile;
+
+    @include media-breakpoint-up(md) {
+      margin-top: $divider-size-desktop;
+    }
+  }
+
+  .about-divider,
+  .artwork-divider {
+    height: $divider-size-mobile;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+
+    @include media-breakpoint-up(md) {
+      height: $divider-size-desktop;
+    }
+
+    &.about-divider-top {
+      top: -$divider-size-mobile;
+
+      @include media-breakpoint-up(md) {
+        top: -$divider-size-desktop;
+      }
+    }
+  }
+
+  .about-divider path {
+    fill: $about-section-bg;
+  }
+
+  .artwork-divider path {
+    fill: $artwork-section-bg;
+  }
+
+  .artwork-section {
+    background-color: $artwork-section-bg;
+
+    .ReactGridGallery_tile {
+      background-color: transparent !important;
+    }
+  }
+
+  .oc-section {
+    background-attachment: fixed;
+    background-image: url('/cm-pattern.svg');
+    background-position: top left;
+    background-repeat: repeat;
+    background-size: 300%;
+    position: relative;
+
+    @include media-breakpoint-up(sm) {
+      background-size: 225%;
+    }
+    @include media-breakpoint-between(md, lg) {
+      background-size: 150%;
+    }
+    @include media-breakpoint-up(lg) {
+      background-size: auto;
+    }
+
+    &:after {
+      $height: 15px;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: $height;
+      position: absolute;
+      width: 100%;
+      @include stampy-background('inv-dark', $height);
+    }
+  }
+
+  .contact-section {
+    background-color: $dark;
+    color: $light;
+
+    &:after {
+      $height: 15px;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: $height;
+      position: absolute;
+      width: 100%;
+      @include stampy-background('white', $height, true);
+    }
+  }
+}

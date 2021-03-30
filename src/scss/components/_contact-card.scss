@@ -1,0 +1,79 @@
+$contact-card-icon-size-mobile: 2.5rem;
+$contact-card-icon-size-desktop: 4rem;
+
+@include media-breakpoint-up(xl) {
+  .contact-card {
+    flex-basis: 33%;
+  }
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  border: 0;
+  border-radius: $card-border-radius;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  text-decoration: none !important;
+  user-select: none;
+  @extend .shadow;
+
+  @include media-breakpoint-up(md) {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin: 1rem;
+  }
+
+  @include contact-card($deviantart, 'deviantart');
+  @include contact-card($discord, 'discord');
+  @include contact-card($facebook, 'facebook');
+  @include contact-card($soundcloud, 'soundcloud');
+  @include contact-card($steam, 'steam');
+  @include contact-card($twitter, 'twitter');
+  @include contact-card($youtube, 'youtube');
+  @include contact-card($inkbunny, 'inkbunny');
+  @include contact-card($newgrounds, 'newgrounds');
+  @include contact-card($kongregate, 'kongregate');
+  @include contact-card($protonmail, 'email');
+  @include contact-card($picarto, 'picarto');
+  @include contact-card($telegram, 'telegram');
+  @include contact-card($furbooru, 'furbooru');
+  @include contact-card($mastodon, 'mastodon');
+  @include contact-card($pillowfort, 'pillowfort');
+  @include contact-card($guilded, 'guilded');
+  @include contact-card($xbox, 'xbox');
+  @include contact-card($playstation, 'playstation');
+  @include contact-card($furaffinity, 'furaffinity');
+
+  .contact-card-icon {
+    height: $contact-card-icon-size-mobile !important;
+    margin: 1rem;
+    width: $contact-card-icon-size-mobile !important;
+
+    @include media-breakpoint-up(md) {
+      height: $contact-card-icon-size-desktop !important;
+      margin: 0;
+      width: $contact-card-icon-size-desktop !important;
+    }
+  }
+
+  .contact-card-title {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 0;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .btn-link {
+      padding-bottom: 0 !important;
+      padding-left: 0 !important;
+    }
+  }
+}
+
+a.contact-card:hover .btn-link {
+  @extend .btn-link, :hover;
+}

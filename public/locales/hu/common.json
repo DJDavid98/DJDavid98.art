@@ -1,0 +1,17 @@
+{
+  "changeLanguage": "Nyelv változtatás",
+  "current": "Jelenlegi",
+  "welcome": "Üdvözöllek!",
+  "redirecting": "Átirányítás…",
+  "notFound": {
+    "heading": "Nem Található",
+    "content": "Nincs itt semmi látnivaló."
+  },
+  "builtWith": {
+    "t1": "A weboldal egyszarvú mágia és a ",
+    "t2": " segítségével készült"
+  },
+  "openSource": "Ez a weboldal nyílt forráskódú szoftver",
+  "viewSource": "Forráskód megtekintése",
+  "avatarImageAlt": "{{name}} profil képe"
+}
