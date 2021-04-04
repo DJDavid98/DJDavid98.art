@@ -1,5 +1,7 @@
 import { AppContainer, Layout } from 'components/common';
-import { useTranslation } from 'next-i18next';
+import { GetStaticProps } from 'next';
+import { SSRConfig, useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { VFC } from 'react';
 
 const NotFoundPage: VFC = () => {
@@ -14,3 +16,9 @@ const NotFoundPage: VFC = () => {
 };
 
 export default NotFoundPage;
+
+export const getStaticProps: GetStaticProps<SSRConfig> = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common'])),
+  },
+});

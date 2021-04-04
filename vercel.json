@@ -3,6 +3,10 @@
     {
       "source": "/storage/:match*",
       "destination": "https://storage.djdavid98.art/:match*"
+    },
+    {
+      "source": "/refs/:match*",
+      "destination": "https://storage.djdavid98.art/refs/:match*"
     }
   ],
   "headers": [
