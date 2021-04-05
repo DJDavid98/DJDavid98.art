@@ -1,4 +1,3 @@
-/* eslint-disable */
 export interface ImageResponse {
   /** The image's width divided by its height. */
   aspect_ratio: number;
@@ -10,7 +9,7 @@ export interface ImageResponse {
   deletion_reason: string;
   /** The image's description. */
   description: string;
-  /** The number of downvotes the image has. */
+  /** The number of down votes the image has. */
   downvotes: number;
   /** The ID of the target image, or null if none provided. This will only have a value on images which are merged into another image. */
   duplicate_of: number;
@@ -27,7 +26,12 @@ export interface ImageResponse {
   /** The image's ID. */
   id: number;
   /** Optional object of internal image intensity data for deduplication purposes. May be null if intensities have not yet been generated. */
-  intensities: null | object;
+  intensities: null | {
+    ne: number;
+    nw: number;
+    se: number;
+    sw: number;
+  };
   /** The MIME type of this image. */
   mime_type: 'image/gif' | 'image/jpeg' | 'image/png' | 'image/svg+xml' | 'video/webm';
   /** The filename that this image was uploaded with. */
@@ -62,7 +66,7 @@ export interface ImageResponse {
   /** A list of tag names this image contains. */
   tags: string[];
   /** Whether this image has finished thumbnail generation. Do not attempt to load images from view_url or representations if this is false. */
-  thumbnails_generated: Boolean;
+  thumbnails_generated: boolean;
   /** The time, in UTC, the image was last updated. */
   updated_at: string;
   /** The image's uploader. */

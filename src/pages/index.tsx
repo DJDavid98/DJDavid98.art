@@ -1,6 +1,6 @@
 import { AboutSection, ContactSection, OcSection, RecentArtwork, RecentArtworkProps, SummarySection } from 'components/about';
 import { AppHeader, Layout } from 'components/common';
-import { ImageResponse } from 'derpi-api';
+import { ImageResponse } from 'src/types/furbooru-api';
 import { GetStaticProps } from 'next';
 import { SSRConfig, useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';

@@ -21,11 +21,8 @@
     "paths": {
       "components/*": ["src/components/*"],
       "modules/*": ["src/scss/modules/*"],
-      "src/*": ["src/*"],
-      "typings/*": ["typings/*"],
-      "*": ["typings/*"]
-    },
-    "typeRoots": ["./typings", "./node_modules/@types"]
+      "src/*": ["src/*"]
+    }
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]

@@ -1,7 +1,7 @@
 import { CustomIcon } from 'components/common/CustomIcon';
 import { ExternalLink } from 'components/common/ExternalLink';
 import { Gallery } from 'components/common/Gallery';
-import { ImageResponse } from 'derpi-api';
+import { ImageResponse } from 'src/types/furbooru-api';
 import { useTranslation } from 'next-i18next';
 import React, { useMemo, VFC } from 'react';
 import { Button, Container } from 'reactstrap';

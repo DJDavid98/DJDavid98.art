@@ -1,4 +1,4 @@
-import { ImageResponse } from 'derpi-api';
+import { ImageResponse } from 'src/types/furbooru-api';
 import { ImageOptions } from 'src/types/gallery';
 
 export const RepresentationSizes = {
