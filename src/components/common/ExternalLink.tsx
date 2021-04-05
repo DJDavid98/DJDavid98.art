@@ -18,14 +18,15 @@ const ExternalLinkComponent: ForwardRefRenderFunction<HTMLAnchorElement, Externa
   ref,
 ) => {
   const Tag = tag || 'a';
-  const additionalProps = blank
+  const targetProps = blank
     ? {
         target: '_blank',
         rel: classNames(rel, 'noopener noreferrer'),
       }
     : { rel };
+  const additionalProps = { ...targetProps, ref };
   return (
-    <Tag href={href} className={className} title={title} {...additionalProps} ref={ref}>
+    <Tag href={href} className={className} title={title} {...additionalProps}>
       {children}
     </Tag>
   );

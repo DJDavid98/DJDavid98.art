@@ -30,7 +30,7 @@ export const getAgeGateValue = (): Date => {
   const item = localStorage.getItem(AGE_GATE_KEY) || sessionStorage.getItem(AGE_GATE_KEY);
 
   if (item !== null) {
-    let dateCandidate: Date;
+    let dateCandidate: Date | undefined;
     try {
       dateCandidate = new Date(item);
     } catch (e) {

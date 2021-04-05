@@ -58,7 +58,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
   const handleChangeNsfw = useCallback(
     (newIsNsfw: boolean) => () => {
       if (!nsfwConfirmBypass) {
-        if (newIsNsfw === true && !isOldEnoughForNsfw()) {
+        if (newIsNsfw && !isOldEnoughForNsfw()) {
           setShowAgeGate(true);
           return;
         }
@@ -258,7 +258,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
 
 export const getStaticProps: GetStaticProps<OcFormPageProps & SSRConfig> = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common', 'oc'])),
+    ...(await serverSideTranslations(locale as string, ['common', 'oc'])),
   },
 });
 

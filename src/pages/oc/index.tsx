@@ -41,6 +41,6 @@ export default OcIndexPage;
 
 export const getStaticProps: GetStaticProps<SSRConfig> = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common'])),
+    ...(await serverSideTranslations(locale as string, ['common'])),
   },
 });

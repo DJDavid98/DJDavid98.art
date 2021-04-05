@@ -15,8 +15,7 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    // Temporarily disable until https://github.com/isaachinman/next-i18next/issues/995 is fixed
-    "strict": false,
+    "strict": true,
     "target": "esnext",
     "baseUrl": ".",
     "paths": {

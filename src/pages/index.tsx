@@ -83,7 +83,7 @@ export const getStaticProps: GetStaticProps<AboutPageProps & SSRConfig> = async 
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'about'])),
+      ...(await serverSideTranslations(locale as string, ['common', 'about'])),
       recentArtwork,
     },
   };
