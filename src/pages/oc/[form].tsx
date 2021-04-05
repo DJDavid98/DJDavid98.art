@@ -65,7 +65,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
       }
       setIsNsfw(newIsNsfw);
     },
-    [],
+    [nsfwConfirmBypass],
   );
   const handleAgeVerification = useCallback((value: boolean) => {
     setNsfwEnabled(value);

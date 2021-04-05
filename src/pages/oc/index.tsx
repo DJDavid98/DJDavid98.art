@@ -25,7 +25,7 @@ const OcIndexPage: NextPage<{ nsfwEnabled?: boolean }> = ({ nsfwEnabled = false 
     }
 
     void router.replace(getOcPageRoute(nsfwEnabled, OcSpecies.PONY));
-  }, [relevantQuery, router]);
+  }, [nsfwEnabled, relevantQuery, router]);
 
   return (
     <Layout>

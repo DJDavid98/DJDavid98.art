@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps<AboutPageProps & SSRConfig> = async 
   let recentArtwork: ImageResponse[] = [];
 
   try {
-    const resp = await fetch(
+    const resp: unknown = await fetch(
       urlcat(`https://furbooru.org/api/v1/json/search/images`, {
         q: 'safe,artist:djdavid98,-collaboration,-webm,gallery_id:13',
         sf: 'gallery_id:13',
@@ -73,11 +73,13 @@ export const getStaticProps: GetStaticProps<AboutPageProps & SSRConfig> = async 
           'user-agent': PERSONAL_DETAILS.OC_NAME,
         },
       },
-    ).then((resp) => resp.json());
+    ).then((r) => r.json());
     if (isImageResponse(resp)) {
       recentArtwork = resp.images;
     }
-  } catch (e) {}
+  } catch (e) {
+    // Ignore
+  }
 
   return {
     props: {
