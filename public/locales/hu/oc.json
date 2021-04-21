@@ -44,9 +44,10 @@
     },
     "additionalResources": "További Erőforrások",
     "sfmModel": "SFM Modell",
+    "sfmModelDownload": "SFM Modell Letöltése",
     "sfmModelTooltip": "3D-s modell Source Filmmaker művészek számára",
-    "sfmModelSfw": "Munkahely-biztonságos (nemi szervek nélkül)",
-    "sfmModelNsfw": "Nem munkahely-biztonságos (kanca  nemi szervekkel)",
+    "sfmModelSfw": "Munkahely-biztonságos letöltése (nemi szervek nélkül)",
+    "sfmModelNsfw": "Nem munkahely-biztonságos letöltése (kanca nemi szervekkel)",
     "artworkBy": "Rajzokat Készítette"
   },
   "ageGate": {

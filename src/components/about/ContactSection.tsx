@@ -15,9 +15,11 @@ export const ContactSection: VFC = () => {
             <p>{t('about:contact.p1')}</p>
           </Col>
         </Row>
-        <Row noGutters className="justify-content-center">
-          <ContactCardMapper data={CONTACT_DETAILS} />
-        </Row>
+        <div className="p-2 p-md-0">
+          <Row noGutters className="justify-content-center">
+            <ContactCardMapper data={CONTACT_DETAILS} />
+          </Row>
+        </div>
       </Container>
     </section>
   );

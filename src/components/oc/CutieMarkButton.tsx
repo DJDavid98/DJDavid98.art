@@ -15,8 +15,8 @@ export const CutieMarkButton: VFC<PropTypes> = ({ buttonId }) => {
   const fileName = `${PERSONAL_DETAILS.OC_NAME} ${t('oc:detail.cutieMark')}`;
   const cacheBust = 1;
   return (
-    <UncontrolledButtonDropdown>
-      <DropdownToggle color="secondary" id={buttonId} className="d-block d-md-inline-block mb-2 mr-md-2" caret>
+    <UncontrolledButtonDropdown className="mb-2 mr-md-2">
+      <DropdownToggle color="secondary" id={buttonId} caret>
         <CustomIcon src="/logos/paamayim-cm.svg" className="mr-2" />
         {t('oc:detail.cutieMark')}
       </DropdownToggle>

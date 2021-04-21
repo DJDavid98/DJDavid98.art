@@ -12,6 +12,9 @@ module.exports = withPlugins([[withESLint], [withCamelCaseCSSModules]], {
   images: {
     domains: [NEXT_PUBLIC_STORAGE_DOMAIN],
   },
+  future: {
+    webpack5: true,
+  },
   async rewrites() {
     return vercelConfig.rewrites.map((entry) => {
       if (devMode) {

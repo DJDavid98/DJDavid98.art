@@ -44,9 +44,10 @@
     },
     "additionalResources": "Additional Resources",
     "sfmModel": "SFM Model",
+    "sfmModelDownload": "Download SFM Model",
     "sfmModelTooltip": "3D model for Source Filmmaker artists",
-    "sfmModelSfw": "Safe for work (without genitals)",
-    "sfmModelNsfw": "Not safe for work (with mare genitals)",
+    "sfmModelSfw": "Download safe-for-work (without genitals)",
+    "sfmModelNsfw": "Download not safe-for-work (with mare genitals)",
     "artworkBy": "Artwork By"
   },
   "ageGate": {

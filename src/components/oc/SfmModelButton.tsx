@@ -3,7 +3,7 @@ import { CustomIcon } from 'components/common/CustomIcon';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React, { memo, useMemo, VFC } from 'react';
-import { Badge, Button, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledButtonDropdown, UncontrolledTooltip } from 'reactstrap';
+import { Badge, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledButtonDropdown, UncontrolledTooltip } from 'reactstrap';
 import { getOcSfmModelPath } from 'src/util/oc';
 
 interface PropTypes {
@@ -33,21 +33,21 @@ export const SfmModelButton: VFC<PropTypes> = ({ nsfwEnabled, buttonId }) => {
   } = useTranslation();
   return (
     <>
-      {nsfwEnabled ? (
-        <UncontrolledButtonDropdown>
-          <DropdownToggle color="sfm" id={buttonId} className="d-block d-md-inline-block mb-2 mr-md-2" caret>
-            <CustomIcon src="/logos/sfm.svg" className="mr-2" />
-            {t('oc:detail.sfmModel')}
-          </DropdownToggle>
-          <DropdownMenu>
-            <Link href={getOcSfmModelPath(false)} passHref>
-              <DropdownItem tag="a">
-                <FontAwesomeIcon icon="shield-alt" fixedWidth className="text-sfm" />
-                &nbsp;
-                {t('oc:detail.sfmModelSfw')}
-                <ModelSize lang={language} />
-              </DropdownItem>
-            </Link>
+      <UncontrolledButtonDropdown className="mb-2 mr-md-2">
+        <DropdownToggle color="sfm" id={buttonId} caret>
+          <CustomIcon src="/logos/sfm.svg" className="mr-2" />
+          {t('oc:detail.sfmModel')}
+        </DropdownToggle>
+        <DropdownMenu>
+          <Link href={getOcSfmModelPath(false)} passHref>
+            <DropdownItem tag="a">
+              <FontAwesomeIcon icon="shield-alt" fixedWidth className="text-sfm" />
+              &nbsp;
+              {nsfwEnabled ? t('oc:detail.sfmModelSfw') : t('oc:detail.sfmModelDownload')}
+              <ModelSize lang={language} />
+            </DropdownItem>
+          </Link>
+          {nsfwEnabled && (
             <Link href={getOcSfmModelPath(true)} passHref>
               <DropdownItem tag="a">
                 <CustomIcon src="/logos/18.svg" />
@@ -56,15 +56,9 @@ export const SfmModelButton: VFC<PropTypes> = ({ nsfwEnabled, buttonId }) => {
                 <ModelSize lang={language} nsfw />
               </DropdownItem>
             </Link>
-          </DropdownMenu>
-        </UncontrolledButtonDropdown>
-      ) : (
-        <Button color="sfm" tag="a" href={getOcSfmModelPath(false)} className="d-block d-md-inline-block mb-2 mr-md-2" id={buttonId}>
-          <CustomIcon src="/logos/sfm.svg" className="mr-2" />
-          {t('oc:detail.sfmModel')}
-          <ModelSize lang={language} nsfw />
-        </Button>
-      )}
+          )}
+        </DropdownMenu>
+      </UncontrolledButtonDropdown>
       <UncontrolledTooltip target={buttonId} fade={false}>
         {t('oc:detail.sfmModelTooltip')}
       </UncontrolledTooltip>

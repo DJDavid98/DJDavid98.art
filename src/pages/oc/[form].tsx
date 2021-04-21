@@ -146,7 +146,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
         </ButtonToolbar>
 
         <Row>
-          <Col xs={12} md={6} xl={8}>
+          <Col xs={12} lg={6} xl={8}>
             <div className={`${styles.refSheetWrapper} mb-3 mb-lg-0`}>
               {sheetFilePath && (
                 <Image
@@ -163,7 +163,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
             </div>
             {sheetFilePath && isViewerOpen && <ImageViewer onCloseRequest={closeImageViewer} mainSrc={sheetFilePath} />}
           </Col>
-          <Col xs={12} md={6} xl={4}>
+          <Col xs={12} lg={6} xl={4}>
             <div className="text-center text-lg-left">
               <h2 className="mb-0">{t('oc:detail.heading', { form })}</h2>
               <OcStats species={species} nsfwShown={isNsfw} />
@@ -222,7 +222,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
                 color="furbooru"
                 tag={ExternalLink}
                 href={PERSONAL_DETAILS.OC_FURBY_GALLERY_URL(species)}
-                className="d-block d-md-inline-block mb-md-2 mr-md-2"
+                className="d-block d-md-inline-block mb-2 mr-md-2"
               >
                 <CustomIcon src="/logos/furbooru.svg" className="mr-2" />
                 {t('oc:detail.previousArt')}
@@ -231,8 +231,10 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
                 <>
                   <hr />
                   <h3>{t('oc:detail.additionalResources')}</h3>
-                  <CutieMarkButton buttonId={cmButtonId} />
-                  <SfmModelButton nsfwEnabled={nsfwEnabled} buttonId={sfmButtonId} />
+                  <div className="d-flex flex-column flex-md-row justify-content-lg-start flex-wrap">
+                    <CutieMarkButton buttonId={cmButtonId} />
+                    <SfmModelButton nsfwEnabled={nsfwEnabled} buttonId={sfmButtonId} />
+                  </div>
                 </>
               )}
               {species === OcSpecies.FOX && (

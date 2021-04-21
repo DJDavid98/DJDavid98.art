@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Col } from 'reactstrap';
 import { ContactCardSettings } from 'src/config';
 import { ContactCard } from './ContactCard';
@@ -8,7 +9,7 @@ interface PropTypes {
   data: ContactCardSettings[];
 }
 
-export const ContactCardMapper: React.FC<PropTypes> = ({ data }) => {
+export const ContactCardMapper: FC<PropTypes> = ({ data }) => {
   const colProps = {
     xs: 12,
     md: 6,
