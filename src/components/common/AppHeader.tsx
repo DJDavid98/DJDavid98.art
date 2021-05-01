@@ -1,6 +1,6 @@
-import { memo } from 'react';
+import { memo, VFC } from 'react';
 
-export const AppHeaderComponent: React.FC = () => (
+export const AppHeaderComponent: VFC = () => (
   <div id="header">
     <div className="logo" />
   </div>

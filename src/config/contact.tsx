@@ -135,10 +135,10 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'twitter']} {...props} />,
   },
   {
-    id: 'mastodon',
-    name: 'Mastodon',
-    url: 'https://meow.social/@djdavid98',
-    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'mastodon']} {...props} />,
+    id: 'furaffinity',
+    name: 'FurAffinity',
+    url: 'https://www.furaffinity.net/user/djdavid98/',
+    renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/furaffinity.svg" {...props} />,
   },
   {
     id: 'pillowfort',
@@ -147,10 +147,10 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/pillowfort.svg" {...props} />,
   },
   {
-    id: 'furaffinity',
-    name: 'FurAffinity',
-    url: 'https://www.furaffinity.net/user/djdavid98/',
-    renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/furaffinity.svg" {...props} />,
+    id: 'mastodon',
+    name: 'Mastodon',
+    url: 'https://meow.social/@djdavid98',
+    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'mastodon']} {...props} />,
   },
   {
     id: 'facebook',
