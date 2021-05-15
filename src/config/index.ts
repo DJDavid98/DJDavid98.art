@@ -33,6 +33,16 @@ export const PERSONAL_DETAILS = {
   ARTIST_TAG_URL: 'https://furbooru.org/search?q=artist%3Adjdavid98%2C+gallery_id%3A13&sf=gallery_id%3A13',
 };
 
+export interface AvatarCreditProps {
+  url: string;
+  name: string;
+}
+
+export const AVATAR_CREDIT: AvatarCreditProps = {
+  name: 'NightyCloud',
+  url: 'https://twitter.com/NightyCloud',
+};
+
 export const SITE_TITLE = PERSONAL_DETAILS.NAME;
 
 export enum STATUS {

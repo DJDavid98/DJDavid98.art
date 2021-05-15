@@ -3,11 +3,10 @@ import classNames from 'classnames';
 import { ExternalLink, ExternalLinkProps } from 'components/common/ExternalLink';
 import styles from 'modules/ArtworkCredit.module.scss';
 import React, { memo, useMemo, VFC } from 'react';
+import { AvatarCreditProps } from 'src/config';
 import { resolveSocialIconStyle } from 'src/util/resolve-social-icon-style';
 
-interface PropTypes extends Pick<ExternalLinkProps, 'className' | 'tag'> {
-  url: string;
-  name: string;
+interface PropTypes extends AvatarCreditProps, Pick<ExternalLinkProps, 'className' | 'tag'> {
   spacingClass?: null | 'mr-1' | 'mr-2' | 'mr-3' | 'mr-4' | 'mr-5';
 }
 
