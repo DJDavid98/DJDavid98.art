@@ -3,6 +3,7 @@ import { CustomIcon } from 'components/common/CustomIcon';
 import { useTranslation } from 'next-i18next';
 import React, { VFC } from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
+import { PERSONAL_DETAILS } from 'src/config';
 import { OcSpecies } from 'src/types/oc';
 import styles from 'modules/OcFormPage.module.scss';
 
@@ -21,6 +22,8 @@ const OcStatsComponent: VFC<OcStatsProps> = ({ species, nsfwShown }) => {
   const speciesIcon: FontAwesomeIconProps['icon'] = species === OcSpecies.PONY ? 'horse-head' : 'paw';
   return (
     <small className="d-block mb-2 text-muted">
+      <span>{t('oc:detail.nickname', { nick: PERSONAL_DETAILS.OC_NICKNAME })}</span>
+      <span className="mx-1">&bull;</span>
       {species && (
         <>
           <span id={speciesTooltipId} className="cursor-help">

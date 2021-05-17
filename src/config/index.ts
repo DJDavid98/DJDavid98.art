@@ -22,10 +22,11 @@ export const PERSONAL_DETAILS = {
   NAME: 'DJDavid98',
   BIRTH_DATE: new Date('1998-10-28T00:00+01:00'),
   TIMEZONE: 'Europe/Budapest',
-  OC_NAME: 'Paamayim Nekudotayim',
+  OC_NAME: 'Double Colon',
+  OC_NICKNAME: 'Disy',
   OC_REF_SHEET_URL: 'https://oc.djdavid98.art',
-  OC_CUTIE_MARK_URL: 'http://djdavid98.deviantart.com/art/Paamayim-Nekudotayim-Cutie-Mark-545185280',
-  OC_COLOR_GUIDE_URL: 'https://mlpvector.club/cg/v/232-Paamayim-Nekudotayim',
+  OC_CUTIE_MARK_URL: 'https://www.deviantart.com/djdavid98/art/Double-Colon-Cutie-Mark-545185280',
+  OC_COLOR_GUIDE_URL: 'https://mlpvector.club/cg/v/232-Double-Colon',
   OC_FURBY_GALLERY_URL: (species: string | null) => {
     const query = encodeURI(`oc:paamayim nekudotayim, gallery_id:12${species ? `, ${species}` : ''}`);
     return `https://furbooru.org/search?q=${query}&sf=gallery_id%3A12`;

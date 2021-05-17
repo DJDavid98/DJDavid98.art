@@ -45,10 +45,7 @@
     "navLabel": "My OCs",
     "artAlt": "A light blue pony and fox standing on opposite sides of a transparent barrier, placing their feet on said barrier at the same height on their own side",
     "p1": "I'm a proud owner of not one, but two original characters. Or, well, depends on how you define “original”. While their color schemes might be exactly the same and they might have very similar personality traits… Okay, fine, you caught me, she's basically a single character with two different forms, but the two forms count as separate characters in my book.",
-    "p2": {
-      "t1": "Her name is {{name}}, but her friends just call her Paamayim or ",
-      "t2": " (pronounced: double colon). If you want to know more about her I suggest you check out the reference sheet linked below. It will also explain the strange name choice if you are curious about the reasoning behind it."
-    },
+    "p2": "Her name is {{name}}, but for her friends it's simply <1>::</1> or {{nick}}. If you want to find out more about her I suggest you check out the reference sheet linked below. It will also explain the strange name choice if you are curious about the reasoning behind it.",
     "refSheet": "Reference Sheet"
   },
   "contact": {

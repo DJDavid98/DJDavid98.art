@@ -8,9 +8,7 @@
     "heading": "{{form}} Form",
     "foxFewWords": {
       "heading": "A few words about myself",
-      "selfIntroStart": "My name means “double colon” in Hebrew, but my friends just call me Paamayim. I'm a lone vixen, taking my time wandering around my home forest by my lonesome exploring and trying to find my purpose. I consider myself an introvert; I'm very shy and afraid of meeting new creatures. If you genuinely want to get to know me, be yourself and be honest, and if I see that your intentions are pure I'm not afraid of opening up. If you just want to take advantage of me you can be sure I will see right through you and you'll be lucky if I don't get up and leave immediately. The only creatures I unconditionally trust in this forest are the flowers who've been keeping me company for as long as I can remember. I've dedicated my life to get to know them and cater to their every need to the best of my abilities, and in turn they do the same for me. I guess you could say we all have a… ",
-      "symbiotic": "symbiotic",
-      "selfIntroEnd": " relationship~"
+      "selfIntro": "My name is Double Colon, but my friends just call me <1>::</1> or Disy. I'm a lone vixen, taking my time wandering around my home forest by my lonesome exploring and trying to find my purpose. I consider myself an introvert; I'm very shy and afraid of meeting new creatures. If you genuinely want to get to know me, be yourself and be honest, and if I see that your intentions are pure I'm not afraid of opening up. If you just want to take advantage of me you can be sure I will see right through you and you'll be lucky if I don't get up and leave immediately. The only creatures I unconditionally trust in this forest are the flowers who've been keeping me company for as long as I can remember. I've dedicated my life to get to know them and cater to their every need to the best of my abilities, and in turn they do the same for me. I guess you could say we all have a… <3>symbiotic</3> relationship~"
     },
     "p1": "Her name might seem like a strange choice, but it reflects my affection to the PHP programming language and coding in general. The keen-eyed of you might even notice a few color similarities with the <0>PHP language's logo</0> in the character’s design. This name specifically appears in error messages that warn about the incorrect use of the scope resolution operator (<1>::</1>) in the application code. <2>More Info</2>",
     "moreInfoUrl": "https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.php",
@@ -27,6 +25,7 @@
     "cutieMarkVector": "Download as SVG (vector)",
     "colorGuide": "Color Guide",
     "previousArt": "Existing Artwork",
+    "nickname": "Nickname: {{nick}}",
     "species": "Species",
     "gender": "Gender",
     "female": "Female",

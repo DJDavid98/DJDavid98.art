@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ArtworkCredit } from 'components/oc';
-import { useTranslation } from 'next-i18next';
+import { Trans, useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { VFC } from 'react';
@@ -17,7 +17,7 @@ export const OcSection: VFC = () => {
         <Row className="align-items-lg-center">
           <Col xs={12} md={6} lg={4} className="text-center mb-4 mb-md-0">
             <div className="mx-auto oc-image-wrap">
-              <Image src="/paamayim-dreamweaver.png" alt={t('about:myOC.artAlt')} width={768} height={600} quality={100} />
+              <Image src="/disy-dreamweaver.png" alt={t('about:myOC.artAlt')} width={768} height={600} quality={100} />
             </div>
             <small className="d-block text-muted mt-2">
               {`${t('about:myOC.artBy')} `}
@@ -31,9 +31,9 @@ export const OcSection: VFC = () => {
 
             <p>{t('about:myOC.p1')}</p>
             <p>
-              {t('about:myOC.p2.t1', { name: PERSONAL_DETAILS.OC_NAME })}
-              <code>::</code>
-              {t('about:myOC.p2.t2')}
+              <Trans t={t} i18nKey="about:myOC.p2" values={{ name: PERSONAL_DETAILS.OC_NAME, nick: PERSONAL_DETAILS.OC_NICKNAME }}>
+                0<code>1</code>2
+              </Trans>
             </p>
 
             <Link href={getOcPageRoute(false, OcSpecies.PONY)} passHref>

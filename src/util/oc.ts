@@ -3,7 +3,7 @@ import { differenceInYears, getDate, getMonth, getYear, isValid } from 'date-fns
 export const getOcPageRoute = (nsfwEnabled: boolean, species: string) => `/oc${nsfwEnabled ? `-mature` : ''}/${species}`;
 
 export const getStoragePath = (path: string) => `/storage/${path}`;
-export const getOcSfmModelPath = (nsfw: boolean) => getStoragePath(nsfw ? 'paamayim_nsfw.rar' : 'paamayim.rar');
+export const getOcSfmModelPath = (nsfw: boolean) => getStoragePath(nsfw ? 'disy_nsfw.rar' : 'disy.rar');
 export const getOcCutieMarkPath = (ext: 'svg' | 'png', version: number) => getStoragePath(`refs/cm.${ext}?v=${version}`);
 
 const AGE_GATE_KEY = 'visitor_birthdate';

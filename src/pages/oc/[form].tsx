@@ -80,8 +80,8 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
 
   const form = species ? t(`oc:${species}`) : '';
   const heading = t('oc:heading', { name: PERSONAL_DETAILS.OC_NAME });
-  // const cacheBust = species === OcSpecies.FOX ? 1 : 1;
-  const cacheBust = 1;
+  // const cacheBust = species === OcSpecies.FOX ? 2 : 2;
+  const cacheBust = 2;
   const fileFormat = 'png';
   const nsfwSuffix = isNsfw && species === OcSpecies.FOX ? '_nsfw' : '';
   const sheetFilePath = species ? getStoragePath(`refs/${species}${nsfwSuffix}.${fileFormat}?v=${cacheBust}`) : null;
@@ -172,9 +172,9 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
               <div className={styles.foxQuote}>
                 <h3>{t('oc:detail.foxFewWords.heading')}</h3>
                 <p className="text-justify">
-                  {t('oc:detail.foxFewWords.selfIntroStart')}
-                  <em>{t('oc:detail.foxFewWords.symbiotic')}</em>
-                  {t('oc:detail.foxFewWords.selfIntroEnd')}
+                  <Trans t={t} i18nKey="oc:detail.foxFewWords.selfIntro" values={{ nick: PERSONAL_DETAILS.OC_NICKNAME }}>
+                    0<code>1</code>2<em>3</em>4
+                  </Trans>
                 </p>
               </div>
             )}

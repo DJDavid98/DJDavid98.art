@@ -17,7 +17,7 @@ export const CutieMarkButton: VFC<PropTypes> = ({ buttonId }) => {
   return (
     <UncontrolledButtonDropdown className="mb-2 mr-md-2">
       <DropdownToggle color="secondary" id={buttonId} caret>
-        <CustomIcon src="/logos/paamayim-cm.svg" className="mr-2" />
+        <CustomIcon src="/logos/disy-cm.svg" className="mr-2" />
         {t('oc:detail.cutieMark')}
       </DropdownToggle>
       <DropdownMenu>
