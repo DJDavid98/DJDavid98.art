@@ -80,8 +80,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
 
   const form = species ? t(`oc:${species}`) : '';
   const heading = t('oc:heading', { name: PERSONAL_DETAILS.OC_NAME });
-  // const cacheBust = species === OcSpecies.FOX ? 2 : 2;
-  const cacheBust = 2;
+  const cacheBust = species === OcSpecies.FOX ? 3 : 2;
   const fileFormat = 'png';
   const nsfwSuffix = isNsfw && species === OcSpecies.FOX ? '_nsfw' : '';
   const sheetFilePath = species ? getStoragePath(`refs/${species}${nsfwSuffix}.${fileFormat}?v=${cacheBust}`) : null;
