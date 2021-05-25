@@ -1,5 +1,22 @@
 import { config, library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
+import {
+  faDeviantart,
+  faDiscord,
+  faFacebookSquare,
+  faGithub,
+  faGuilded,
+  faMastodon,
+  faOsi,
+  faPatreon,
+  faPlaystation,
+  faSoundcloud,
+  faSteam,
+  faSteamSymbol,
+  faTelegramPlane,
+  faTwitter,
+  faXbox,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
 import {
   faArrowRight,
   faBirthdayCake,
@@ -31,9 +48,28 @@ import {
 // Tell Font Awesome to skip adding the CSS automatically since it's being imported
 config.autoAddCss = false;
 
+const brandIcons = [
+  faDeviantart,
+  faDiscord,
+  faFacebookSquare,
+  faGithub,
+  faGuilded,
+  faMastodon,
+  faOsi,
+  faPatreon,
+  faPlaystation,
+  faSoundcloud,
+  faSteam,
+  faSteamSymbol,
+  faTelegramPlane,
+  faTwitter,
+  faXbox,
+  faYoutube,
+];
+
 // List of used icons - amend if new icons are needed
 library.add(
-  fab,
+  ...brandIcons,
   faPaw,
   faDog,
   faLeaf,
