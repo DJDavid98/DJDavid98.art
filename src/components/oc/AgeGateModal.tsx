@@ -18,7 +18,15 @@ import {
   ModalHeader,
   Row,
 } from 'reactstrap';
-import { constructDate, getAgeGateValue, isOldEnoughForNsfw, isValidDate, MINIMUM_SENSIBLE_YEAR, setAgeGateValue } from 'src/util/oc';
+import {
+  AGE_GATE_KEY,
+  constructDate,
+  getAgeGateValue,
+  isOldEnoughForNsfw,
+  isValidDate,
+  MINIMUM_SENSIBLE_YEAR,
+  setAgeGateValue,
+} from 'src/util/oc';
 
 interface PropTypes {
   visible: boolean;
@@ -50,17 +58,24 @@ export const AgeGateModal: VFC<PropTypes> = ({ visible, close, verify }) => {
   const handleMonthChange: ChangeEventHandler = useCallback((e) => setMonth(getInputValueAsNumber(e)), []);
   const handleDayChange: ChangeEventHandler = useCallback((e) => setDay(getInputValueAsNumber(e)), []);
   const handleRememberChange: ChangeEventHandler = useCallback((e) => setRemember(getInputChecked(e)), []);
+  const handleVerification = useCallback(
+    (date: Date) => {
+      setAgeGateValue(date, remember);
+      setInitialDate(date);
+      const oldEnough = isOldEnoughForNsfw(date);
+      verify(oldEnough);
+    },
+    [remember, verify],
+  );
   const handleSubmit: FormEventHandler = useCallback(
     (e) => {
       e.preventDefault();
 
       const constructedDate = constructDate(year, month, day);
-      setAgeGateValue(constructedDate, remember);
-      setInitialDate(constructedDate);
-      const oldEnough = isOldEnoughForNsfw(constructedDate);
-      verify(oldEnough);
+      handleVerification(constructedDate);
+      close();
     },
-    [day, month, remember, verify, year],
+    [close, day, handleVerification, month, year],
   );
   const focusYearInput = useCallback(() => {
     if (yearInputRef.current) yearInputRef.current.focus();
@@ -70,6 +85,17 @@ export const AgeGateModal: VFC<PropTypes> = ({ visible, close, verify }) => {
     // Must be done on client side to avoid localStorage is undefined error
     setInitialDate(getAgeGateValue());
   }, []);
+
+  useEffect(() => {
+    const storageListener = (e: StorageEvent) => {
+      if (e.key !== AGE_GATE_KEY) return;
+
+      handleVerification(getAgeGateValue());
+    };
+
+    window.addEventListener('storage', storageListener);
+    return () => window.removeEventListener('storage', storageListener);
+  }, [handleVerification]);
 
   useEffect(() => {
     const [newInitialDay, newInitialMonth, newInitialYear] = getInitialDateComponents(initialDate);

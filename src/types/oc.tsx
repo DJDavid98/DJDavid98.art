@@ -3,4 +3,4 @@ export enum OcSpecies {
   PONY = 'pony',
 }
 
-export const ValidOcSpecies = new Set<string>([OcSpecies.FOX, OcSpecies.PONY]);
+export const VALID_OC_SPECIES = new Set<string>(Object.values(OcSpecies));

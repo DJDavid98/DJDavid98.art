@@ -4,7 +4,7 @@ import { SSRConfig, useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { OcSpecies, ValidOcSpecies } from 'src/types/oc';
+import { OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
 import { getOcPageRoute } from 'src/util/oc';
 
 const queryRegex = /^(pony|fox)(?:-(nsfw))?$/;
@@ -17,7 +17,7 @@ const OcIndexPage: NextPage<{ nsfwEnabled?: boolean }> = ({ nsfwEnabled = false 
   useEffect(() => {
     if (relevantQuery) {
       const [, species, nsfw] = queryRegex.exec(relevantQuery)!;
-      if (ValidOcSpecies.has(species)) {
+      if (VALID_OC_SPECIES.has(species)) {
         const isNsfw = nsfw === 'nsfw';
         void router.replace(getOcPageRoute(isNsfw, species));
         return;

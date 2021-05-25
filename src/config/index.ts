@@ -1,4 +1,5 @@
 export const CANONICAL_URL = 'https://djdavid98.art';
+export const IS_CLIENT_SIDE = typeof window !== 'undefined';
 
 export type AvailableLanguage = 'hu' | 'en';
 
@@ -27,11 +28,12 @@ export const PERSONAL_DETAILS = {
   OC_REF_SHEET_URL: 'https://oc.djdavid98.art',
   OC_CUTIE_MARK_URL: 'https://www.deviantart.com/djdavid98/art/Double-Colon-Cutie-Mark-545185280',
   OC_COLOR_GUIDE_URL: 'https://mlpvector.club/cg/v/232-Double-Colon',
-  OC_FURBY_GALLERY_URL: (species: string | null) => {
-    const query = encodeURI(`oc:paamayim nekudotayim, gallery_id:12${species ? `, ${species}` : ''}`);
+  OC_FURBOORU_GALLERY_URL: (species: string | null) => {
+    const query = encodeURI(`oc:double colon, gallery_id:12${species ? `, ${species}` : ''}`);
     return `https://furbooru.org/search?q=${query}&sf=gallery_id%3A12`;
   },
   ARTIST_TAG_URL: 'https://furbooru.org/search?q=artist%3Adjdavid98%2C+gallery_id%3A13&sf=gallery_id%3A13',
+  F_LIST_URL: 'https://www.f-list.net/c/double%20colon/',
 };
 
 export interface AvatarCreditProps {

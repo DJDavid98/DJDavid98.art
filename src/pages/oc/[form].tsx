@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AppContainer, CustomIcon, ExternalLink, ImageViewer, Layout } from 'components/common';
 import { AgeGateModal, ArtworkCredit, CutieMarkButton, OcStats, SfmModelButton } from 'components/oc';
+import { StoredAge } from 'components/oc/StoredAge';
 import styles from 'modules/OcFormPage.module.scss';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps, NextPage } from 'next';
 import { SSRConfig, Trans, useTranslation } from 'next-i18next';
@@ -11,13 +12,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Button, ButtonGroup, ButtonToolbar, Col, Row } from 'reactstrap';
-import { CANONICAL_URL, LANGUAGES, PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
-import { OcSpecies, ValidOcSpecies } from 'src/types/oc';
-import { getOcPageRoute, getStoragePath, isOldEnoughForNsfw, setAgeGateValue } from 'src/util/oc';
+import { Button, ButtonGroup, ButtonToolbar, Col, Row, UncontrolledTooltip } from 'reactstrap';
+import { LANGUAGES, PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
+import { OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
+import { assembleSeoUrl } from 'src/util/common';
+import { clearAgeGateValue, getOcPageRoute, getStoragePath, isOldEnoughForNsfw, setAgeGateValue } from 'src/util/oc';
 
 const sfmButtonId = 'sfm-model-btn';
 const cmButtonId = 'cutie-mark-btn';
+const lockNsfwButtonId = 'lock-nsfw-btn';
 
 export interface OcFormPageProps {
   nsfwConfirmBypass?: boolean;
@@ -34,15 +37,15 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
   const [isNsfw, setIsNsfw] = useState(nsfwConfirmBypass);
   const [showAgeGate, setShowAgeGate] = useState(false);
   const [nsfwEnabled, setNsfwEnabled] = useState(nsfwConfirmBypass);
-  const species: OcSpecies | null = useMemo(() => {
+  const species: OcSpecies = useMemo(() => {
     if (formQuery) {
       const value = formQuery.split('-').shift();
-      if (typeof value === 'string' && ValidOcSpecies.has(value)) {
+      if (typeof value === 'string' && VALID_OC_SPECIES.has(value)) {
         return value as OcSpecies;
       }
     }
 
-    return null;
+    return OcSpecies.PONY;
   }, [formQuery]);
 
   useEffect(() => {
@@ -70,20 +73,23 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
   const handleAgeVerification = useCallback((value: boolean) => {
     setNsfwEnabled(value);
     setIsNsfw(value);
-    setShowAgeGate(false);
   }, []);
   const closeAgeGate = useCallback(() => {
     setShowAgeGate(false);
   }, []);
+  const handleLockNsfw = useCallback(() => {
+    clearAgeGateValue();
+    handleAgeVerification(false);
+  }, [handleAgeVerification]);
   const openImageViewer = useCallback(() => setIsViewerOpen(true), []);
   const closeImageViewer = useCallback(() => setIsViewerOpen(false), []);
 
-  const form = species ? t(`oc:${species}`) : '';
+  const form = t(`oc:${species}`);
   const heading = t('oc:heading', { name: PERSONAL_DETAILS.OC_NAME });
-  const cacheBust = species === OcSpecies.FOX ? 3 : 2;
+  const cacheBust = species === OcSpecies.FOX ? 4 : 2;
   const fileFormat = 'png';
   const nsfwSuffix = isNsfw && species === OcSpecies.FOX ? '_nsfw' : '';
-  const sheetFilePath = species ? getStoragePath(`refs/${species}${nsfwSuffix}.${fileFormat}?v=${cacheBust}`) : null;
+  const sheetFilePath = getStoragePath(`refs/${species}${nsfwSuffix}.${fileFormat}?v=${cacheBust}`);
   const downloadFileName = `${heading}${form ? ` ${form}` : ''}${isNsfw ? ' NSFW' : ''}`;
   const dimensions = species === OcSpecies.FOX ? [4500, 2532] : [3844, 3016];
   const imageClass = species === OcSpecies.FOX ? styles.sheetImageFox : undefined;
@@ -104,7 +110,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
             ? [
                 {
                   alt: downloadFileName,
-                  url: CANONICAL_URL + sheetFilePath,
+                  url: assembleSeoUrl(sheetFilePath),
                   width: dimensions[0],
                   height: dimensions[0],
                 },
@@ -123,11 +129,13 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
           <ButtonGroup>
             <Link href={getOcPageRoute(nsfwConfirmBypass, OcSpecies.PONY)} passHref shallow replace>
               <Button size="sm" teg="a" active={species === OcSpecies.PONY}>
+                <FontAwesomeIcon icon="horse-head" className="mr-2" />
                 {t(`oc:pony`)}
               </Button>
             </Link>
             <Link href={getOcPageRoute(nsfwConfirmBypass, OcSpecies.FOX)} passHref shallow replace>
               <Button size="sm" teg="a" active={species === OcSpecies.FOX}>
+                <FontAwesomeIcon icon="paw" className="mr-2" />
                 {t(`oc:fox`)}
               </Button>
             </Link>
@@ -142,6 +150,18 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
               {!nsfwEnabled && <FontAwesomeIcon icon="lock" className="ml-2" size="xs" />}
             </Button>
           </ButtonGroup>
+
+          {nsfwEnabled && (
+            <>
+              <Button id={lockNsfwButtonId} color="link" onClick={handleLockNsfw}>
+                {nsfwEnabled && <FontAwesomeIcon icon="trash" size="xs" className="mr-2 text-danger" />}
+                <StoredAge t={t} className="text-dark" />
+              </Button>
+              <UncontrolledTooltip target={lockNsfwButtonId} fade={false} placement="bottom">
+                {t('oc:clearSavedDate')}
+              </UncontrolledTooltip>
+            </>
+          )}
         </ButtonToolbar>
 
         <Row>
@@ -167,16 +187,15 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
               <h2 className="mb-0">{t('oc:detail.heading', { form })}</h2>
               <OcStats species={species} nsfwShown={isNsfw} />
             </div>
-            {species === OcSpecies.FOX && (
-              <div className={styles.foxQuote}>
-                <h3>{t('oc:detail.foxFewWords.heading')}</h3>
-                <p className="text-justify">
-                  <Trans t={t} i18nKey="oc:detail.foxFewWords.selfIntro" values={{ nick: PERSONAL_DETAILS.OC_NICKNAME }}>
-                    0<code>1</code>2<em>3</em>4
-                  </Trans>
-                </p>
-              </div>
-            )}
+            <div className={styles.fewWordsQuote}>
+              <h3>{t('oc:detail.fewWords.heading')}</h3>
+              <p className="text-justify">
+                {`${t('oc:detail.fewWords.selfIntroCommon', { nick: PERSONAL_DETAILS.OC_NICKNAME })} `}
+                <Trans t={t} i18nKey={`oc:detail.fewWords.selfIntro.${species}`}>
+                  0<em>1</em>2
+                </Trans>
+              </p>
+            </div>
             <p>
               <Trans
                 i18nKey="oc:detail.p1"
@@ -220,12 +239,23 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
               <Button
                 color="furbooru"
                 tag={ExternalLink}
-                href={PERSONAL_DETAILS.OC_FURBY_GALLERY_URL(species)}
+                href={PERSONAL_DETAILS.OC_FURBOORU_GALLERY_URL(species)}
                 className="d-block d-md-inline-block mb-2 mr-md-2"
               >
                 <CustomIcon src="/logos/furbooru.svg" className="mr-2" />
                 {t('oc:detail.previousArt')}
               </Button>
+              {nsfwEnabled && (
+                <Button
+                  color="f-list"
+                  tag={ExternalLink}
+                  href={PERSONAL_DETAILS.F_LIST_URL}
+                  className="d-block d-md-inline-block mb-2 mr-md-2"
+                >
+                  <FontAwesomeIcon icon="heart" className="mr-2" />
+                  {t('oc:detail.acceptableKinks')}
+                </Button>
+              )}
               {species === OcSpecies.PONY && (
                 <>
                   <hr />
@@ -264,7 +294,7 @@ export const getStaticProps: GetStaticProps<OcFormPageProps & SSRConfig> = async
 });
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => ({
-  paths: Array.from(ValidOcSpecies).reduce((acc, form) => {
+  paths: Array.from(VALID_OC_SPECIES).reduce((acc, form) => {
     const newParams: typeof acc = [];
     const locales = ctx.locales || Object.keys(LANGUAGES);
     locales.forEach((locale) => {

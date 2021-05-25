@@ -7,7 +7,7 @@ import React, { useMemo } from 'react';
 import 'src/app.scss';
 import { SITE_TITLE } from 'src/config';
 import 'src/fontawesome';
-import { getGravatarUrl } from 'src/util/common';
+import { assembleSeoUrl, getGravatarUrl } from 'src/util/common';
 
 const avatarSize = 512;
 
@@ -43,6 +43,7 @@ const App: AppComponent = ({ Component, pageProps }) => {
           type: 'website',
           locale,
           site_name: 'DJDavid98',
+          url: assembleSeoUrl(asPath),
           images: [
             {
               alt: 'Avatar of DJDavid98',

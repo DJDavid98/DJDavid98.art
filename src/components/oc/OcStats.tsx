@@ -1,74 +1,78 @@
-import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import { CustomIcon } from 'components/common/CustomIcon';
-import { useTranslation } from 'next-i18next';
-import React, { VFC } from 'react';
-import { UncontrolledTooltip } from 'reactstrap';
-import { PERSONAL_DETAILS } from 'src/config';
-import { OcSpecies } from 'src/types/oc';
+import { StatSeparator } from 'components/oc/StatSeparator';
+import { StatText } from 'components/oc/StatText';
+import { StatTooltip } from 'components/oc/StatTooltip';
 import styles from 'modules/OcFormPage.module.scss';
+import { useTranslation } from 'next-i18next';
+import { Fragment, VFC } from 'react';
+import { OcSpecies } from 'src/types/oc';
 
+const bodyTypeTooltipId = 'body-type-tt';
 const speciesTooltipId = 'species-tt';
 const genderTooltipId = 'gender-tt';
 const orientationTooltipId = 'orientation-tt';
 const occupationTooltipId = 'occupation-tt';
 
 interface OcStatsProps {
-  species: OcSpecies | null;
+  species: OcSpecies;
   nsfwShown: boolean;
 }
 
-const OcStatsComponent: VFC<OcStatsProps> = ({ species, nsfwShown }) => {
+export const OcStats: VFC<OcStatsProps> = ({ species, nsfwShown }) => {
   const { t } = useTranslation();
   const speciesIcon: FontAwesomeIconProps['icon'] = species === OcSpecies.PONY ? 'horse-head' : 'paw';
+  const occupationIcon: FontAwesomeIconProps['icon'] = species === OcSpecies.PONY ? 'paint-brush' : 'leaf';
+  const preferredGenitals = species === OcSpecies.FOX ? t('oc:detail.humanGenitals') : t('oc:detail.animalGenitals');
+
+  /* eslint-disable react/jsx-key */
+  const stats: JSX.Element[][] = [
+    [
+      <StatText tooltipId={bodyTypeTooltipId} icon={species === OcSpecies.PONY ? 'horse' : 'dog'}>
+        {t('oc:detail.feral')}
+      </StatText>,
+      <StatTooltip id={bodyTypeTooltipId}>{t('oc:detail.bodyType')}</StatTooltip>,
+    ],
+    [
+      <StatText tooltipId={genderTooltipId} icon="venus" iconClassName="gender-female">
+        {t('oc:detail.female')}
+      </StatText>,
+      <StatTooltip id={genderTooltipId}>{t('oc:detail.gender')}</StatTooltip>,
+    ],
+    [
+      <StatText tooltipId={speciesTooltipId} icon={speciesIcon} iconClassName={`species-${species}`}>
+        {t(`oc:detail.${species}.species`)}
+      </StatText>,
+      <StatTooltip id={speciesTooltipId}>{t('oc:detail.species')}</StatTooltip>,
+    ],
+    [
+      <StatText tooltipId={occupationTooltipId} icon={occupationIcon}>
+        {t(`oc:detail.${species}.occupation`)}
+      </StatText>,
+      <StatTooltip id={occupationTooltipId}>{t('oc:detail.occupation')}</StatTooltip>,
+    ],
+  ];
+  if (nsfwShown) {
+    stats.push([
+      <StatText tooltipId={orientationTooltipId} className={styles.lesbianFlag}>
+        <CustomIcon src="/flags/lesbian.svg" alt={t('oc:detail.lesbianPrideFlag')} className="mr-1" />
+        {t('oc:detail.lesbian')}
+      </StatText>,
+      <StatTooltip id={orientationTooltipId}>{t('oc:detail.orientation')}</StatTooltip>,
+    ]);
+    stats.push([<StatText icon="star">{t('oc:detail.genitals', { type: preferredGenitals })}</StatText>]);
+  }
+  /* eslint-enable react/jsx-key */
+
   return (
     <small className="d-block mb-2 text-muted">
-      <span>{t('oc:detail.nickname', { nick: PERSONAL_DETAILS.OC_NICKNAME })}</span>
-      <span className="mx-1">&bull;</span>
-      {species && (
-        <>
-          <span id={speciesTooltipId} className="cursor-help">
-            <FontAwesomeIcon icon={speciesIcon} className={`mr-1 species-${species}`} />
-            {t(`oc:detail.${species}.species`)}
-          </span>
-          <UncontrolledTooltip target={speciesTooltipId} placement="bottom">
-            {t('oc:detail.species')}
-          </UncontrolledTooltip>
-          <span className="mx-1">&bull;</span>
-        </>
-      )}
-      <span id={genderTooltipId} className="cursor-help">
-        <FontAwesomeIcon icon="venus" className="mx-1 gender-female" />
-        {t('oc:detail.female')}
-      </span>
-      <UncontrolledTooltip target={genderTooltipId} placement="bottom">
-        {t('oc:detail.gender')}
-      </UncontrolledTooltip>
-      {nsfwShown && (
-        <>
-          <span className="mx-1">&bull;</span>
-          <span id={orientationTooltipId} className={`${styles.lesbianFlag} cursor-help`}>
-            <CustomIcon src="/flags/lesbian.svg" alt={t('oc:detail.lesbianPrideFlag')} />
-            {t('oc:detail.lesbian')}
-          </span>
-          <UncontrolledTooltip target={orientationTooltipId} placement="bottom">
-            {t('oc:detail.orientation')}
-          </UncontrolledTooltip>
-        </>
-      )}
-      {species && (
-        <>
-          <span className="mx-1">&bull;</span>
-          <span id={occupationTooltipId} className="cursor-help">
-            <FontAwesomeIcon icon={species === OcSpecies.PONY ? 'paint-brush' : 'leaf'} className="mx-1" />
-            {t(`oc:detail.${species}.occupation`)}
-          </span>
-          <UncontrolledTooltip target={occupationTooltipId} placement="bottom">
-            {t('oc:detail.occupation')}
-          </UncontrolledTooltip>
-        </>
-      )}
+      {stats.map((el, i) => (
+        <Fragment key={i}>
+          {el[0]}
+          {el[1]}
+          {i + 1 !== stats.length && <StatSeparator />}
+        </Fragment>
+      ))}
     </small>
   );
 };
-
-export const OcStats = OcStatsComponent;

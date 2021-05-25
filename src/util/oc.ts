@@ -6,7 +6,20 @@ export const getStoragePath = (path: string) => `/storage/${path}`;
 export const getOcSfmModelPath = (nsfw: boolean) => getStoragePath(nsfw ? 'disy_nsfw.rar' : 'disy.rar');
 export const getOcCutieMarkPath = (ext: 'svg' | 'png', version: number) => getStoragePath(`refs/cm.${ext}?v=${version}`);
 
-const AGE_GATE_KEY = 'visitor_birthdate';
+export const AGE_GATE_KEY = 'visitor_birthdate';
+
+/**
+ * Remove age-gate-related session and local storage keys
+ */
+export const clearAgeGateValue = () => {
+  [localStorage, sessionStorage].forEach((storage) => {
+    try {
+      storage.removeItem(AGE_GATE_KEY);
+    } catch (e) {
+      // Ignore error
+    }
+  });
+};
 
 /**
  * Sets epoch if no argument is passed, which will bypass age gate entirely, except for time travellers
@@ -14,10 +27,7 @@ const AGE_GATE_KEY = 'visitor_birthdate';
  * Uses session storage by default, but can be changed to localStorage by passing `true` for `permanent`
  */
 export const setAgeGateValue = (birthday: Date, permanent?: boolean) => {
-  // If temporary, clear permanent key
-  if (permanent === false) localStorage.removeItem(AGE_GATE_KEY);
-  // If permanent, clear temporary key
-  else if (permanent === true) sessionStorage.removeItem(AGE_GATE_KEY);
+  clearAgeGateValue();
 
   const selectedStore = permanent === true ? localStorage : sessionStorage;
   selectedStore.setItem(AGE_GATE_KEY, birthday.toISOString());
@@ -27,7 +37,12 @@ export const setAgeGateValue = (birthday: Date, permanent?: boolean) => {
  * Retrieve the stored birthdate or the current time otherwise
  */
 export const getAgeGateValue = (): Date => {
-  const item = localStorage.getItem(AGE_GATE_KEY) || sessionStorage.getItem(AGE_GATE_KEY);
+  let item = null;
+  try {
+    item = localStorage.getItem(AGE_GATE_KEY) || sessionStorage.getItem(AGE_GATE_KEY);
+  } catch (e) {
+    // Ignore error
+  }
 
   if (item !== null) {
     let dateCandidate: Date | undefined;

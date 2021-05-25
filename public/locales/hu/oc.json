@@ -4,15 +4,21 @@
   "speciesSelect": "Válassz alakot",
   "fox": "Furry",
   "pony": "Póni",
+  "yourAge": "Életkorod: {{age}}",
+  "clearSavedDate": "Mentet születési dátum törlése",
   "detail": {
     "heading": "{{form}} Alak",
-    "foxFewWords": {
+    "fewWords": {
       "heading": "Néhány szó magamról",
-      "selfIntro": "A nevem Dupla Kettőspontot jelent, de a barátaim csak <1>::</1>-nak vagy {{nick}}-nek becéznek. Egy magányos nőstény róka vagyok, és időtöltésképp egymagamban fel-alá járkálok a szülőerdőmben, felfedezek és keresem az életem célját. Introvertáltnak tartom magam; nagyon félénk vagyok és nehezen ismerkedem meg új teremtményekkel. Ha őszintén meg akarsz ismerni, csak add önmagad és légy őszinte, és ha látom, hogy jó szándékkal közeledsz, nem félek megnyílni. Ha csak ki akarsz használni, akkor biztos lehetsz benne, hogy átlátok rajtad, és szerencsés leszel, ha nem kelek fel és állok odébb azonnal. Az egész erdőmben csak a virágokban bízok feltétel nélkül, akikkel mióta az eszemet tudom egy társaságban vagyunk. Arra szenteltem az életem, hogy megismerjem őket és minden vágyukat kielégítsem a képességeimhez mérten, és cserébe ők is ugyanezt teszik velem. Akár azt is mondhatnánk, hogy egy igencsak… <3>szimbiotikus</3> kapcsolat van köztünk~"
+      "selfIntroCommon": "A nevem Dupla Kettőspontot jelent, de a barátaim csak {{nick}}-nek becéznek.",
+      "selfIntro": {
+        "fox": "Magányos nőstény róka vagyok, és időtöltésképp egymagamban fel-alá járkálok a szülőerdőmben, felfedezek és keresem az életem célját. Introvertáltnak tartom magam; nagyon félénk vagyok, és nehezen ismerkedek új teremtményekkel. Ha őszintén meg akarsz ismerni, csak add önmagad és légy őszinte, és ha látom, hogy jó szándékkal közeledsz, nem félek megnyílni. Ha csak ki akarsz használni, akkor biztos lehetsz benne, hogy átlátok rajtad, és szerencsés leszel, ha nem kelek fel és állok odébb azonnal. Az egész erdőmben csak a virágokban bízok feltétel nélkül, akikkel mióta az eszemet tudom egy társaságban vagyunk. Arra szenteltem az életem, hogy megismerjem őket és minden vágyukat kielégítsem a képességeimhez mérten, és cserébe ők is ugyanezt teszik velem. Akár azt is mondhatnánk, hogy egy igencsak… <3>szimbiotikus</3> kapcsolat van köztünk~",
+        "pony": "Félénk kanca unikornis vagyok, aki a legtöbb idejét a négy fal közt a PC-je és rágcsálnivalói társaságában tölti. A kedvenc ételeim a csipszek és különféle pizzák, a hawaii-t beleértve. Nagy rajongója vagyok az elektronikus zenének, és ha el kell nyomnom egy kis háttérzajt, mindig kéznél tartok egy lejátszási listát. Nem vagyok az a fajta, aki beszélgetéseket kezdeményez vagy megteszi az első lépést, amikor új teremtményekkel találkozok, de ha sikerül valami számomra érdekes témára terelni a szót, akkor minden bizonnyal jól megleszünk. Ne is kérdezd, hogy leszünk-e barátok, mert az én gondolkodás módommal ez összeférhetetlen. Azt a bizalmi szintet elérni egy folyamat, amit nem lehet sürgetni, és ha bármennyire is közzel akarsz kerülni hozzám, a türelem rózsát terem. Időnként hajlamos vagyok firkákat készíteni, hogy gyakoroljam a rajzolást, de sokkal több örömmel tölt el, amikor anyagilag támogatom a nálam sokkal tapasztaltabbakat olyan rajzok vásárlásával, ahol én (és időnként a barátaim) <1>jól szórakoznak</1>~"
+      }
     },
     "p1": "A neve furcsa választásnak tűnhet, de tükrözi a PHP programozási nyelv, illetve úgy általában a kódolás iránti érdeklődésem. Az élesebb szeműek akár némi hasonlóságot is felfedezhetnek a karakter kinézete és a <0>PHP nyelv logója</0> közt. Ez az elnevezés konkrétan olyan hibaüzenetekben látható, amelyek az alkalmazás kódjában a hatókör feloldó operátor (<1>::</1>) helytelen használatára figyelmeztetnek. <2>További Infó</2>",
     "moreInfoUrl": "http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=10#section_3_20",
-    "p2": "Ha azért tévedtél ide, mert rajzot akarsz készíteni erről a karakterről, akkor kérlek használd ezt a referencia lapot, ami tartalmazza a kinézetével kapcsolatos összes információt.",
+    "p2": "Ha azért tévedtél ide, mert le szeretnéd rajzolni, akkor kérlek használd ezt a referencia lapot, ami tartalmazza a kinézetével kapcsolatos összes lényeges információt.",
     "p3": "A színsegéd egy listát tartalmaz az összes színnel, ahonnan azok könnyen kimásolhatóak.",
     "p4": "A korábbi rajzok pedig átvisz az OC címkéjének az oldalára a Furbooru-n, ami lényegében egy képgaléria oldal, ahol elérhetővé próbálom tenni az összes róla készült képet.",
     "p4Lewd": {
@@ -25,13 +31,18 @@
     "cutieMarkVector": "Letöltés SVG formátumban (vektor)",
     "colorGuide": "Színsegéd",
     "previousArt": "Kész Rajzok",
-    "nickname": "Becenevén {{nick}}",
+    "acceptableKinks": "Perverziók (F-Lista)",
+    "feral": "Vad",
+    "bodyType": "Testtípus",
     "species": "Faj",
-    "gender": "Neme",
+    "gender": "Nem",
     "female": "Nőstény",
     "orientation": "Szexuális Beállítottság",
     "lesbian": "Leszbikus",
     "lesbianPrideFlag": "Leszbikus Büszkeség zászló",
+    "genitals": "{{type}} Nemi Szerv Preferált",
+    "humanGenitals": "Emberi",
+    "animalGenitals": "Állati",
     "occupation": "Foglalkozás",
     "pony": {
       "species": "Egyszarvú Póni",
@@ -41,7 +52,7 @@
       "species": "Róka",
       "occupation": "Botanikus"
     },
-    "additionalResources": "További Erőforrások",
+    "additionalResources": "Kapcsolódó Anyagok",
     "sfmModel": "SFM Modell",
     "sfmModelDownload": "SFM Modell Letöltése",
     "sfmModelTooltip": "3D-s modell Source Filmmaker művészek számára",
