@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ArtworkCredit } from 'components/oc';
-import { Trans, useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { VFC } from 'react';
@@ -31,9 +31,10 @@ export const OcSection: VFC = () => {
 
             <p>{t('about:myOC.p1')}</p>
             <p>
-              <Trans t={t} i18nKey="about:myOC.p2" values={{ name: PERSONAL_DETAILS.OC_NAME, nick: PERSONAL_DETAILS.OC_NICKNAME }}>
-                0<code>1</code>2
-              </Trans>
+              {t('about:myOC.p2', {
+                name: PERSONAL_DETAILS.OC_NAME,
+                nick: PERSONAL_DETAILS.OC_NICKNAME,
+              })}
             </p>
 
             <Link href={getOcPageRoute(false, OcSpecies.PONY)} passHref>
