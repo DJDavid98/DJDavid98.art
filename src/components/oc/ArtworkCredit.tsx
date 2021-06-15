@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
+import Image from 'next/image';
 import { ExternalLink, ExternalLinkProps } from 'components/common/ExternalLink';
 import styles from 'modules/ArtworkCredit.module.scss';
 import React, { memo, useMemo, VFC } from 'react';
@@ -10,13 +11,25 @@ interface PropTypes extends AvatarCreditProps, Pick<ExternalLinkProps, 'classNam
   spacingClass?: null | 'mr-1' | 'mr-2' | 'mr-3' | 'mr-4' | 'mr-5';
 }
 
-export const ArtworkCredit: VFC<PropTypes> = memo(({ url, name, className, spacingClass = 'mr-1', tag }) => {
-  const { colorClass, brandIcon, brandLogo } = useMemo(() => resolveSocialIconStyle(url), [url]);
+const ArtworkCreditComponent: VFC<PropTypes> = ({ url, name, className, spacingClass = 'mr-1', tag }) => {
+  const { colorClass, ...restProps } = useMemo(() => resolveSocialIconStyle(url), [url]);
   return (
     <ExternalLink tag={tag} href={url} className={className}>
-      {brandIcon && <FontAwesomeIcon icon={['fab', brandIcon]} className={classNames(spacingClass, colorClass)} />}
-      {brandLogo && <img src={brandLogo} className={classNames(styles.brandLogo, spacingClass)} alt="website logo" />}
+      {'brandIcon' in restProps && <FontAwesomeIcon icon={['fab', restProps.brandIcon]} className={classNames(spacingClass, colorClass)} />}
+      {'brandLogo' in restProps && (
+        <span className={classNames(styles.brandLogo, spacingClass)}>
+          <Image
+            src={restProps.brandLogo}
+            alt="website logo"
+            width={restProps.logoWidth}
+            height={restProps.logoHeight}
+            layout="responsive"
+          />
+        </span>
+      )}
       {`/${name}`}
     </ExternalLink>
   );
-});
+};
+
+export const ArtworkCredit = memo(ArtworkCreditComponent);

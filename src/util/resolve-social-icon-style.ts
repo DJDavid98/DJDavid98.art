@@ -2,11 +2,19 @@ import { IconName } from '@fortawesome/fontawesome-common-types';
 
 import brandColorClasses from 'modules/brand-colors.module.scss';
 
-interface LinkStyle {
+type LinkStyle = {
   colorClass?: string;
-  brandIcon?: IconName;
-  brandLogo?: string;
-}
+} & (
+  | {
+      brandIcon: IconName;
+    }
+  | {
+      brandLogo: string;
+      logoWidth: number;
+      logoHeight: number;
+    }
+  | Record<string, never>
+);
 
 export const resolveSocialIconStyle = (url: string): LinkStyle => {
   if (/twitter\.com/.test(url)) {
@@ -30,6 +38,8 @@ export const resolveSocialIconStyle = (url: string): LinkStyle => {
   if (/furaffinity\.net/.test(url)) {
     return {
       brandLogo: '/logos/furaffinity-color.svg',
+      logoWidth: 32,
+      logoHeight: 32,
     };
   }
 

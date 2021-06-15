@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
+import Image from 'next/image';
 import { TFunction } from 'i18next';
 import toPairs from 'lodash/toPairs';
 import styles from 'modules/LanguageSelector.module.scss';
@@ -49,7 +50,9 @@ export const LanguageSelector: VFC<PropTypes> = ({ shouldWelcome, router, t, lan
           {toPairs(LANGUAGES).map(([key, value]) => (
             <Link key={key} href={router.asPath} locale={key} passHref>
               <DropdownItem tag="a" {...getCurrentProps(key)}>
-                <img className={styles.languageFlag} src={`/flags/${key}.svg`} alt="" />
+                <span className={styles.languageFlag}>
+                  <Image src={`/flags/${key}.svg`} alt={t(`common:flagOf.${key}`)} width={640} height={480} layout="responsive" />
+                </span>
                 <span>{value.nativeName}</span>
               </DropdownItem>
             </Link>

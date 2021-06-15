@@ -1,5 +1,9 @@
 {
   "changeLanguage": "Nyelv változtatás",
+  "flagOf": {
+    "hu": "Magyar zászló",
+    "en": "Egyesült Államok zászlója"
+  },
   "current": "Jelenlegi",
   "welcome": "Üdvözöllek!",
   "redirecting": "Átirányítás…",

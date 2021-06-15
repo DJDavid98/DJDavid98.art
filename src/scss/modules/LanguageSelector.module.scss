@@ -15,8 +15,10 @@
   }
 
   .language-flag {
-    display: inline;
-    height: 12px;
+    display: inline-block;
+    $height: 1rem;
+    height: $height;
+    width: (640/480) * $height;
     margin-right: 0.5rem;
   }
 }

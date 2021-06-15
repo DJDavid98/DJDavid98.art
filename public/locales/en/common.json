@@ -1,5 +1,9 @@
 {
   "changeLanguage": "Change language",
+  "flagOf": {
+    "hu": "Hungarian flag",
+    "en": "United States flag"
+  },
   "current": "Current",
   "welcome": "Welcome!",
   "redirecting": "Redirecting…",

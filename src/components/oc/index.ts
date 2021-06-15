@@ -6,3 +6,4 @@ export * from './SfmModelButton';
 export { StatText } from 'components/oc/StatText';
 export { StatTooltip } from 'components/oc/StatTooltip';
 export { StatSeparator } from 'components/oc/StatSeparator';
+export { ModelSize } from 'components/oc/ModelSize';

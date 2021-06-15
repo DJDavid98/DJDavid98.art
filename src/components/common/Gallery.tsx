@@ -53,6 +53,7 @@ export const Gallery: VFC<GalleryProps> = ({ images }) => {
               className="d-block rounded"
               onClick={() => setOpenImage(index)}
               layout="responsive"
+              alt="Artwork"
             />
           </div>
         ))}
