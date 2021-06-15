@@ -8,7 +8,7 @@ import { AvatarCreditProps } from 'src/config';
 import { resolveSocialIconStyle } from 'src/util/resolve-social-icon-style';
 
 interface PropTypes extends AvatarCreditProps, Pick<ExternalLinkProps, 'className' | 'tag'> {
-  spacingClass?: null | 'mr-1' | 'mr-2' | 'mr-3' | 'mr-4' | 'mr-5';
+  spacingClass?: false | 'mr-1' | 'mr-2' | 'mr-3' | 'mr-4' | 'mr-5';
 }
 
 const ArtworkCreditComponent: VFC<PropTypes> = ({ url, name, className, spacingClass = 'mr-1', tag }) => {

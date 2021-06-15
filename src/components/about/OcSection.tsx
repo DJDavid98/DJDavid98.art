@@ -8,6 +8,7 @@ import { Button, Col, Container, Row } from 'reactstrap';
 import { ABOUT_INDICES, ABOUT_SECTIONS, PERSONAL_DETAILS } from 'src/config';
 import { OcSpecies } from 'src/types/oc';
 import { getOcPageRoute } from 'src/util/oc';
+import disyDreamweaver from 'public/disy-dreamweaver.png';
 
 export const OcSection: VFC = () => {
   const { t } = useTranslation();
@@ -17,11 +18,11 @@ export const OcSection: VFC = () => {
         <Row className="align-items-lg-center">
           <Col xs={12} md={6} lg={4} className="text-center mb-4 mb-md-0">
             <div className="mx-auto oc-image-wrap">
-              <Image src="/disy-dreamweaver.png" alt={t('about:myOC.artAlt')} width={768} height={600} quality={100} />
+              <Image src={disyDreamweaver} alt={t('about:myOC.artAlt')} quality={100} />
             </div>
             <small className="d-block text-muted mt-2">
               {`${t('about:myOC.artBy')} `}
-              <ArtworkCredit className="ml-1" spacingClass={null} url="https://twitter.com/DreamWeaverPony" name="DreamWeaverPony" />
+              <ArtworkCredit className="ml-1" spacingClass={false} url="https://twitter.com/DreamWeaverPony" name="DreamWeaverPony" />
             </small>
           </Col>
           <Col>
