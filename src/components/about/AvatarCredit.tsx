@@ -9,7 +9,7 @@ const AvatarCreditComponent: VFC<AvatarCreditProps> = (props) => {
   return (
     <p className={styles.avatarCredit}>
       {`${t('about:avatarBy')}`}
-      <ArtworkCredit {...props} className="ml-1" spacingClass={null} />
+      <ArtworkCredit {...props} className="ml-1" spacingClass={false} />
     </p>
   );
 };

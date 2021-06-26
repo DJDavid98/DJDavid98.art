@@ -5,10 +5,11 @@
     "es6": true
   },
   "extends": [
+    "next",
+    "next/core-web-vitals",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "airbnb",
-    "next",
     "plugin:import/typescript",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
@@ -20,11 +21,6 @@
   "ignorePatterns": ["node_modules"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018,
-    "sourceType": "module",
     "project": "./tsconfig.json"
   },
   "plugins": ["@typescript-eslint", "react", "import-newlines"],
@@ -124,16 +120,10 @@
     ]
   },
   "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
-    },
     "import/resolver": {
       "typescript": {
         "project": "."
       }
-    },
-    "react": {
-      "version": "detect"
     }
   }
 }

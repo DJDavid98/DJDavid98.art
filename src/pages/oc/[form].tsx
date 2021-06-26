@@ -5,7 +5,6 @@ import { StoredAge } from 'components/oc/StoredAge';
 import styles from 'modules/OcFormPage.module.scss';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps, NextPage } from 'next';
 import { SSRConfig, Trans, useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -16,6 +15,7 @@ import { Button, ButtonGroup, ButtonToolbar, Col, Row, UncontrolledTooltip } fro
 import { LANGUAGES, PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
 import { OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
 import { assembleSeoUrl } from 'src/util/common';
+import { typedServerSideTranslations } from 'src/util/i18n-server';
 import { clearAgeGateValue, getOcPageRoute, getStoragePath, isOldEnoughForNsfw, setAgeGateValue } from 'src/util/oc';
 
 const sfmButtonId = 'sfm-model-btn';
@@ -155,7 +155,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
             <>
               <Button id={lockNsfwButtonId} color="link" onClick={handleLockNsfw}>
                 {nsfwEnabled && <FontAwesomeIcon icon="trash" size="xs" className="mr-2 text-danger" />}
-                <StoredAge t={t} className="text-dark" />
+                <StoredAge className="text-dark" />
               </Button>
               <UncontrolledTooltip target={lockNsfwButtonId} fade={false} placement="bottom">
                 {t('oc:clearSavedDate')}
@@ -289,7 +289,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
 
 export const getStaticProps: GetStaticProps<OcFormPageProps & SSRConfig> = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale as string, ['common', 'oc'])),
+    ...(await typedServerSideTranslations(locale, ['oc'])),
   },
 });
 

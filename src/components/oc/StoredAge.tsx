@@ -1,9 +1,10 @@
 import { differenceInYears } from 'date-fns';
+import { useTranslation } from 'next-i18next';
 import React, { useEffect, useMemo, useState, VFC } from 'react';
-import { TFunction } from 'react-i18next';
 import { useCurrentAge } from 'src/hooks/oc';
 
-export const StoredAge: VFC<{ t: TFunction; className?: string }> = ({ t, className }) => {
+export const StoredAge: VFC<{ className?: string }> = ({ className }) => {
+  const { t } = useTranslation();
   const currentAge = useCurrentAge();
   const [now, setNow] = useState(() => new Date());
   const displayedAge = useMemo(() => {

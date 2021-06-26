@@ -22,7 +22,8 @@
       "components/*": ["src/components/*"],
       "modules/*": ["src/scss/modules/*"],
       "src/*": ["src/*"]
-    }
+    },
+    "typeRoots": ["node_modules/@types", "types"]
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]

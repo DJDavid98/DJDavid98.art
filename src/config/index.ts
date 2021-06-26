@@ -1,3 +1,5 @@
+import type { AppI18nNamespaces } from 'react-i18next';
+
 export const CANONICAL_URL = 'https://djdavid98.art';
 export const IS_CLIENT_SIDE = typeof window !== 'undefined';
 
@@ -56,3 +58,5 @@ export enum STATUS {
 }
 
 export * from './contact';
+
+export const DEFAULT_I18N_NAMESPACES: AppI18nNamespaces[] = ['common'];

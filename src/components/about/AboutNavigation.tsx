@@ -4,13 +4,14 @@ import { useTranslation } from 'next-i18next';
 import { VFC } from 'react';
 import { Nav, NavItem } from 'reactstrap';
 import { ABOUT_SECTIONS } from 'src/config';
+import { translatableValue } from 'src/util/i18n';
 
 export const AboutNavigation: VFC<{ closeNavbar: VoidFunction }> = ({ closeNavbar }) => {
   const { t } = useTranslation();
 
   return (
     <Nav className="mx-auto" navbar>
-      {ABOUT_SECTIONS.map(([anchor, translationKey]) => (
+      {ABOUT_SECTIONS.map(([anchor, label]) => (
         <NavItem key={anchor}>
           <Scrollchor
             className="nav-link"
@@ -21,7 +22,7 @@ export const AboutNavigation: VFC<{ closeNavbar: VoidFunction }> = ({ closeNavba
             }}
             beforeAnimate={closeNavbar}
           >
-            {t(translationKey)}
+            {translatableValue(t, label)}
           </Scrollchor>
         </NavItem>
       ))}

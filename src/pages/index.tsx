@@ -1,13 +1,13 @@
 import { AboutSection, ContactSection, OcSection, RecentArtwork, RecentArtworkProps, SummarySection } from 'components/about';
 import { AppHeader, Layout } from 'components/common';
-import { ImageResponse } from 'src/types/furbooru-api';
 import { GetStaticProps } from 'next';
 import { SSRConfig, useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 import { VFC } from 'react';
 import { PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
+import { ImageResponse } from 'src/types/furbooru-api';
 import { getGravatarUrl } from 'src/util/common';
+import { typedServerSideTranslations } from 'src/util/i18n-server';
 import { isImageResponse } from 'src/util/is-image-response';
 import urlcat from 'urlcat';
 
@@ -83,7 +83,7 @@ export const getStaticProps: GetStaticProps<AboutPageProps & SSRConfig> = async 
 
   return {
     props: {
-      ...(await serverSideTranslations(locale as string, ['common', 'about'])),
+      ...(await typedServerSideTranslations(locale, ['about'])),
       recentArtwork,
     },
   };

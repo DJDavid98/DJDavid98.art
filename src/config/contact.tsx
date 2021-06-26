@@ -2,15 +2,16 @@ import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontaw
 import { CustomIcon, CustomIconProps } from 'components/common/CustomIcon';
 import { TFunction } from 'next-i18next';
 import React, { ReactElement, ReactNode, ReactNodeArray } from 'react';
+import { Nullable, Translatable } from 'src/types/common';
 
 export const CONTACT_EMAIL = 'inbox@djdavid98.art';
 
-export const ABOUT_SECTIONS = [
-  ['header', 'about:summary'],
-  ['about-me', 'about:aboutMe.heading'],
-  ['artwork', 'about:artwork.navLabel'],
-  ['my-oc', 'about:myOC.navLabel'],
-  ['contact', 'about:contact.contact'],
+export const ABOUT_SECTIONS: Array<[string, Translatable]> = [
+  ['header', ['about:summary']],
+  ['about-me', ['about:aboutMe.heading']],
+  ['artwork', ['about:artwork.navLabel']],
+  ['my-oc', ['about:myOC.navLabel']],
+  ['contact', ['about:contact.contact']],
 ];
 
 export enum ABOUT_INDICES {
@@ -28,7 +29,7 @@ interface BaseContactCardProps {
     | ((props?: Partial<CustomIconProps>) => ReactElement<CustomIconProps, typeof CustomIcon>);
   name: ((t: TFunction) => string) | string;
   // Set to null to hide default visit button
-  visitKey?: string | null;
+  visitText?: Nullable<Translatable>;
   children?: ReactNode | ReactNodeArray;
 }
 
@@ -61,7 +62,7 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     url: 'https://discordapp.com/users/140360880079503362',
     discordTag: 'DJDavid98#6174',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'discord']} {...props} />,
-    visitKey: null,
+    visitText: null,
   },
   {
     id: 'email',
@@ -69,7 +70,7 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     url: `mailto:${CONTACT_EMAIL}`,
     email: CONTACT_EMAIL,
     renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/protonmail.svg" {...props} />,
-    visitKey: null,
+    visitText: null,
   },
   {
     id: 'furbooru',
@@ -88,14 +89,14 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     name: 'Picarto',
     url: 'https://picarto.tv/DJDavid98',
     renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/picarto.svg" {...props} />,
-    visitKey: 'visitStream',
+    visitText: ['visitStream'],
   },
   {
     id: 'youtube',
     name: 'YouTube',
     url: 'https://youtube.com/djdavid98',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'youtube']} {...props} />,
-    visitKey: 'visitChannel',
+    visitText: ['visitChannel'],
   },
   {
     id: 'steam',
@@ -120,7 +121,7 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     name: 'Telegram',
     url: 'https://t.me/DJDavid98',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'telegram-plane']} {...props} />,
-    visitKey: 'sendMessage',
+    visitText: ['sendMessage'],
   },
   {
     id: 'inkbunny',
@@ -157,7 +158,7 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     name: 'Facebook',
     url: 'https://fb.me/DJDavid1998',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'facebook-square']} {...props} />,
-    visitKey: 'visitPage',
+    visitText: ['visitPage'],
   },
   {
     id: 'newgrounds',

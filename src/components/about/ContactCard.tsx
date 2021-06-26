@@ -4,10 +4,11 @@ import { useTranslation } from 'next-i18next';
 import { VFC } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import { ContactCardProps, DefaultContactCardProps, EmailContactCardProps } from 'src/config';
+import { translatableValue } from 'src/util/i18n';
 
 export const ContactCard: VFC<ContactCardProps<DefaultContactCardProps | EmailContactCardProps>> = (props) => {
   const { t } = useTranslation();
-  const { url, renderIcon, id, name, visitKey, children, wrapInLink = true } = props;
+  const { url, renderIcon, id, name, visitText, children, wrapInLink = true } = props;
 
   const classAttr = `contact-card contact-card-${id}`;
   const row = (
@@ -19,9 +20,9 @@ export const ContactCard: VFC<ContactCardProps<DefaultContactCardProps | EmailCo
       )}
       <Col className="text-left text-md-center">
         <h3 className="contact-card-title">{typeof name === 'string' ? name : name(t)}</h3>
-        {visitKey !== null && (
+        {visitText !== null && (
           <Button color="link">
-            {t(`about:contact.${visitKey || 'visitProfile'}`)}
+            {visitText ? translatableValue(t, visitText) : t('about:contact.visitProfile')}
             <FontAwesomeIcon icon="arrow-right" className="ml-2" />
           </Button>
         )}

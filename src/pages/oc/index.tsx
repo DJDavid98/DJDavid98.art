@@ -1,10 +1,10 @@
 import { AppContainer, Layout, LoadingIndicator } from 'components/common';
 import { GetStaticProps, NextPage } from 'next';
 import { SSRConfig, useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
+import { typedServerSideTranslations } from 'src/util/i18n-server';
 import { getOcPageRoute } from 'src/util/oc';
 
 const queryRegex = /^(pony|fox)(?:-(nsfw))?$/;
@@ -41,6 +41,6 @@ export default OcIndexPage;
 
 export const getStaticProps: GetStaticProps<SSRConfig> = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale as string, ['common'])),
+    ...(await typedServerSideTranslations(locale)),
   },
 });
