@@ -29,6 +29,7 @@
     "cutieMark": "Cutie Mark",
     "cutieMarkRaster": "Download as PNG (raster)",
     "cutieMarkVector": "Download as SVG (vector)",
+    "cutieMarkLottie": "Download Lottie animation (JSON)",
     "colorGuide": "Color Guide",
     "previousArt": "Existing Artwork",
     "acceptableKinks": "Kinks (F-List)",

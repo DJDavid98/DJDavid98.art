@@ -29,6 +29,7 @@
     "cutieMark": "Szépségjegy",
     "cutieMarkRaster": "Letöltés PNG formátumban (raszter)",
     "cutieMarkVector": "Letöltés SVG formátumban (vektor)",
+    "cutieMarkLottie": "Lottie animáció letöltése (JSON)",
     "colorGuide": "Színsegéd",
     "previousArt": "Kész Rajzok",
     "acceptableKinks": "Perverziók (F-Lista)",

@@ -31,6 +31,11 @@ export const CutieMarkButton: VFC<PropTypes> = ({ buttonId }) => {
           &nbsp;
           {t('oc:detail.cutieMarkVector')}
         </DropdownItem>
+        <DropdownItem tag="a" href="/cm-lottie.json" download={`${fileName}.json`}>
+          <FontAwesomeIcon icon="play-circle" fixedWidth />
+          &nbsp;
+          {t('oc:detail.cutieMarkLottie')}
+        </DropdownItem>
       </DropdownMenu>
     </UncontrolledButtonDropdown>
   );
