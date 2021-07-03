@@ -86,12 +86,12 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
 
   const form = t(`oc:${species}`);
   const heading = t('oc:heading', { name: PERSONAL_DETAILS.OC_NAME });
-  const cacheBust = species === OcSpecies.FOX ? 4 : 2;
+  const cacheBust = species === OcSpecies.FOX ? 4 : 3;
   const fileFormat = 'png';
-  const nsfwSuffix = isNsfw && species === OcSpecies.FOX ? '_nsfw' : '';
+  const nsfwSuffix = isNsfw ? '_nsfw' : '';
   const sheetFilePath = getStoragePath(`refs/${species}${nsfwSuffix}.${fileFormat}?v=${cacheBust}`);
   const downloadFileName = `${heading}${form ? ` ${form}` : ''}${isNsfw ? ' NSFW' : ''}`;
-  const dimensions = species === OcSpecies.FOX ? [4500, 2532] : [3844, 3016];
+  const dimensions = species === OcSpecies.FOX ? [4500, 2532] : [4500, 1980];
   const imageClass = species === OcSpecies.FOX ? styles.sheetImageFox : undefined;
 
   const title = `${form ? `${isNsfw ? 'NSFW ' : ''}${form} - ` : ''}${heading} - ${SITE_TITLE}`;
@@ -266,18 +266,14 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
                   </div>
                 </>
               )}
-              {species === OcSpecies.FOX && (
-                <>
-                  <hr />
-                  <h3>{t('oc:detail.artworkBy')}:</h3>
-                  <div>
-                    <ArtworkCredit className="btn btn-link" url="https://twitter.com/DreamWeaverPony" name="DreamWeaverPony" />
-                    <ArtworkCredit className="btn btn-link" url="https://www.furaffinity.net/user/dreamweaverpony" name="DreamWeaverPony" />
-                    <ArtworkCredit className="btn btn-link" url="https://www.patreon.com/dreamweaverpony" name="DreamWeaverPony" />
-                    <ArtworkCredit className="btn btn-link" url="https://www.deviantart.com/dream-weaver-pony" name="Dream-Weaver-pony" />
-                  </div>
-                </>
-              )}
+              <hr />
+              <h3>{t('oc:detail.artworkBy')}:</h3>
+              <div>
+                <ArtworkCredit className="btn btn-link" url="https://twitter.com/DreamWeaverPony" name="DreamWeaverPony" />
+                <ArtworkCredit className="btn btn-link" url="https://www.furaffinity.net/user/dreamweaverpony" name="DreamWeaverPony" />
+                <ArtworkCredit className="btn btn-link" url="https://www.patreon.com/dreamweaverpony" name="DreamWeaverPony" />
+                <ArtworkCredit className="btn btn-link" url="https://www.deviantart.com/dream-weaver-pony" name="Dream-Weaver-pony" />
+              </div>
             </div>
           </Col>
         </Row>
