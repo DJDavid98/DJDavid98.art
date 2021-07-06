@@ -80,7 +80,10 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
   const handleLockNsfw = useCallback(() => {
     clearAgeGateValue();
     handleAgeVerification(false);
-  }, [handleAgeVerification]);
+    if (router.pathname.includes('-mature')) {
+      void router.replace(router.asPath.replace(/-mature/, ''), undefined, { shallow: true, scroll: false });
+    }
+  }, [handleAgeVerification, router]);
   const openImageViewer = useCallback(() => setIsViewerOpen(true), []);
   const closeImageViewer = useCallback(() => setIsViewerOpen(false), []);
 
