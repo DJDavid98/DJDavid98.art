@@ -89,14 +89,14 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     name: 'Picarto',
     url: 'https://picarto.tv/DJDavid98',
     renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/picarto.svg" {...props} />,
-    visitText: ['visitStream'],
+    visitText: ['about:contact.visitStream'],
   },
   {
     id: 'youtube',
     name: 'YouTube',
     url: 'https://youtube.com/djdavid98',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'youtube']} {...props} />,
-    visitText: ['visitChannel'],
+    visitText: ['about:contact.visitChannel'],
   },
   {
     id: 'steam',
@@ -121,7 +121,7 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     name: 'Telegram',
     url: 'https://t.me/DJDavid98',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'telegram-plane']} {...props} />,
-    visitText: ['sendMessage'],
+    visitText: ['about:contact.sendMessage'],
   },
   {
     id: 'inkbunny',
@@ -158,7 +158,7 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     name: 'Facebook',
     url: 'https://fb.me/DJDavid1998',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'facebook-square']} {...props} />,
-    visitText: ['visitPage'],
+    visitText: ['about:contact.visitPage'],
   },
   {
     id: 'newgrounds',
