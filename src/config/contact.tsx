@@ -61,7 +61,7 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     name: 'Discord',
     url: 'https://discordapp.com/users/140360880079503362',
     discordTag: 'DJDavid98#6174',
-    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'discord']} {...props} />,
+    renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/discord.svg" {...props} />,
     visitText: null,
   },
   {
@@ -79,10 +79,10 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/furbooru.svg" {...props} />,
   },
   {
-    id: 'deviantart',
-    name: 'DeviantArt',
-    url: 'https://www.deviantart.com/djdavid98',
-    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'deviantart']} {...props} />,
+    id: 'twitter',
+    name: 'Twitter',
+    url: 'https://twitter.com/DJDavid98',
+    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'twitter']} {...props} />,
   },
   {
     id: 'picarto',
@@ -97,6 +97,25 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     url: 'https://youtube.com/djdavid98',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'youtube']} {...props} />,
     visitText: ['about:contact.visitChannel'],
+  },
+  {
+    id: 'inkbunny',
+    name: 'Inkbunny',
+    url: 'https://inkbunny.net/DJDavid98',
+    renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/inkbunny.png" {...props} />,
+  },
+  {
+    id: 'furaffinity',
+    name: 'FurAffinity',
+    url: 'https://www.furaffinity.net/user/djdavid98/',
+    renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/furaffinity.svg" {...props} />,
+  },
+  {
+    id: 'telegram',
+    name: 'Telegram',
+    url: 'https://t.me/DJDavid98',
+    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'telegram-plane']} {...props} />,
+    visitText: ['about:contact.sendMessage'],
   },
   {
     id: 'steam',
@@ -117,29 +136,10 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'playstation']} {...props} />,
   },
   {
-    id: 'telegram',
-    name: 'Telegram',
-    url: 'https://t.me/DJDavid98',
-    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'telegram-plane']} {...props} />,
-    visitText: ['about:contact.sendMessage'],
-  },
-  {
-    id: 'inkbunny',
-    name: 'Inkbunny',
-    url: 'https://inkbunny.net/DJDavid98',
-    renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/inkbunny.png" {...props} />,
-  },
-  {
-    id: 'twitter',
-    name: 'Twitter',
-    url: 'https://twitter.com/DJDavid98',
-    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'twitter']} {...props} />,
-  },
-  {
-    id: 'furaffinity',
-    name: 'FurAffinity',
-    url: 'https://www.furaffinity.net/user/djdavid98/',
-    renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/furaffinity.svg" {...props} />,
+    id: 'deviantart',
+    name: 'DeviantArt',
+    url: 'https://www.deviantart.com/djdavid98',
+    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'deviantart']} {...props} />,
   },
   {
     id: 'pillowfort',

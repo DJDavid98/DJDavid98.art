@@ -9,7 +9,7 @@ export interface CustomIconProps {
 
 const CustomIconComponent: VFC<CustomIconProps> = ({ src, alt = '', className }) => (
   // eslint-disable-next-line @next/next/no-img-element
-  <img src={src} className={classNames(className, 'svg-inline--fa')} alt={alt} />
+  <img src={src} className={classNames(className, 'svg-inline--fa')} alt={alt} loading="lazy" />
 );
 
 export const CustomIcon = memo(CustomIconComponent);
