@@ -2,16 +2,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { differenceInYears } from 'date-fns';
 import { useTranslation } from 'next-i18next';
 import React, { useEffect, useState, VFC } from 'react';
-import { useCurrentAge } from 'src/hooks/oc';
 
-export const StoredAge: VFC<{ className?: string }> = ({ className }) => {
+export const StoredAge: VFC<{ className?: string; currentAge: Date }> = ({ className, currentAge }) => {
   const { t } = useTranslation();
-  const currentAge = useCurrentAge();
   const [now, setNow] = useState(() => new Date());
   const [displayedAge, setDisplayedAge] = useState<string | null>(null);
 
   useEffect(() => {
-    const calculatedAge = differenceInYears(now, currentAge);
+    const calculatedAge = Math.max(0, differenceInYears(now, currentAge));
     setDisplayedAge(calculatedAge < 18 ? String(calculatedAge) : '18+');
   }, [currentAge, now]);
 

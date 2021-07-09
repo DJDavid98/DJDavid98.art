@@ -59,8 +59,9 @@ export const AgeGateModal: VFC<PropTypes> = ({ visible, close, verify }) => {
   const handleDayChange: ChangeEventHandler = useCallback((e) => setDay(getInputValueAsNumber(e)), []);
   const handleRememberChange: ChangeEventHandler = useCallback((e) => setRemember(getInputChecked(e)), []);
   const handleVerification = useCallback(
-    (date: Date) => {
-      setAgeGateValue(date, remember);
+    (date: Date, setValue = true) => {
+      // Condition to skip updating storage if we come from the storage event listener. If removed, this will cause an endless loop.
+      if (setValue) setAgeGateValue(date, remember);
       setInitialDate(date);
       const oldEnough = isOldEnoughForNsfw(date);
       verify(oldEnough);
@@ -90,7 +91,7 @@ export const AgeGateModal: VFC<PropTypes> = ({ visible, close, verify }) => {
     const storageListener = (e: StorageEvent) => {
       if (e.key !== AGE_GATE_KEY) return;
 
-      handleVerification(getAgeGateValue());
+      handleVerification(getAgeGateValue(), false);
     };
 
     window.addEventListener('storage', storageListener);

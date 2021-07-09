@@ -11,10 +11,20 @@ export const AGE_GATE_KEY = 'visitor_birthdate';
 /**
  * Remove age-gate-related session and local storage keys
  */
-export const clearAgeGateValue = () => {
-  [localStorage, sessionStorage].forEach((storage) => {
+export const clearAgeGateValue = (dispatchEvent = true) => {
+  [localStorage, sessionStorage].forEach((storageArea) => {
     try {
-      storage.removeItem(AGE_GATE_KEY);
+      if (storageArea.getItem(AGE_GATE_KEY) === null) return;
+
+      storageArea.removeItem(AGE_GATE_KEY);
+      if (dispatchEvent) {
+        const storageEvent = new StorageEvent('storage', {
+          key: AGE_GATE_KEY,
+          storageArea,
+          newValue: null,
+        });
+        window.dispatchEvent(storageEvent);
+      }
     } catch (e) {
       // Ignore error
     }
@@ -27,16 +37,26 @@ export const clearAgeGateValue = () => {
  * Uses session storage by default, but can be changed to localStorage by passing `true` for `permanent`
  */
 export const setAgeGateValue = (birthday: Date, permanent?: boolean) => {
-  clearAgeGateValue();
+  clearAgeGateValue(false);
 
-  const selectedStore = permanent === true ? localStorage : sessionStorage;
-  selectedStore.setItem(AGE_GATE_KEY, birthday.toISOString());
+  const storageArea = permanent === true ? localStorage : sessionStorage;
+  const newValue = birthday.toISOString();
+  storageArea.setItem(AGE_GATE_KEY, birthday.toISOString());
+  const storageEvent = new StorageEvent('storage', {
+    key: AGE_GATE_KEY,
+    storageArea,
+    newValue,
+  });
+  window.dispatchEvent(storageEvent);
 };
+
+export function getAgeGateValue(): Date;
+export function getAgeGateValue<Raw extends boolean>(raw: Raw): Raw extends true ? Date | null : Date;
 
 /**
  * Retrieve the stored birthdate or the current time otherwise
  */
-export const getAgeGateValue = (): Date => {
+export function getAgeGateValue(raw = false): Date | null {
   let item = null;
   try {
     item = localStorage.getItem(AGE_GATE_KEY) || sessionStorage.getItem(AGE_GATE_KEY);
@@ -57,8 +77,8 @@ export const getAgeGateValue = (): Date => {
     }
   }
 
-  return new Date();
-};
+  return raw ? null : new Date();
+}
 
 export const isOldEnoughForNsfw = (birthday?: Date) => differenceInYears(new Date(), birthday || getAgeGateValue()) >= 18;
 

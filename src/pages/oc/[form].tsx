@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, ButtonGroup, ButtonToolbar, Col, Row, UncontrolledTooltip } from 'reactstrap';
 import { LANGUAGES, PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
+import { useCurrentAge } from 'src/hooks/oc';
 import { OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
 import { assembleSeoUrl } from 'src/util/common';
 import { typedServerSideTranslations } from 'src/util/i18n-server';
@@ -37,6 +38,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
   const [isNsfw, setIsNsfw] = useState(nsfwConfirmBypass);
   const [showAgeGate, setShowAgeGate] = useState(false);
   const [nsfwEnabled, setNsfwEnabled] = useState(nsfwConfirmBypass);
+  const currentAge = useCurrentAge(true);
   const species: OcSpecies = useMemo(() => {
     if (formQuery) {
       const value = formQuery.split('-').shift();
@@ -154,11 +156,11 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
             </Button>
           </ButtonGroup>
 
-          {nsfwEnabled && (
+          {currentAge !== null && (
             <>
-              <Button id={lockNsfwButtonId} color="link" onClick={handleLockNsfw}>
-                {nsfwEnabled && <FontAwesomeIcon icon="trash" size="xs" className="mr-2 text-danger" />}
-                <StoredAge className="text-dark" />
+              <Button id={lockNsfwButtonId} color="link" className="ml-lg-2 mt-2 mt-lg-0" onClick={handleLockNsfw}>
+                <FontAwesomeIcon icon="trash" size="xs" className="mr-2 text-danger" />
+                <StoredAge className="text-dark" currentAge={currentAge} />
               </Button>
               <UncontrolledTooltip target={lockNsfwButtonId} fade={false} placement="bottom">
                 {t('oc:clearSavedDate')}
