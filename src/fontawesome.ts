@@ -14,6 +14,7 @@ import {
   faSteamSymbol,
   faTelegramPlane,
   faTwitter,
+  faVk,
   faXbox,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
@@ -66,6 +67,7 @@ const brandIcons = [
   faTwitter,
   faXbox,
   faYoutube,
+  faVk,
 ];
 
 // List of used icons - amend if new icons are needed

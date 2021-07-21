@@ -47,6 +47,7 @@ $contact-card-icon-size-desktop: 4rem;
   @include contact-card($xbox, 'xbox');
   @include contact-card($playstation, 'playstation');
   @include contact-card($furaffinity, 'furaffinity');
+  @include contact-card($vk, 'vk');
 
   .contact-card-icon {
     height: $contact-card-icon-size-mobile !important;

@@ -161,6 +161,13 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     visitText: ['about:contact.visitPage'],
   },
   {
+    id: 'vk',
+    name: 'VK',
+    url: 'https://vk.com/djdrawid98',
+    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'vk']} {...props} />,
+    visitText: ['about:contact.visitPage'],
+  },
+  {
     id: 'newgrounds',
     name: 'Newgrounds',
     url: 'https://djdavid98.newgrounds.com/',
