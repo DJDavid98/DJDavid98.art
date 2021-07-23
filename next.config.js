@@ -10,7 +10,7 @@ const devMode = process.env.NODE_ENV === 'development';
 module.exports = withPlugins([[withESLint], [withCamelCaseCSSModules]], {
   i18n,
   images: {
-    domains: [NEXT_PUBLIC_STORAGE_DOMAIN],
+    domains: [NEXT_PUBLIC_STORAGE_DOMAIN, 's.gravatar.com'],
   },
   async rewrites() {
     return vercelConfig.rewrites.map((entry) => {

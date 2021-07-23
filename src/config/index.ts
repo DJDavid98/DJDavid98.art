@@ -1,5 +1,7 @@
 import type { AppI18nNamespaces } from 'react-i18next';
 
+export * from './avatar-credit';
+
 export const CANONICAL_URL = 'https://djdavid98.art';
 export const IS_CLIENT_SIDE = typeof window !== 'undefined';
 
@@ -36,16 +38,6 @@ export const PERSONAL_DETAILS = {
   },
   ARTIST_TAG_URL: 'https://furbooru.org/search?q=artist%3Adjdavid98%2C+gallery_id%3A13&sf=gallery_id%3A13',
   F_LIST_URL: 'https://www.f-list.net/c/double%20colon/',
-};
-
-export interface AvatarCreditProps {
-  url: string;
-  name: string;
-}
-
-export const AVATAR_CREDIT: AvatarCreditProps = {
-  name: 'NightyCloud',
-  url: 'https://twitter.com/NightyCloud',
 };
 
 export const SITE_TITLE = PERSONAL_DETAILS.NAME;

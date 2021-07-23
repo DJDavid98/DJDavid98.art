@@ -17,5 +17,6 @@
   },
   "openSource": "Ez a weboldal nyílt forráskódú szoftver",
   "viewSource": "Forráskód megtekintése",
-  "avatarImageAlt": "{{name}} profil képe"
+  "avatarImageAlt": "{{name}} profil képe",
+  "returnHome": "Vissza a Főoldalra"
 }

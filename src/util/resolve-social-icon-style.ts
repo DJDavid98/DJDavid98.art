@@ -42,6 +42,13 @@ export const resolveSocialIconStyle = (url: string): LinkStyle => {
       logoHeight: 32,
     };
   }
+  if (/furbooru\.org/.test(url)) {
+    return {
+      brandLogo: '/logos/furbooru-color.svg',
+      logoWidth: 32,
+      logoHeight: 32,
+    };
+  }
 
   return {};
 };

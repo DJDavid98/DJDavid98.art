@@ -64,7 +64,7 @@ export const SummarySection: VFC = () => {
         </aside>
       </div>
 
-      <AvatarCredit {...AVATAR_CREDIT} />
+      <AvatarCredit name={AVATAR_CREDIT.name} />
 
       <Quote
         text={t('about:quote.text')}

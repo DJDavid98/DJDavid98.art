@@ -1,0 +1,12 @@
+{
+  "title": "Profilkép Készítője",
+  "heading": "Jelenlegi Profilképem",
+  "seoDesc": "A jelenlegi profilképemet {{name}} kész0tette",
+  "createdBy": "Készítette:",
+  "contactBelow": "Az elérhetőségeit alább találod.",
+  "noContactAvailable": "Ehhez a művészhez semmilyen elérhetőség nincs megadva.",
+  "noContactAnonymous": "A művész neve elhallgatását kérte, vagy egyszerűen fogalmam sincs ki csinálta a képet. Ebből kifolyólag az elérhetőségeit sem tudom itt listázni.",
+  "thatIsMe": "Jé, hisz ez én vagyok!",
+  "noCreditsExplainer": "Itt szoktam listázni az aktuális profilképemet készítő művész elérhetőségeit, de mivel a mostanit épp én készítettem, semmi értelme megismételnem itt a saját elérhetőségeimet, <1>a főoldalon</1> ezek megtalálhatóak.",
+  "unknownArtist": "egy ismeretlen művész"
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Avatar Credit",
+  "heading": "My Current Avatar",
+  "seoDesc": "My current avatar was created by {{name}}",
+  "createdBy": "Created by:",
+  "contactBelow": "You can find this artist's contact information below.",
+  "noContactAvailable": "No contact details are available for this artist.",
+  "noContactAnonymous": "Either the artist requested that their name be withheld, or I just simply have no idea who made the picture. As a result, I can't list their contact information here either.",
+  "thatIsMe": "Oh hey, that's me!",
+  "noCreditsExplainer": "This is where I would list all the contact details for the artist who made my current avatar, but since this one was made by me there is no reason to repeat all my contact information here, you can find it on <1>my homepage</1>.",
+  "unknownArtist": "an unknown artist"
+}

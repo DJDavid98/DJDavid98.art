@@ -1,15 +1,18 @@
-import { ArtworkCredit } from 'components/oc';
 import styles from 'modules/AvatarCredit.module.scss';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { memo, VFC } from 'react';
-import { AvatarCreditProps } from 'src/config';
+import { GlobalAvatarCredit } from 'src/config';
 
-const AvatarCreditComponent: VFC<AvatarCreditProps> = (props) => {
+const AvatarCreditComponent: VFC<Pick<GlobalAvatarCredit, 'name'>> = ({ name }) => {
   const { t } = useTranslation();
+  if (!name) return null;
   return (
     <p className={styles.avatarCredit}>
       {`${t('about:avatarBy')}`}
-      <ArtworkCredit {...props} className="ml-1" spacingClass={false} />
+      <Link href="/avatar">
+        <a className="ml-1">{name}</a>
+      </Link>
     </p>
   );
 };
