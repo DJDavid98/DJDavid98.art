@@ -82,7 +82,7 @@ const AvatarPage: VFC = () => {
                 <Nav vertical>
                   {AVATAR_CREDIT.credits.map((credit, i) => (
                     <NavItem key={i}>
-                      <ArtworkCredit className="nav-link" url={credit.url} name={credit.name || artistMainName} />
+                      <ArtworkCredit className="nav-link" url={credit.url} name={credit.name || artistMainName} nsfw={credit.nsfw} />
                     </NavItem>
                   ))}
                 </Nav>

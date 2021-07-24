@@ -49,6 +49,13 @@ export const resolveSocialIconStyle = (url: string): LinkStyle => {
       logoHeight: 32,
     };
   }
+  if (/pillowfort\.social/.test(url)) {
+    return {
+      brandLogo: '/logos/pillowfort-black.svg',
+      logoWidth: 32,
+      logoHeight: 32,
+    };
+  }
 
   return {};
 };

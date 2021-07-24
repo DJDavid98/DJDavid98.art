@@ -3,6 +3,7 @@ import { OptionalProps } from 'src/types/common';
 export interface AvatarCreditProps {
   url: string;
   name: string;
+  nsfw?: true;
 }
 
 export type GlobalAvatarCredit =
@@ -17,6 +18,7 @@ export const AVATAR_CREDIT: GlobalAvatarCredit = {
   credits: [
     {
       url: 'https://twitter.com/NightyCloud',
+      nsfw: true,
     },
     {
       name: 'Luna',
@@ -25,6 +27,11 @@ export const AVATAR_CREDIT: GlobalAvatarCredit = {
     {
       name: 'Nighty-Cloud',
       url: 'https://www.deviantart.com/nighty-cloud',
+    },
+    {
+      name: 'Princess-Luna',
+      url: 'https://www.pillowfort.social/Princess-Luna',
+      nsfw: true,
     },
   ],
 };

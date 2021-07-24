@@ -274,9 +274,9 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
               <hr />
               <h3>{t('oc:detail.artworkBy')}:</h3>
               <div>
-                <ArtworkCredit className="btn btn-link" url="https://twitter.com/DreamWeaverPony" name="DreamWeaverPony" />
+                <ArtworkCredit className="btn btn-link" url="https://twitter.com/DreamWeaverPony" name="DreamWeaverPony" nsfw />
                 <ArtworkCredit className="btn btn-link" url="https://www.furaffinity.net/user/dreamweaverpony" name="DreamWeaverPony" />
-                <ArtworkCredit className="btn btn-link" url="https://www.patreon.com/dreamweaverpony" name="DreamWeaverPony" />
+                <ArtworkCredit className="btn btn-link" url="https://www.patreon.com/dreamweaverpony" name="DreamWeaverPony" nsfw />
                 <ArtworkCredit className="btn btn-link" url="https://www.deviantart.com/dream-weaver-pony" name="Dream-Weaver-pony" />
               </div>
             </div>

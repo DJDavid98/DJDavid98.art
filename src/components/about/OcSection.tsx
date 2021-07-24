@@ -3,7 +3,7 @@ import { ArtworkCredit } from 'components/oc';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { VFC } from 'react';
+import React, { VFC } from 'react';
 import { Button, Col, Container, Row } from 'reactstrap';
 import { ABOUT_INDICES, ABOUT_SECTIONS, PERSONAL_DETAILS } from 'src/config';
 import { OcSpecies } from 'src/types/oc';
@@ -22,7 +22,12 @@ export const OcSection: VFC = () => {
             </div>
             <small className="d-block text-muted mt-2">
               {`${t('about:myOC.artBy')} `}
-              <ArtworkCredit className="ml-1" spacingClass={false} url="https://twitter.com/DreamWeaverPony" name="DreamWeaverPony" />
+              <ArtworkCredit
+                className="ml-1"
+                spacingClass={false}
+                url="https://www.furaffinity.net/user/dreamweaverpony"
+                name="DreamWeaverPony"
+              />
             </small>
           </Col>
           <Col>
