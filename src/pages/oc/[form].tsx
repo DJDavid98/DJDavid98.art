@@ -213,12 +213,12 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
             </p>
             <p>
               {t('oc:detail.p2')}
-              {species === OcSpecies.PONY && ` ${t('oc:detail.p3')}`} {t('oc:detail.p4')}
+              {t('oc:detail.p3')}
               {nsfwEnabled && (
                 <>
-                  {` ${t('oc:detail.p4Lewd.select')} `}
+                  {` ${t('oc:detail.p3Lewd.select')} `}
                   <ExternalLink href="https://furbooru.org/filters/62">Default 18+</ExternalLink>
-                  {` ${t('oc:detail.p4Lewd.toSee')}`}
+                  {` ${t('oc:detail.p3Lewd.toSee')}`}
                 </>
               )}
             </p>
@@ -233,14 +233,6 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
                 <FontAwesomeIcon icon="download" className="mr-2" />
                 {t('oc:detail.downloadRefSheet', { format: fileFormat.toUpperCase() })}
               </Button>
-              {species === OcSpecies.PONY && (
-                <>
-                  <Button tag={ExternalLink} href={PERSONAL_DETAILS.OC_COLOR_GUIDE_URL} className="d-block d-md-inline-block mb-2 mr-md-2">
-                    <FontAwesomeIcon icon="palette" className="mr-2" />
-                    {t('oc:detail.colorGuide')}
-                  </Button>
-                </>
-              )}
               <Button
                 color="furbooru"
                 tag={ExternalLink}

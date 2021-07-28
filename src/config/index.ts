@@ -31,7 +31,6 @@ export const PERSONAL_DETAILS = {
   OC_NICKNAME: 'Disy',
   OC_REF_SHEET_URL: 'https://oc.djdavid98.art',
   OC_CUTIE_MARK_URL: 'https://www.deviantart.com/djdavid98/art/Double-Colon-Cutie-Mark-545185280',
-  OC_COLOR_GUIDE_URL: 'https://mlpvector.club/cg/v/232-Double-Colon',
   OC_FURBOORU_GALLERY_URL: (species: string | null) => {
     const query = encodeURI(`oc:double colon, gallery_id:12${species ? `, ${species}` : ''}`);
     return `https://furbooru.org/search?q=${query}&sf=gallery_id%3A12`;
