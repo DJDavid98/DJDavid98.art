@@ -163,7 +163,7 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
   {
     id: 'vk',
     name: 'VK',
-    url: 'https://vk.com/djdrawid98',
+    url: 'https://vk.com/djdavid98',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'vk']} {...props} />,
     visitText: ['about:contact.visitPage'],
   },
