@@ -1,4 +1,7 @@
 @import '../vars';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/variables';
 
 .ref-sheet-wrapper img {
   width: 100%;
@@ -45,6 +48,26 @@
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+}
+
+.coolors-wrapper {
+  $spacing: 1rem;
+  margin: 0 - ($spacing * 0.5);
+
+  :global .coolors-palette-widget:not(:last-child) {
+    margin-bottom: $spacing;
+  }
+
+  @include media-breakpoint-up(xl) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+    :global .coolors-palette-widget {
+      flex: 1 1 45%;
+      margin: 0 ($spacing * 0.5);
     }
   }
 }

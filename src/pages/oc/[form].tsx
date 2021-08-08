@@ -10,18 +10,21 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button, ButtonGroup, ButtonToolbar, Col, Row, UncontrolledTooltip } from 'reactstrap';
 import { LANGUAGES, PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
 import { useCurrentAge } from 'src/hooks/oc';
-import { OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
+import { OC_PALETTES, OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
 import { assembleSeoUrl } from 'src/util/common';
 import { typedServerSideTranslations } from 'src/util/i18n-server';
 import { clearAgeGateValue, getOcPageRoute, getStoragePath, isOldEnoughForNsfw, setAgeGateValue } from 'src/util/oc';
+import Script from 'next/script';
 
 const sfmButtonId = 'sfm-model-btn';
 const cmButtonId = 'cutie-mark-btn';
 const lockNsfwButtonId = 'lock-nsfw-btn';
+const paletteWidgetId = 'coolors-palette-widget';
+const colorPaletteId = 'color-palette';
 
 export interface OcFormPageProps {
   nsfwConfirmBypass?: boolean;
@@ -37,6 +40,8 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [isNsfw, setIsNsfw] = useState(nsfwConfirmBypass);
   const [showAgeGate, setShowAgeGate] = useState(false);
+  const [coolorsLoaded, setCoolorsLoaded] = useState(() => typeof window !== 'undefined' && 'CoolorsPaletteWidget' in window);
+  const coolorsOutputRef = useRef<HTMLDivElement>(null);
   const [nsfwEnabled, setNsfwEnabled] = useState(nsfwConfirmBypass);
   const currentAge = useCurrentAge(true);
   const species: OcSpecies = useMemo(() => {
@@ -49,6 +54,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
 
     return OcSpecies.PONY;
   }, [formQuery]);
+  const form = t(`oc:${species}`);
 
   useEffect(() => {
     if (nsfwConfirmBypass) {
@@ -59,6 +65,50 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
       setNsfwEnabled(isOldEnoughForNsfw());
     }
   }, [nsfwConfirmBypass]);
+
+  useEffect(() => {
+    if (!coolorsLoaded) return;
+
+    const output = coolorsOutputRef.current;
+    if (!output) return;
+
+    const firstLoad = output.children.length === 0;
+    let scrollIntoView = firstLoad && window.location.hash === `#${colorPaletteId}`;
+
+    // Clean up element
+    while (output.firstChild) output.removeChild(output.firstChild);
+
+    const palette = OC_PALETTES[species];
+    if (!palette) return;
+
+    const paletteKeys = Object.keys(palette) as (keyof typeof palette)[];
+
+    try {
+      paletteKeys.forEach((group) => {
+        const goatScriptId = `${paletteWidgetId}-${species}-${group}`;
+        const goatScript = document.createElement('script');
+        goatScript.setAttribute('data-id', goatScriptId);
+        output.appendChild(goatScript);
+
+        const normalizedColors = palette[group].map((c) => c.substring(1).toLowerCase());
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        const groupName = [PERSONAL_DETAILS.OC_NAME, form, t(`oc:colorPalette.${group}`)].join(' • ');
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,no-new
+        new window.CoolorsPaletteWidget(goatScriptId, normalizedColors, groupName);
+      });
+    } catch (e) {
+      console.error(e);
+      scrollIntoView = false;
+    }
+
+    if (scrollIntoView) {
+      const paletteHeading = document.getElementById(colorPaletteId);
+      if (paletteHeading) paletteHeading.scrollIntoView();
+    }
+  }, [coolorsLoaded, form, species, t]);
 
   const handleChangeNsfw = useCallback(
     (newIsNsfw: boolean) => () => {
@@ -89,7 +139,6 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
   const openImageViewer = useCallback(() => setIsViewerOpen(true), []);
   const closeImageViewer = useCallback(() => setIsViewerOpen(false), []);
 
-  const form = t(`oc:${species}`);
   const heading = t('oc:heading', { name: PERSONAL_DETAILS.OC_NAME });
   const cacheBust = species === OcSpecies.FOX ? 6 : 6;
   const fileFormat = 'png';
@@ -256,7 +305,10 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
               {species === OcSpecies.PONY && (
                 <>
                   <hr />
-                  <h3>{t('oc:detail.additionalResources')}</h3>
+                  <h3>
+                    <FontAwesomeIcon icon="file-download" className="mr-2 mr-lg-3" />
+                    {t('oc:detail.additionalResources')}
+                  </h3>
                   <div className="d-flex flex-column flex-md-row justify-content-lg-start flex-wrap">
                     <CutieMarkButton buttonId={cmButtonId} />
                     <SfmModelButton nsfwEnabled={nsfwEnabled} buttonId={sfmButtonId} />
@@ -264,7 +316,10 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
                 </>
               )}
               <hr />
-              <h3>{t('oc:detail.artworkBy')}:</h3>
+              <h3>
+                <FontAwesomeIcon icon="paint-brush" className="mr-2 mr-lg-3" />
+                {t('oc:detail.artworkBy')}:
+              </h3>
               <div>
                 <ArtworkCredit className="btn btn-link" url="https://twitter.com/DreamWeaverPony" name="DreamWeaverPony" nsfw />
                 <ArtworkCredit className="btn btn-link" url="https://www.furaffinity.net/user/dreamweaverpony" name="DreamWeaverPony" />
@@ -274,6 +329,31 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
             </div>
           </Col>
         </Row>
+        <Script
+          src="https://coolors.co/palette-widget/widget.js"
+          onLoad={() => {
+            setCoolorsLoaded(true);
+          }}
+        />
+        {coolorsLoaded && (
+          <>
+            <h3 id={colorPaletteId}>
+              <FontAwesomeIcon icon="palette" className="mr-2 mr-lg-3" />
+              {t('oc:colorPalette.heading')}
+              <Link href={`#${colorPaletteId}`} passHref>
+                <Button tag="a" color="link" className="ml-2 mr-lg-3">
+                  <FontAwesomeIcon icon="link" />
+                </Button>
+              </Link>
+            </h3>
+            <p>
+              {t('oc:colorPalette.intro')}
+              <br />
+              {t('oc:colorPalette.howToView', { viewLink: 'View on Coolors', viewText: 'View' })}
+            </p>
+            <div ref={coolorsOutputRef} className={styles.coolorsWrapper} />
+          </>
+        )}
       </AppContainer>
       <AgeGateModal visible={showAgeGate} close={closeAgeGate} verify={handleAgeVerification} />
     </Layout>

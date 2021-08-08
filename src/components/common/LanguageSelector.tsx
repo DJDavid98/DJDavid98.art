@@ -47,16 +47,19 @@ export const LanguageSelector: VFC<PropTypes> = ({ shouldWelcome, router, t, lan
           <DropdownItem header className={styles.item}>
             {t('common:changeLanguage')}
           </DropdownItem>
-          {toPairs(LANGUAGES).map(([key, value]) => (
-            <Link key={key} href={router.asPath} locale={key} passHref>
-              <DropdownItem tag="a" {...getCurrentProps(key)}>
-                <span className={styles.languageFlag}>
-                  <Image src={`/flags/${key}.svg`} alt={t(`common:flagOf.${key}`)} width={640} height={480} layout="responsive" />
-                </span>
-                <span>{value.nativeName}</span>
-              </DropdownItem>
-            </Link>
-          ))}
+          {toPairs(LANGUAGES).map(([key, value]) => {
+            const pathWithoutHash = router.asPath.replace(/#.*$/, '');
+            return (
+              <Link key={key} href={pathWithoutHash} locale={key} passHref>
+                <DropdownItem tag="a" {...getCurrentProps(key)}>
+                  <span className={styles.languageFlag}>
+                    <Image src={`/flags/${key}.svg`} alt={t(`common:flagOf.${key}`)} width={640} height={480} layout="responsive" />
+                  </span>
+                  <span>{value.nativeName}</span>
+                </DropdownItem>
+              </Link>
+            );
+          })}
         </DropdownMenu>
       </UncontrolledDropdown>
     </Nav>
