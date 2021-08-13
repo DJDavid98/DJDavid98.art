@@ -329,6 +329,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
             </div>
           </Col>
         </Row>
+        {/* Turn into react component? */}
         <Script
           src="https://coolors.co/palette-widget/widget.js"
           onLoad={() => {

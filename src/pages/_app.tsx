@@ -1,6 +1,6 @@
 import { appWithTranslation } from 'next-i18next';
 import { DefaultSeo } from 'next-seo';
-import { AppComponent } from 'next/dist/next-server/lib/router/router';
+import { AppComponent } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
