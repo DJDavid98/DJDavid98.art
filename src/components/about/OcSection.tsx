@@ -3,7 +3,7 @@ import { ArtworkCredit } from 'components/oc';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { VFC } from 'react';
+import { VFC } from 'react';
 import { Button, Col, Container, Row } from 'reactstrap';
 import { ABOUT_INDICES, ABOUT_SECTIONS, PERSONAL_DETAILS } from 'src/config';
 import { OcSpecies } from 'src/types/oc';

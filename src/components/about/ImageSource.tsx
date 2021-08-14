@@ -1,6 +1,6 @@
 import { ExternalLink } from 'components/common/ExternalLink';
 import { useTranslation } from 'next-i18next';
-import React, { VFC } from 'react';
+import { VFC } from 'react';
 
 export const ImageSource: VFC<{ id: number; sourceUrl?: string }> = ({ id, sourceUrl }) => {
   const { t } = useTranslation();

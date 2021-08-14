@@ -3,7 +3,7 @@ import { CustomIcon } from 'components/common/CustomIcon';
 import { ModelSize } from 'components/oc/ModelSize';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import React, { VFC } from 'react';
+import { VFC } from 'react';
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledButtonDropdown, UncontrolledTooltip } from 'reactstrap';
 import { getOcSfmModelPath } from 'src/util/oc';
 

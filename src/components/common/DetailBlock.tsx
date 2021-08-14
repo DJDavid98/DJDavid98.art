@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { memo, ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 
 interface PropTypes {
   append?: ReactNode;

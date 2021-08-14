@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 export const ArtworkDividerComponent: React.FC = () => (
   <svg viewBox="0 0 20 20" className="artwork-divider" preserveAspectRatio="none">

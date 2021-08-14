@@ -8,7 +8,7 @@ import { SSRConfig, Trans, useTranslation } from 'next-i18next';
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { FC, useMemo, VFC } from 'react';
+import { FC, useMemo, VFC } from 'react';
 import { Button, Col, Nav, NavItem, Row } from 'reactstrap';
 import { AVATAR_CREDIT, PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
 import { getGravatarUrl } from 'src/util/common';

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import { CustomIcon, CustomIconProps } from 'components/common/CustomIcon';
 import { TFunction } from 'next-i18next';
-import React, { ReactElement, ReactNode, ReactNodeArray } from 'react';
+import { ReactElement, ReactNode, ReactNodeArray } from 'react';
 import { Nullable, Translatable } from 'src/types/common';
 
 export const CONTACT_EMAIL = 'inbox@djdavid98.art';

@@ -4,7 +4,7 @@ import { Fade as Hamburger } from 'hamburger-react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState, VFC } from 'react';
+import { useEffect, useState, VFC } from 'react';
 import { Collapse, Container, Navbar as RSNavbar, NavbarBrand, NavbarToggler } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
 

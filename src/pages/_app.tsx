@@ -3,7 +3,7 @@ import { DefaultSeo } from 'next-seo';
 import { AppComponent } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import 'src/app.scss';
 import { SITE_TITLE } from 'src/config';
 import 'src/fontawesome';

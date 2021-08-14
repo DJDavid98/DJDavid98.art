@@ -1,6 +1,6 @@
 import { utcToZonedTime } from 'date-fns-tz';
 import { format } from 'date-fns';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { PERSONAL_DETAILS } from 'src/config';
 

@@ -1,0 +1,31 @@
+@import '../vars';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/variables';
+
+.coolors-wrapper {
+  $spacing: 1rem;
+  margin: 0 - ($spacing * 0.5);
+  --react-coolors-widget-font: #{$font-family-base};
+  --react-coolors-color-text-font: #{$font-family-monospace};
+  --react-coolors-color-font-size: 1.2rem;
+  --react-coolors-info-font-size: 1rem;
+  --react-coolors-info-link: #{$link-color};
+  --react-coolors-info-link-hover-color: #{$link-hover-color};
+  --react-coolors-info-link-hover-decoration: #{$link-hover-decoration};
+
+  .coolors-palette-widget:not(:last-child) {
+    margin-bottom: $spacing;
+  }
+
+  @include media-breakpoint-up(xl) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+    .coolors-palette-widget {
+      flex: 1 1 45%;
+      margin: 0 ($spacing * 0.5);
+    }
+  }
+}

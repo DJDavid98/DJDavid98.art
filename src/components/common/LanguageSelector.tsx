@@ -6,7 +6,7 @@ import toPairs from 'lodash/toPairs';
 import styles from 'modules/LanguageSelector.module.scss';
 import Link from 'next/link';
 import { NextRouter } from 'next/router';
-import React, { useCallback, useMemo, VFC } from 'react';
+import { useCallback, useMemo, VFC } from 'react';
 import { DropdownItem, DropdownMenu, DropdownToggle, Nav, UncontrolledDropdown } from 'reactstrap';
 import { AvailableLanguage, LANGUAGES } from 'src/config';
 

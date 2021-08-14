@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { differenceInYears } from 'date-fns';
 import { useTranslation } from 'next-i18next';
-import React, { useEffect, useState, VFC } from 'react';
+import { useEffect, useState, VFC } from 'react';
 
 export const StoredAge: VFC<{ className?: string; currentAge: Date }> = ({ className, currentAge }) => {
   const { t } = useTranslation();

@@ -4,7 +4,7 @@ import { CustomIcon } from 'components/common/CustomIcon';
 import { ExternalLink, ExternalLinkProps } from 'components/common/ExternalLink';
 import styles from 'modules/ArtworkCredit.module.scss';
 import Image from 'next/image';
-import React, { memo, useMemo, useRef, VFC } from 'react';
+import { memo, useMemo, useRef, VFC } from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
 import { AvatarCreditProps } from 'src/config';
 import { resolveSocialIconStyle } from 'src/util/resolve-social-icon-style';

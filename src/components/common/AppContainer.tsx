@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { memo, ReactNode, ReactNodeArray } from 'react';
+import { memo, ReactNode, ReactNodeArray } from 'react';
 import { Card, CardBody, CardHeader, Col, Container, Row } from 'reactstrap';
 
 interface PropTypes {

@@ -3,7 +3,7 @@ import { ExternalLink } from 'components/common/ExternalLink';
 import { Gallery } from 'components/common/Gallery';
 import { ImageResponse } from 'src/types/furbooru-api';
 import { useTranslation } from 'next-i18next';
-import React, { useMemo, VFC } from 'react';
+import { useMemo, VFC } from 'react';
 import { Button, Container } from 'reactstrap';
 import { ABOUT_INDICES, ABOUT_SECTIONS, PERSONAL_DETAILS } from 'src/config';
 import { thumbSize } from 'src/util/thumb-size';

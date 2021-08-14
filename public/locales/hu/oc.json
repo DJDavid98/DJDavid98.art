@@ -5,19 +5,7 @@
   "fox": "Furry",
   "pony": "Póni",
   "yourAge": "Életkorod: {{age}}",
-  "clearSavedDate": "Mentet születési dátum törlése",
-  "colorPalette": {
-    "heading": "Szín paletta",
-    "intro": "Ezek a dobozok egy vizuális áttekintést adnak a karakter kinézetéről pontos HEX színkódokkal, melyeket erről az oldalról egy kattintással kimásolhatsz, amellett, hogy a Coolors-ra linkelnek, amely egy egy szín paletta oldal, ami további információt ad neked ezekről a színekről.",
-    "howToView": "Ennek az információnak a megtekintéséhez kattints a \"{{viewLink}}\" linkre a doboz jobb alsó sarokban, majd a megnyitott oldalon kattints a \"{{viewText}}\" menüelemre.",
-    "coat": "Fedőszőr",
-    "mane": "Sörény",
-    "eyes": "Szemek",
-    "magic": "Varázslat",
-    "ears": "Fülek",
-    "muzzle": "Száj",
-    "paws": "Tappancsok"
-  },
+  "clearSavedDate": "Mentett születési dátum törlése",
   "detail": {
     "heading": "{{form}} Alak",
     "fewWords": {
@@ -83,5 +71,18 @@
     "storageNotice": "Ez a dátum csak a böngésződben kerül tárolásra (ideiglenesen vagy véglegesen, a fenti jelölőnégyzettől függően), semmilyen szerver vagy harmadik fél számára nem kerül elküldésre.",
     "verify": "Életkor megerősítése",
     "close": "Vissza"
+  },
+  "colorPalette": {
+    "heading": "Szín paletta",
+    "intro": "Ezek a dobozok egy vizuális áttekintést adnak a karakter kinézetéről pontos HEX színkódokkal, melyeket erről az oldalról egy kattintással kimásolhatsz, amellett, hogy a Coolors-ra linkelnek, amely egy egy szín paletta oldal, ami további információt ad neked ezekről a színekről.",
+    "howToView": "Ennek az információnak a megtekintéséhez kattints a \"{{viewLink}}\" linkre a doboz jobb alsó sarkában, majd a megnyitott oldalon kattints a \"{{viewText}}\" menüelemre.",
+    "viewOnText": "Megtekintés a Coolors-on",
+    "coat": "Fedőszőr",
+    "mane": "Sörény",
+    "eyes": "Szemek",
+    "magic": "Varázslat",
+    "ears": "Fülek",
+    "muzzle": "Száj",
+    "paws": "Tappancsok"
   }
 }

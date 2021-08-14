@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
 
 const StatTooltipComponent: FC<{ id: string }> = ({ id, children }) => (

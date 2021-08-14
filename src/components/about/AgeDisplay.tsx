@@ -1,6 +1,6 @@
 import { differenceInYears } from 'date-fns';
 import { useTranslation } from 'next-i18next';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
 import styles from 'modules/AgeDisplay.module.scss';

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ExternalLink } from 'components/common/ExternalLink';
 import { getYear } from 'date-fns';
 import { useTranslation } from 'next-i18next';
-import React, { useRef, VFC } from 'react';
+import { useRef, VFC } from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
 

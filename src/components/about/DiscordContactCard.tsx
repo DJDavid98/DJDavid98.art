@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import copyToClipboard from 'copy-to-clipboard';
 import { useTranslation } from 'next-i18next';
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Button, UncontrolledTooltip } from 'reactstrap';
 import { ContactCardProps, DiscordContactCardProps } from 'src/config';
 import { ContactCard } from './ContactCard';

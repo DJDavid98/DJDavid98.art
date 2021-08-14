@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MonthOptions } from 'components/oc/MonthOptions';
 import { getDate, getMonth, getYear } from 'date-fns';
 import { useTranslation } from 'next-i18next';
-import React, { ChangeEvent, ChangeEventHandler, FormEventHandler, useCallback, useEffect, useMemo, useRef, useState, VFC } from 'react';
+import { ChangeEvent, ChangeEventHandler, FormEventHandler, useCallback, useEffect, useMemo, useRef, useState, VFC } from 'react';
 import {
   Alert,
   Button,

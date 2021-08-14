@@ -1,4 +1,4 @@
-import React, { memo, useMemo, VFC } from 'react';
+import { memo, useMemo, VFC } from 'react';
 import { Badge } from 'reactstrap';
 
 const SFW_SIZE_MB = 11.5;

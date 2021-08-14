@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CustomIcon } from 'components/common/CustomIcon';
 import { useTranslation } from 'next-i18next';
-import React, { VFC } from 'react';
+import { VFC } from 'react';
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledButtonDropdown } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
 import { getOcCutieMarkPath } from 'src/util/oc';

@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import React, { useMemo, VFC } from 'react';
+import { useMemo, VFC } from 'react';
 import { Badge } from 'reactstrap';
 
 export const ImageTags: VFC<{ tags: string[] }> = ({ tags }) => {

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AppContainer, CustomIcon, ExternalLink, ImageViewer, Layout } from 'components/common';
 import { AgeGateModal, ArtworkCredit, CutieMarkButton, OcStats, SfmModelButton } from 'components/oc';
+import { ColorPalette } from 'components/oc/ColorPalette';
 import { StoredAge } from 'components/oc/StoredAge';
 import styles from 'modules/OcFormPage.module.scss';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps, NextPage } from 'next';
@@ -10,21 +11,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, ButtonGroup, ButtonToolbar, Col, Row, UncontrolledTooltip } from 'reactstrap';
 import { LANGUAGES, PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
 import { useCurrentAge } from 'src/hooks/oc';
-import { OC_PALETTES, OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
+import { OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
 import { assembleSeoUrl } from 'src/util/common';
 import { typedServerSideTranslations } from 'src/util/i18n-server';
 import { clearAgeGateValue, getOcPageRoute, getStoragePath, isOldEnoughForNsfw, setAgeGateValue } from 'src/util/oc';
-import Script from 'next/script';
 
 const sfmButtonId = 'sfm-model-btn';
 const cmButtonId = 'cutie-mark-btn';
 const lockNsfwButtonId = 'lock-nsfw-btn';
-const paletteWidgetId = 'coolors-palette-widget';
-const colorPaletteId = 'color-palette';
 
 export interface OcFormPageProps {
   nsfwConfirmBypass?: boolean;
@@ -40,8 +38,6 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [isNsfw, setIsNsfw] = useState(nsfwConfirmBypass);
   const [showAgeGate, setShowAgeGate] = useState(false);
-  const [coolorsLoaded, setCoolorsLoaded] = useState(() => typeof window !== 'undefined' && 'CoolorsPaletteWidget' in window);
-  const coolorsOutputRef = useRef<HTMLDivElement>(null);
   const [nsfwEnabled, setNsfwEnabled] = useState(nsfwConfirmBypass);
   const currentAge = useCurrentAge(true);
   const species: OcSpecies = useMemo(() => {
@@ -66,50 +62,6 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
     }
   }, [nsfwConfirmBypass]);
 
-  useEffect(() => {
-    if (!coolorsLoaded) return;
-
-    const output = coolorsOutputRef.current;
-    if (!output) return;
-
-    const firstLoad = output.children.length === 0;
-    let scrollIntoView = firstLoad && window.location.hash === `#${colorPaletteId}`;
-
-    // Clean up element
-    while (output.firstChild) output.removeChild(output.firstChild);
-
-    const palette = OC_PALETTES[species];
-    if (!palette) return;
-
-    const paletteKeys = Object.keys(palette) as (keyof typeof palette)[];
-
-    try {
-      paletteKeys.forEach((group) => {
-        const goatScriptId = `${paletteWidgetId}-${species}-${group}`;
-        const goatScript = document.createElement('script');
-        goatScript.setAttribute('data-id', goatScriptId);
-        output.appendChild(goatScript);
-
-        const normalizedColors = palette[group].map((c) => c.substring(1).toLowerCase());
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        const groupName = [PERSONAL_DETAILS.OC_NAME, form, t(`oc:colorPalette.${group}`)].join(' • ');
-
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,no-new
-        new window.CoolorsPaletteWidget(goatScriptId, normalizedColors, groupName);
-      });
-    } catch (e) {
-      console.error(e);
-      scrollIntoView = false;
-    }
-
-    if (scrollIntoView) {
-      const paletteHeading = document.getElementById(colorPaletteId);
-      if (paletteHeading) paletteHeading.scrollIntoView();
-    }
-  }, [coolorsLoaded, form, species, t]);
-
   const handleChangeNsfw = useCallback(
     (newIsNsfw: boolean) => () => {
       if (!nsfwConfirmBypass) {
@@ -133,7 +85,10 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
     clearAgeGateValue();
     handleAgeVerification(false);
     if (router.pathname.includes('-mature')) {
-      void router.replace(router.asPath.replace(/-mature/, ''), undefined, { shallow: true, scroll: false });
+      void router.replace(router.asPath.replace(/-mature/, ''), undefined, {
+        shallow: true,
+        scroll: false,
+      });
     }
   }, [handleAgeVerification, router]);
   const openImageViewer = useCallback(() => setIsViewerOpen(true), []);
@@ -329,32 +284,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ nsfwConfirmBypass = false }) =>
             </div>
           </Col>
         </Row>
-        {/* Turn into react component? */}
-        <Script
-          src="https://coolors.co/palette-widget/widget.js"
-          onLoad={() => {
-            setCoolorsLoaded(true);
-          }}
-        />
-        {coolorsLoaded && (
-          <>
-            <h3 id={colorPaletteId}>
-              <FontAwesomeIcon icon="palette" className="mr-2 mr-lg-3" />
-              {t('oc:colorPalette.heading')}
-              <Link href={`#${colorPaletteId}`} passHref>
-                <Button tag="a" color="link" className="ml-2 mr-lg-3">
-                  <FontAwesomeIcon icon="link" />
-                </Button>
-              </Link>
-            </h3>
-            <p>
-              {t('oc:colorPalette.intro')}
-              <br />
-              {t('oc:colorPalette.howToView', { viewLink: 'View on Coolors', viewText: 'View' })}
-            </p>
-            <div ref={coolorsOutputRef} className={styles.coolorsWrapper} />
-          </>
-        )}
+        <ColorPalette t={t} form={form} species={species} />
       </AppContainer>
       <AgeGateModal visible={showAgeGate} close={closeAgeGate} verify={handleAgeVerification} />
     </Layout>
