@@ -61,7 +61,7 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     name: 'Discord',
     url: 'https://discordapp.com/users/140360880079503362',
     discordTag: 'DJDavid98#6174',
-    renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/discord.svg" {...props} />,
+    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'discord']} {...props} />,
     visitText: null,
   },
   {

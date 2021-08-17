@@ -10,11 +10,11 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@fortawesome/fontawesome-common-types": "^0.2.32",
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/react-fontawesome": "^0.1.12",
+    "@fortawesome/fontawesome-common-types": "^0.2.36",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
     "@lottiefiles/react-lottie-player": "^3.3.1",
     "@seinopsys-forks/react-scrollchor": "^7.0.0",
     "@types/hoist-non-react-statics": "^3.3.1",
