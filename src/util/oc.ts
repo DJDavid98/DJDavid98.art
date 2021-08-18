@@ -1,4 +1,6 @@
 import { differenceInYears, getDate, getMonth, getYear, isValid } from 'date-fns';
+import { ParsedUrlQuery } from 'querystring';
+import { OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
 
 export const getOcPageRoute = (nsfwEnabled: boolean, species: string) => `/oc${nsfwEnabled ? `-mature` : ''}/${species}`;
 
@@ -12,23 +14,21 @@ export const AGE_GATE_KEY = 'visitor_birthdate';
  * Remove age-gate-related session and local storage keys
  */
 export const clearAgeGateValue = (dispatchEvent = true) => {
-  [localStorage, sessionStorage].forEach((storageArea) => {
-    try {
-      if (storageArea.getItem(AGE_GATE_KEY) === null) return;
+  try {
+    if (localStorage.getItem(AGE_GATE_KEY) === null) return;
 
-      storageArea.removeItem(AGE_GATE_KEY);
-      if (dispatchEvent) {
-        const storageEvent = new StorageEvent('storage', {
-          key: AGE_GATE_KEY,
-          storageArea,
-          newValue: null,
-        });
-        window.dispatchEvent(storageEvent);
-      }
-    } catch (e) {
-      // Ignore error
+    localStorage.removeItem(AGE_GATE_KEY);
+    if (dispatchEvent) {
+      const storageEvent = new StorageEvent('storage', {
+        key: AGE_GATE_KEY,
+        storageArea: localStorage,
+        newValue: null,
+      });
+      window.dispatchEvent(storageEvent);
     }
-  });
+  } catch (e) {
+    // Ignore error
+  }
 };
 
 /**
@@ -36,10 +36,10 @@ export const clearAgeGateValue = (dispatchEvent = true) => {
  *
  * Uses session storage by default, but can be changed to localStorage by passing `true` for `permanent`
  */
-export const setAgeGateValue = (birthday: Date, permanent?: boolean) => {
+export const setAgeGateValue = (birthday: Date) => {
   clearAgeGateValue(false);
 
-  const storageArea = permanent === true ? localStorage : sessionStorage;
+  const storageArea = localStorage;
   const newValue = birthday.toISOString();
   storageArea.setItem(AGE_GATE_KEY, birthday.toISOString());
   const storageEvent = new StorageEvent('storage', {
@@ -59,7 +59,7 @@ export function getAgeGateValue<Raw extends boolean>(raw: Raw): Raw extends true
 export function getAgeGateValue(raw = false): Date | null {
   let item = null;
   try {
-    item = localStorage.getItem(AGE_GATE_KEY) || sessionStorage.getItem(AGE_GATE_KEY);
+    item = localStorage.getItem(AGE_GATE_KEY);
   } catch (e) {
     // Ignore error
   }
@@ -95,3 +95,18 @@ export const isValidDate = (year: number, month: number, day: number): boolean =
   const dateYear = getYear(date);
   return isValid(date) && dateYear === year && dateYear > MINIMUM_SENSIBLE_YEAR && getDate(date) === day && getMonth(date) === jsMonth;
 };
+
+export const resolveFormParameter = (query?: ParsedUrlQuery): OcSpecies => {
+  const formQuery = query?.form;
+
+  if (formQuery && typeof formQuery === 'string') {
+    const value = formQuery.split('-').shift();
+    if (typeof value === 'string' && VALID_OC_SPECIES.has(value)) {
+      return value as OcSpecies;
+    }
+  }
+
+  return OcSpecies.PONY;
+};
+
+export const getOtherSpecies = (species: OcSpecies): OcSpecies => (species === OcSpecies.FOX ? OcSpecies.PONY : OcSpecies.FOX);

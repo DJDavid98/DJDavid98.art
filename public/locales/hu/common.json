@@ -18,5 +18,9 @@
   "openSource": "Ez a weboldal nyílt forráskódú szoftver",
   "viewSource": "Forráskód megtekintése",
   "avatarImageAlt": "{{name}} profil képe",
-  "returnHome": "Vissza a Főoldalra"
+  "returnHome": "Vissza a Főoldalra",
+  "gallery": {
+    "source": "Forrás",
+    "tagged": "Címkék"
+  }
 }

@@ -67,8 +67,7 @@
     "month": "Hónap",
     "day": "Nap",
     "invalidDate": "Kérlek, létező dátumot adj meg!",
-    "remember": "Jegyezd meg ezt a dátumot ebben a böngészőben",
-    "storageNotice": "Ez a dátum csak a böngésződben kerül tárolásra (ideiglenesen vagy véglegesen, a fenti jelölőnégyzettől függően), semmilyen szerver vagy harmadik fél számára nem kerül elküldésre.",
+    "storageNotice": "Ez a dátum csak az aktuális böngésződben kerül tárolásra, semmilyen szerver vagy harmadik fél számára nem kerül elküldésre. A dátum bármikor, ugyan erről az oldalról törölhető a kiszámított életkorodra kattintva.",
     "verify": "Életkor megerősítése",
     "close": "Vissza"
   },
@@ -84,5 +83,10 @@
     "ears": "Fülek",
     "muzzle": "Száj",
     "paws": "Tappancsok"
+  },
+  "existingArtwork": {
+    "heading": "Nemrég Készült Rajzok",
+    "explainer": "Alább láthatod az erről a karakterről különféle művészek által mostanában rajzolt képeket.",
+    "viewFullGallery": "Teljes galéria megtekintése"
   }
 }

@@ -67,8 +67,7 @@
     "month": "Month",
     "day": "Day",
     "invalidDate": "Please provide a valid date",
-    "remember": "Remember the date in this browser",
-    "storageNotice": "This date is only ever stored in your browser (either temporarily or permanently, depending on the checkbox above), and is not sent to any servers nor third parties.",
+    "storageNotice": "This date is only ever stored in your browser, and is not sent to any servers nor third parties. The date can de deleted at any time from this same page by clicking your calculated age.",
     "verify": "Verify my age",
     "close": "Go back"
   },
@@ -84,5 +83,10 @@
     "ears": "Ears",
     "muzzle": "Muzzle",
     "paws": "Paws"
+  },
+  "existingArtwork": {
+    "heading": "Recently Finished Artwork",
+    "explainer": "Below you can see some of the most recent artwork of this character, created by various artists.",
+    "viewFullGallery": "View full gallery"
   }
 }

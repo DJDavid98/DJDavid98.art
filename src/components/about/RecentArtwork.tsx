@@ -1,3 +1,5 @@
+import { ImageSource } from 'components/common/ImageSource';
+import { ImageTags } from 'components/common/ImageTags';
 import { CustomIcon } from 'components/common/CustomIcon';
 import { ExternalLink } from 'components/common/ExternalLink';
 import { Gallery } from 'components/common/Gallery';
@@ -6,10 +8,9 @@ import { useTranslation } from 'next-i18next';
 import { useMemo, VFC } from 'react';
 import { Button, Container } from 'reactstrap';
 import { ABOUT_INDICES, ABOUT_SECTIONS, PERSONAL_DETAILS } from 'src/config';
+import { ImageOptions } from 'src/types/gallery';
 import { thumbSize } from 'src/util/thumb-size';
 import { ArtworkDivider } from './ArtworkDivider';
-import { ImageTags } from './ImageTags';
-import { ImageSource } from './ImageSource';
 
 export interface RecentArtworkProps {
   recentArtwork?: ImageResponse[];
@@ -17,19 +18,19 @@ export interface RecentArtworkProps {
 
 export const RecentArtwork: VFC<RecentArtworkProps> = ({ recentArtwork }) => {
   const { t } = useTranslation();
-  const artwork = useMemo(
-    () =>
-      recentArtwork
-        ? recentArtwork.map((image: ImageResponse) => ({
-            src: image.view_url,
-            thumbnail: image.representations.thumb,
-            ...thumbSize(image, 'thumb'),
-            title: <ImageSource id={image.id} sourceUrl={image.source_url} />,
-            caption: <ImageTags tags={image.tags} />,
-          }))
-        : [],
-    [recentArtwork],
-  );
+  const artwork = useMemo(() => {
+    if (!recentArtwork) return [];
+
+    return recentArtwork.map(
+      (image: ImageResponse): ImageOptions => ({
+        src: image.view_url,
+        thumbnail: image.representations.thumb,
+        ...thumbSize(image, 'thumb'),
+        title: <ImageSource id={image.id} sourceUrl={image.source_url} />,
+        caption: <ImageTags tags={image.tags} />,
+      }),
+    );
+  }, [recentArtwork]);
   return (
     <>
       <section className="artwork-section py-5" id={ABOUT_SECTIONS[ABOUT_INDICES.ARTWORK][0]}>

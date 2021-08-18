@@ -37,7 +37,6 @@ interface PropTypes {
 const FORM_ID = 'age-gate-form';
 
 const getInputValueAsNumber = (e: ChangeEvent): number => parseInt((e.target as HTMLInputElement).value, 10);
-const getInputChecked = (e: ChangeEvent): boolean => (e.target as HTMLInputElement).checked;
 const getInitialDateComponents = (initialDate: Date | undefined): [number, number, number] => {
   const localInitialDate = initialDate || new Date();
   return [getDate(localInitialDate), getMonth(localInitialDate) + 1, getYear(localInitialDate)];
@@ -50,23 +49,21 @@ export const AgeGateModal: VFC<PropTypes> = ({ visible, close, verify }) => {
   const [day, setDay] = useState<number>(initialDay);
   const [month, setMonth] = useState<number>(initialMonth);
   const [year, setYear] = useState<number>(initialYear);
-  const [remember, setRemember] = useState<boolean>(true);
   const isEnteredDateValid = useMemo(() => isValidDate(year, month, day), [day, month, year]);
   const yearInputRef = useRef<HTMLInputElement>(null);
 
   const handleYearChange: ChangeEventHandler = useCallback((e) => setYear(getInputValueAsNumber(e)), []);
   const handleMonthChange: ChangeEventHandler = useCallback((e) => setMonth(getInputValueAsNumber(e)), []);
   const handleDayChange: ChangeEventHandler = useCallback((e) => setDay(getInputValueAsNumber(e)), []);
-  const handleRememberChange: ChangeEventHandler = useCallback((e) => setRemember(getInputChecked(e)), []);
   const handleVerification = useCallback(
     (date: Date, setValue = true) => {
       // Condition to skip updating storage if we come from the storage event listener. If removed, this will cause an endless loop.
-      if (setValue) setAgeGateValue(date, remember);
+      if (setValue) setAgeGateValue(date);
       setInitialDate(date);
       const oldEnough = isOldEnoughForNsfw(date);
       verify(oldEnough);
     },
-    [remember, verify],
+    [verify],
   );
   const handleSubmit: FormEventHandler = useCallback(
     (e) => {
@@ -151,15 +148,6 @@ export const AgeGateModal: VFC<PropTypes> = ({ visible, close, verify }) => {
               {t('oc:ageGate.invalidDate')}
             </Alert>
           )}
-          <FormGroup>
-            <CustomInput
-              type="checkbox"
-              id="age-gate-remember"
-              label={t('oc:ageGate.remember')}
-              checked={remember}
-              onChange={handleRememberChange}
-            />
-          </FormGroup>
           <Alert color="info" className="p-2 mb-0">
             <FontAwesomeIcon icon="lock" className="mr-2" />
             {t('oc:ageGate.storageNotice')}

@@ -12,6 +12,18 @@
   border-radius: 0.9rem;
 }
 
+.page-section:not(:last-child) {
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(m) {
+    margin-bottom: 1.5rem;
+  }
+
+  @include media-breakpoint-up(xl) {
+    margin-bottom: 2rem;
+  }
+}
+
 .lesbian-flag img {
   height: 1em;
   width: 1.77em;

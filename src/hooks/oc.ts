@@ -26,5 +26,9 @@ export function useCurrentAge(raw = false): Date | null {
     return () => window.removeEventListener('load', loadListener);
   }, [raw]);
 
+  useEffect(() => {
+    setCurrentAge(getAgeGateValue(raw));
+  }, [raw]);
+
   return currentAge;
 }

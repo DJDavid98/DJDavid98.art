@@ -7,7 +7,7 @@ export const ImageSource: VFC<{ id: number; sourceUrl?: string }> = ({ id, sourc
   const finalSource = sourceUrl || `https://furbooru.org/images/${id}`;
   return (
     <>
-      {t('about:artwork.source')}: <ExternalLink href={finalSource}>{finalSource}</ExternalLink>
+      {t('common:gallery.source')}: <ExternalLink href={finalSource}>{finalSource}</ExternalLink>
     </>
   );
 };

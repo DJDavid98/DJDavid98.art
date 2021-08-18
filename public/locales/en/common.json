@@ -18,5 +18,9 @@
   "openSource": "This website is open-source software",
   "viewSource": "View source code",
   "avatarImageAlt": "Profile picture of {{name}}",
-  "returnHome": "Return to Homepage"
+  "returnHome": "Return to Homepage",
+  "gallery": {
+    "source": "Source",
+    "tagged": "Tags"
+  }
 }

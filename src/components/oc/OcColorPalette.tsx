@@ -3,7 +3,7 @@ import copyToClipboard from 'copy-to-clipboard';
 import styles from 'modules/ColorPalette.module.scss';
 import { TFunction } from 'next-i18next';
 import Link from 'next/link';
-import { useCallback, useEffect, useState, VFC, MouseEvent } from 'react';
+import { MouseEvent, useCallback, useEffect, useState, VFC } from 'react';
 import { CoolorsWidget, CoolorsWidgetProps } from 'react-coolors-widget';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Button } from 'reactstrap';
@@ -14,8 +14,13 @@ const colorPaletteId = 'color-palette';
 
 const ErrorHandler: VFC = () => null;
 
-export const ColorPalette: VFC<{ t: TFunction; form: string; species: OcSpecies }> = ({ t, form, species }) => {
-  const [firstLoad, setFirstLoad] = useState(false);
+export const OcColorPalette: VFC<{ t: TFunction; form: string; species: OcSpecies; className: string }> = ({
+  t,
+  form,
+  species,
+  className,
+}) => {
+  const [firstLoad, setFirstLoad] = useState(true);
   const [palettes, setPalettes] = useState<CoolorsWidgetProps[]>(() => []);
 
   const handleClick = useCallback((e: MouseEvent<HTMLButtonElement>, text) => {
@@ -64,7 +69,7 @@ export const ColorPalette: VFC<{ t: TFunction; form: string; species: OcSpecies 
   const viewLink = t('oc:colorPalette.viewOnText');
 
   return (
-    <>
+    <section className={className}>
       <h3 id={colorPaletteId}>
         <FontAwesomeIcon icon="palette" className="mr-2 mr-lg-3" />
         {t('oc:colorPalette.heading')}
@@ -89,6 +94,6 @@ export const ColorPalette: VFC<{ t: TFunction; form: string; species: OcSpecies 
           ))}
         </ErrorBoundary>
       </div>
-    </>
+    </section>
   );
 };

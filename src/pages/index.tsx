@@ -8,8 +8,7 @@ import { PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
 import { ImageResponse } from 'src/types/furbooru-api';
 import { getGravatarUrl } from 'src/util/common';
 import { typedServerSideTranslations } from 'src/util/i18n-server';
-import { isImageResponse } from 'src/util/is-image-response';
-import urlcat from 'urlcat';
+import { FurbooruGalleryId, searchFurbooru } from 'src/util/search-furbooru';
 
 const seoAvatarSize = 365;
 
@@ -61,22 +60,7 @@ export const getStaticProps: GetStaticProps<AboutPageProps & SSRConfig> = async 
   let recentArtwork: ImageResponse[] = [];
 
   try {
-    const resp: unknown = await fetch(
-      urlcat(`https://furbooru.org/api/v1/json/search/images`, {
-        q: 'safe,artist:djdavid98,-collaboration,-webm,gallery_id:13',
-        sf: 'gallery_id:13',
-        sd: 'desc',
-        per_page: 14,
-      }),
-      {
-        headers: {
-          'user-agent': PERSONAL_DETAILS.OC_NAME,
-        },
-      },
-    ).then((r) => r.json());
-    if (isImageResponse(resp)) {
-      recentArtwork = resp.images;
-    }
+    recentArtwork = await searchFurbooru({ query: 'safe', galleryId: FurbooruGalleryId.OWN_ARTWORK });
   } catch (e) {
     // Ignore
   }

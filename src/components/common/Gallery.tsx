@@ -1,20 +1,22 @@
+import classNames from 'classnames';
+import { CustomIcon } from 'components/common/CustomIcon';
 import { ImageViewer } from 'components/common/ImageViewer';
+import styles from 'modules/Gallery.module.scss';
 import Image from 'next/image';
 import { ReactNode, useState, VFC } from 'react';
 import Masonry from 'react-masonry-css';
-import styles from 'modules/Gallery.module.scss';
-import { GalleryProps } from 'src/types/gallery';
+import { BsBreakpoint, BsBreakpointColumns, GalleryProps } from 'src/types/gallery';
 
-const breakpointCols = {
-  375: 2,
-  576: 3,
-  768: 4,
-  992: 5,
-  1200: 6,
+export const defaultColumns: BsBreakpointColumns = {
+  [BsBreakpoint.XS]: 2,
+  [BsBreakpoint.S]: 3,
+  [BsBreakpoint.M]: 4,
+  [BsBreakpoint.L]: 5,
+  [BsBreakpoint.XL]: 6,
   default: 7,
 };
 
-export const Gallery: VFC<GalleryProps> = ({ images }) => {
+export const Gallery: VFC<GalleryProps> = ({ images, columns = defaultColumns }) => {
   const [openImage, setOpenImage] = useState<number | null>(null);
 
   let viewer: ReactNode = false;
@@ -41,16 +43,21 @@ export const Gallery: VFC<GalleryProps> = ({ images }) => {
 
   return (
     <>
-      <Masonry breakpointCols={breakpointCols} className={styles.masonryWrapper} columnClassName={styles.masonryColumn}>
+      <Masonry breakpointCols={columns} className={styles.masonryWrapper} columnClassName={styles.masonryColumn}>
         {images.map((image, index) => (
-          <div key={index} className="cursor-pointer mb-2">
+          <div key={index} className={classNames('cursor-pointer mb-2 rounded', styles.galleryImage, { [styles.nsfwImage]: image.nsfw })}>
+            {image.nsfw && (
+              <div className={styles.nsfwTag}>
+                <CustomIcon src="/logos/18.svg" />
+              </div>
+            )}
             <Image
               key={image.thumbnail}
               src={image.thumbnail}
               width={image.thumbnailWidth}
               height={image.thumbnailHeight}
               unoptimized
-              className="d-block rounded"
+              className="d-block"
               onClick={() => setOpenImage(index)}
               layout="responsive"
               alt="Artwork"

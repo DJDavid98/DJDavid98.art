@@ -10,3 +10,40 @@ $gutter-size: 0.5rem;
   padding-left: $gutter-size;
   background-clip: padding-box;
 }
+
+.gallery-image {
+  overflow: hidden;
+}
+
+.nsfw-image {
+  position: relative;
+
+  &:hover {
+    .nsfw-tag {
+      opacity: 0;
+    }
+
+    > *:not(.nsfw-tag) {
+      filter: blur(0);
+    }
+  }
+
+  .nsfw-tag {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1;
+    transition: opacity 0.2s ease-in;
+    will-change: opacity;
+    pointer-events: none;
+    user-select: none;
+    font-size: 2rem;
+    line-height: 1rem;
+  }
+
+  > *:not(.nsfw-tag) {
+    filter: blur(6px);
+    transition: filter 0.2s ease-in;
+    will-change: filter;
+  }
+}

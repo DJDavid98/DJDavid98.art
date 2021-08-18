@@ -12,8 +12,6 @@ export * from './ContactCardMapper';
 export * from './ContactSection';
 export * from './DiscordContactCard';
 export * from './EmailContactCard';
-export * from './ImageSource';
-export * from './ImageTags';
 export * from './OcSection';
 export * from './Quote';
 export * from './RecentArtwork';

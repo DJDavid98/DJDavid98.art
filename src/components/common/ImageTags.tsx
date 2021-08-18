@@ -7,7 +7,7 @@ export const ImageTags: VFC<{ tags: string[] }> = ({ tags }) => {
   const sortedTags = useMemo(() => tags.sort((a, b) => a.localeCompare(b)), [tags]);
   return (
     <>
-      {t('about:artwork.tagged')}:{' '}
+      {t('common:gallery.tagged')}:{' '}
       {sortedTags.map((name) => (
         <Badge key={name} className="mr-2 bg-furbooru">
           {name}
