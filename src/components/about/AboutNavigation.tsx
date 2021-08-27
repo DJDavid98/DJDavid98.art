@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Scrollchor, swing } from '@seinopsys-forks/react-scrollchor';
+import { Scrollchor, swing } from 'react-scrollchor';
 import { useTranslation } from 'next-i18next';
 import { VFC } from 'react';
 import { Nav, NavItem } from 'reactstrap';
