@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { CustomIcon } from 'components/common/CustomIcon';
-import { ImageViewer } from 'components/common/ImageViewer';
+import { GalleryViewer } from 'components/common/GalleryViewer';
 import styles from 'modules/Gallery.module.scss';
 import Image from 'next/image';
-import { ReactNode, useState, VFC } from 'react';
+import { useState, VFC } from 'react';
 import Masonry from 'react-masonry-css';
 import { BsBreakpoint, BsBreakpointColumns, GalleryProps } from 'src/types/gallery';
 
@@ -18,28 +18,6 @@ export const defaultColumns: BsBreakpointColumns = {
 
 export const Gallery: VFC<GalleryProps> = ({ images, columns = defaultColumns }) => {
   const [openImage, setOpenImage] = useState<number | null>(null);
-
-  let viewer: ReactNode = false;
-  if (openImage !== null) {
-    const nextImageIndex = openImage === images.length - 1 ? 0 : openImage + 1;
-    const nextImage = images[nextImageIndex];
-    const prevImageIndex = openImage === 0 ? images.length - 1 : openImage - 1;
-    const prevImage = images[prevImageIndex];
-    viewer = (
-      <ImageViewer
-        mainSrc={images[openImage].src}
-        onCloseRequest={() => setOpenImage(null)}
-        imageCaption={images[openImage].caption}
-        imageTitle={images[openImage].title}
-        prevSrc={prevImage.src}
-        prevSrcThumbnail={prevImage.thumbnail}
-        nextSrc={nextImage.src}
-        nextSrcThumbnail={nextImage.thumbnail}
-        onMoveNextRequest={() => setOpenImage(nextImageIndex)}
-        onMovePrevRequest={() => setOpenImage(prevImageIndex)}
-      />
-    );
-  }
 
   return (
     <>
@@ -66,7 +44,7 @@ export const Gallery: VFC<GalleryProps> = ({ images, columns = defaultColumns })
         ))}
       </Masonry>
 
-      {viewer}
+      {openImage !== null && <GalleryViewer openImage={openImage} setOpenImage={setOpenImage} images={images} />}
     </>
   );
 };

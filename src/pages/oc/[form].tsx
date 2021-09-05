@@ -33,7 +33,10 @@ import { FurbooruGalleryId, searchFurbooru, SearchFurbooruOptions } from 'src/ut
 
 const lockNsfwButtonId = 'lock-nsfw-btn';
 
-export const existingArtworkSearchOptions: Partial<SearchFurbooruOptions> = { galleryId: FurbooruGalleryId.DISY_COMMISSIONED, perPage: 24 };
+export const existingArtworkSearchOptions: Required<Pick<SearchFurbooruOptions, 'galleryId' | 'perPage'>> = {
+  galleryId: FurbooruGalleryId.DISY_COMMISSIONED,
+  perPage: 32,
+};
 
 const routeReplaceProps = {
   shallow: false,
@@ -198,15 +201,21 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
   );
 };
 
+export const requestSafeArtwork = (species: OcSpecies, perPage?: number) => {
+  const parameters: SearchFurbooruOptions = {
+    ...existingArtworkSearchOptions,
+    query: `${species},-${getOtherSpecies(species)},-suggestive`,
+  };
+  if (perPage) parameters.perPage = perPage;
+  return searchFurbooru(parameters);
+};
+
 export const getStaticProps: GetStaticProps<OcFormPageProps & SSRConfig> = async ({ locale, params }) => {
   const species = resolveFormParameter(params);
   let existingArtwork: ImageResponse[] = [];
 
   try {
-    existingArtwork = await searchFurbooru({
-      ...existingArtworkSearchOptions,
-      query: `${species},-${getOtherSpecies(species)},-suggestive`,
-    });
+    existingArtwork = await requestSafeArtwork(species);
   } catch (e) {
     // Ignore
   }
