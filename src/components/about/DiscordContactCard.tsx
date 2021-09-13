@@ -1,48 +1,26 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import copyToClipboard from 'copy-to-clipboard';
+import { ExternalLink } from 'components/common/ExternalLink';
+import { CardCopyButton } from 'components/common/CardCopyButton';
 import { useTranslation } from 'next-i18next';
-import { useMemo, useState } from 'react';
+import { FC } from 'react';
 import { Button, UncontrolledTooltip } from 'reactstrap';
 import { ContactCardProps, DiscordContactCardProps } from 'src/config';
 import { ContactCard } from './ContactCard';
 
-enum CopyStatus {
-  INFO,
-  COPIED,
-}
+const INVITE_BUTTON_ID = 'discord-invite';
 
-const COPY_BUTTON_ID = 'copy-discord-tag';
-
-export const DiscordContactCard: React.FC<ContactCardProps<DiscordContactCardProps>> = (props) => {
+export const DiscordContactCard: FC<ContactCardProps<DiscordContactCardProps>> = (props) => {
   const { t } = useTranslation();
   const { discordTag, ...rest } = props;
 
-  const [copyStatus, setCopyStatus] = useState(CopyStatus.INFO);
-
-  const handleCopy = () => {
-    copyToClipboard(discordTag);
-    setCopyStatus(CopyStatus.COPIED);
-  };
-
-  const copyMessage = useMemo<string>(() => {
-    switch (copyStatus) {
-      case CopyStatus.INFO:
-        return t(`about:contact.copyStatus.info`);
-      case CopyStatus.COPIED:
-        return t(`about:contact.copyStatus.copied`);
-      default:
-        return '';
-    }
-  }, [copyStatus, t]);
-
   return (
     <ContactCard wrapInLink={false} {...rest}>
-      <Button id={COPY_BUTTON_ID} color="link" onClick={handleCopy} onMouseLeave={() => setCopyStatus(CopyStatus.INFO)}>
-        <FontAwesomeIcon icon="clipboard" className="mr-2" />
-        {discordTag}
+      <CardCopyButton id="copy-discord-tag" copyValue={discordTag} />
+      <Button id={INVITE_BUTTON_ID} tag={ExternalLink} color="link" href={rest.url}>
+        <FontAwesomeIcon icon="users" />
       </Button>
-      <UncontrolledTooltip placement="bottom" target={COPY_BUTTON_ID} fade={false}>
-        {copyMessage}
+      <UncontrolledTooltip placement="bottom" target={INVITE_BUTTON_ID} fade={false}>
+        {t('about:contact.joinServer')}
       </UncontrolledTooltip>
     </ContactCard>
   );

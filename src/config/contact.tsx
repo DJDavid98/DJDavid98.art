@@ -43,13 +43,19 @@ export interface DiscordContactCardProps extends BaseContactCardProps {
   children?: undefined;
 }
 
+export interface MatrixContactCardProps extends BaseContactCardProps {
+  id: 'matrix';
+  matrixUsername: string;
+  children?: undefined;
+}
+
 export interface EmailContactCardProps extends BaseContactCardProps {
   id: 'email';
   email: string;
   children?: undefined;
 }
 
-export type ContactCardSettings = DefaultContactCardProps | DiscordContactCardProps | EmailContactCardProps;
+export type ContactCardSettings = DefaultContactCardProps | DiscordContactCardProps | MatrixContactCardProps | EmailContactCardProps;
 
 export type ContactCardProps<T extends ContactCardSettings> = T & {
   wrapInLink?: boolean;
@@ -59,7 +65,7 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
   {
     id: 'discord',
     name: 'Discord',
-    url: 'https://discordapp.com/users/140360880079503362',
+    url: 'https://discord.djdavid98.art',
     discordTag: 'DJDavid98#6174',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'discord']} {...props} />,
     visitText: null,
@@ -146,6 +152,14 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     name: 'Pillowfort',
     url: 'https://www.pillowfort.social/DJDavid98',
     renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/pillowfort.svg" {...props} />,
+  },
+  {
+    id: 'matrix',
+    name: 'Matrix',
+    url: 'https://matrix.to/#/@disy:djdavid98.art',
+    matrixUsername: '@disy:djdavid98.art',
+    renderIcon: (props?: Partial<CustomIconProps>) => <CustomIcon src="/logos/matrix.svg" {...props} />,
+    visitText: null,
   },
   {
     id: 'mastodon',

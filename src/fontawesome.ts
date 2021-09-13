@@ -48,6 +48,8 @@ import {
   faTimes,
   faTrash,
   faUser,
+  faUserPlus,
+  faUsers,
   faVenus,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -92,12 +94,14 @@ library.add(
   faTimes,
   faVenus,
   faTrash,
+  faUsers,
   faIdCard,
   faPenNib,
   faImages,
   faPalette,
   faSpinner,
   faDownload,
+  faUserPlus,
   faClipboard,
   faHorseHead,
   faShieldAlt,

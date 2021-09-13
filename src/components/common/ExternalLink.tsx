@@ -10,11 +10,11 @@ export interface ExternalLinkProps {
   className?: string;
   title?: string;
   rel?: Nullable<string>;
-  ref?: string;
+  id?: string;
 }
 
 const ExternalLinkComponent: ForwardRefRenderFunction<HTMLAnchorElement, ExternalLinkProps> = (
-  { children, tag = null, href, className, blank = true, title, rel = null },
+  { children, tag = null, href, className, blank = true, title, rel = null, id },
   ref,
 ) => {
   const Tag = tag || 'a';
@@ -24,7 +24,7 @@ const ExternalLinkComponent: ForwardRefRenderFunction<HTMLAnchorElement, Externa
         rel: classNames(rel, 'noopener noreferrer'),
       }
     : { rel };
-  const additionalProps = { ...targetProps, ref };
+  const additionalProps = { ...targetProps, ref, id };
   return (
     <Tag href={href} className={className} title={title} {...additionalProps}>
       {children}

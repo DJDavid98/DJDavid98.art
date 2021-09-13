@@ -1,3 +1,4 @@
+import { MatrixContactCard } from 'components/about/MatrixContactCard';
 import { FC } from 'react';
 import { Col } from 'reactstrap';
 import { ContactCardSettings } from 'src/config';
@@ -23,6 +24,13 @@ export const ContactCardMapper: FC<PropTypes> = ({ data }) => {
           return (
             <Col key={el.id} {...colProps}>
               <DiscordContactCard {...el} />
+            </Col>
+          );
+        }
+        if ('matrixUsername' in el) {
+          return (
+            <Col key={el.id} {...colProps}>
+              <MatrixContactCard {...el} />
             </Col>
           );
         }

@@ -3,7 +3,6 @@ export * from './AppFooter';
 export * from './AppHeader';
 export * from './CustomIcon';
 export * from './DetailBlock';
-export * from './ExternalLink';
 export * from './Gallery';
 export * from './ImageViewer';
 export * from './Layout';

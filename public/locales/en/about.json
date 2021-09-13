@@ -55,7 +55,9 @@
     "visitPage": "Page",
     "visitChannel": "Channel",
     "visitStream": "Stream",
+    "joinServer": "Join server",
     "sendMessage": "Send Message",
+    "invite": "Invite",
     "copyStatus": {
       "info": "Click to copy",
       "copied": "Copied to clipboard"

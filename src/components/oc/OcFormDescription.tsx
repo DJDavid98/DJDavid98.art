@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CustomIcon, ExternalLink, ImageViewer } from 'components/common';
+import { CustomIcon, ImageViewer } from 'components/common';
+import { ExternalLink } from 'components/common/ExternalLink';
 import { ArtworkCredit } from 'components/oc/ArtworkCredit';
 import { CutieMarkButton } from 'components/oc/CutieMarkButton';
 import { OcStats } from 'components/oc/OcStats';
