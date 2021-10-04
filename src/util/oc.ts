@@ -1,6 +1,7 @@
 import { differenceInYears, getDate, getMonth, getYear, isValid } from 'date-fns';
 import { ParsedUrlQuery } from 'querystring';
-import { OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
+import { PERSONAL_DETAILS } from 'src/config';
+import { ArtistInfo, OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
 
 export const getOcPageRoute = (nsfwEnabled: boolean, species: string) => `/oc${nsfwEnabled ? `-mature` : ''}/${species}`;
 
@@ -110,3 +111,5 @@ export const resolveFormParameter = (query?: ParsedUrlQuery): OcSpecies => {
 };
 
 export const getOtherSpecies = (species: OcSpecies): OcSpecies => (species === OcSpecies.FOX ? OcSpecies.PONY : OcSpecies.FOX);
+
+export const isArtistMe = (artist?: ArtistInfo): boolean => artist?.name === PERSONAL_DETAILS.NAME;

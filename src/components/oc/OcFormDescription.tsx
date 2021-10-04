@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CustomIcon, ImageViewer } from 'components/common';
 import { ExternalLink } from 'components/common/ExternalLink';
-import { ArtworkCredit } from 'components/oc/ArtworkCredit';
+import { ArtworkCreditsList } from 'components/oc/ArtworkCreditsList';
 import { CutieMarkButton } from 'components/oc/CutieMarkButton';
 import { OcStats } from 'components/oc/OcStats';
 import { SfmModelButton } from 'components/oc/SfmModelButton';
@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { useCallback, useState, VFC } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
+import { DreamWeaverPony, SeafoodDinner } from 'src/config/artists';
 import { OcSpecies } from 'src/types/oc';
 
 const cmButtonId = 'cutie-mark-btn';
@@ -143,12 +144,14 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
             <FontAwesomeIcon icon="paint-brush" className="mr-2 mr-lg-3" />
             {t('oc:detail.artworkBy')}:
           </h3>
-          <div>
-            <ArtworkCredit className="btn btn-link" url="https://twitter.com/DreamWeaverPony" name="DreamWeaverPony" nsfw />
-            <ArtworkCredit className="btn btn-link" url="https://www.furaffinity.net/user/dreamweaverpony" name="DreamWeaverPony" />
-            <ArtworkCredit className="btn btn-link" url="https://www.patreon.com/dreamweaverpony" name="DreamWeaverPony" nsfw />
-            <ArtworkCredit className="btn btn-link" url="https://www.deviantart.com/dream-weaver-pony" name="Dream-Weaver-pony" />
-          </div>
+          <h4>{DreamWeaverPony.name}</h4>
+          <ArtworkCreditsList artist={DreamWeaverPony} compact hideNsfw={!isNsfw} />
+          {isNsfw && (
+            <>
+              <h4>{SeafoodDinner.name}</h4>
+              <ArtworkCreditsList artist={SeafoodDinner} compact />
+            </>
+          )}
         </div>
       </Col>
     </Row>

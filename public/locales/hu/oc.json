@@ -77,12 +77,14 @@
     "howToView": "Ennek az információnak a megtekintéséhez kattints a \"{{viewLink}}\" linkre a doboz jobb alsó sarkában, majd a megnyitott oldalon kattints a \"{{viewText}}\" menüelemre.",
     "viewOnText": "Megtekintés a Coolors-on",
     "coat": "Fedőszőr",
-    "mane": "Sörény",
+    "mane": "Sörény és Farok",
     "eyes": "Szemek",
     "magic": "Varázslat",
     "ears": "Fülek",
     "muzzle": "Száj",
-    "paws": "Tappancsok"
+    "paws": "Tappancsok",
+    "collar": "Nyakörv",
+    "genitals": "Nemi Szervek"
   },
   "existingArtwork": {
     "heading": "Nemrég Készült Rajzok",

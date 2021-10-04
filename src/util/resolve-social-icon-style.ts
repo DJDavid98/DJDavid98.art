@@ -10,52 +10,50 @@ type LinkStyle = {
     }
   | {
       brandLogo: string;
-      logoWidth: number;
-      logoHeight: number;
     }
   | Record<string, never>
 );
 
 export const resolveSocialIconStyle = (url: string): LinkStyle => {
-  if (/twitter\.com/.test(url)) {
-    return {
-      brandIcon: 'twitter',
-      colorClass: brandColorClasses.twitterColor,
-    };
+  const domain = url.replace(/^https?:\/\/([^/]+)(?:\/.*)?$/, '$1');
+  switch (domain) {
+    case 'twitter.com':
+      return {
+        brandIcon: 'twitter',
+        colorClass: brandColorClasses.twitterColor,
+      };
+    case 'www.deviantart.com':
+      return {
+        brandIcon: 'deviantart',
+        colorClass: brandColorClasses.deviantartColor,
+      };
+    case 'www.patreon.com':
+      return {
+        brandIcon: 'patreon',
+        colorClass: brandColorClasses.patreonColor,
+      };
+    case 'www.furaffinity.net':
+      return {
+        brandLogo: '/logos/furaffinity-color.svg',
+      };
+    case 'furbooru.org':
+      return {
+        brandLogo: '/logos/furbooru-color.svg',
+      };
+    case 'www.pillowfort.social':
+      return {
+        brandLogo: '/logos/pillowfort-black.svg',
+      };
+    case 'www.subscribestar.com':
+    case 'subscribestar.adult':
+      return {
+        brandLogo: '/logos/subscribestar.svg',
+      };
+    case 'ko-fi.com':
+      return {
+        brandLogo: '/logos/kofi.svg',
+      };
+    default:
+      return {};
   }
-  if (/deviantart\.com/.test(url)) {
-    return {
-      brandIcon: 'deviantart',
-      colorClass: brandColorClasses.deviantartColor,
-    };
-  }
-  if (/patreon\.com/.test(url)) {
-    return {
-      brandIcon: 'patreon',
-      colorClass: brandColorClasses.patreonColor,
-    };
-  }
-  if (/furaffinity\.net/.test(url)) {
-    return {
-      brandLogo: '/logos/furaffinity-color.svg',
-      logoWidth: 32,
-      logoHeight: 32,
-    };
-  }
-  if (/furbooru\.org/.test(url)) {
-    return {
-      brandLogo: '/logos/furbooru-color.svg',
-      logoWidth: 32,
-      logoHeight: 32,
-    };
-  }
-  if (/pillowfort\.social/.test(url)) {
-    return {
-      brandLogo: '/logos/pillowfort-black.svg',
-      logoWidth: 32,
-      logoHeight: 32,
-    };
-  }
-
-  return {};
 };

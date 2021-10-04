@@ -1,3 +1,5 @@
+import { OptionalProps } from 'src/types/common';
+
 export enum OcSpecies {
   FOX = 'fox',
   PONY = 'pony',
@@ -9,8 +11,10 @@ export const OC_PALETTES = {
   [OcSpecies.PONY]: {
     coat: ['#2F4B7A', '#6281B8'],
     mane: ['#B7D3F8', '#7CA6F0'],
-    eyes: ['#000', '#1F5450', '#87E8E0', '#B2EDE8', '#F6FFFE', '#FFF'],
     magic: ['#87E8E0'],
+    eyes: ['#000', '#1F5450', '#87E8E0', '#B2EDE8', '#F6FFFE', '#FFF'],
+    collar: ['#20365D', '#424E76', '#D5D7D8'],
+    genitals: ['#314A7C'],
   },
   [OcSpecies.FOX]: {
     ears: ['#30466E', '#7BA6EF', '#BDD2F8'],
@@ -19,3 +23,18 @@ export const OC_PALETTES = {
     paws: ['#30466E', '#6181B5', '#BB98D2'],
   },
 };
+
+export const NSFW_PALETTE_KEYS: { [k in OcSpecies]?: Array<keyof typeof OC_PALETTES[k]> } = {
+  [OcSpecies.PONY]: ['genitals', 'collar'],
+};
+
+export interface ArtistContactDetails {
+  url: string;
+  name: string;
+  nsfw?: true;
+}
+
+export interface ArtistInfo {
+  name: string;
+  credits: OptionalProps<ArtistContactDetails, 'name'>[];
+}

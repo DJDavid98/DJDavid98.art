@@ -1,36 +1,40 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
+import { AvatarBy, AvatarCredits, AvatarCreditsProps } from 'components/avatar/AvatarCredits';
 import { AppContainer, Layout } from 'components/common';
-import { ArtworkCredit } from 'components/oc';
 import styles from 'modules/AvatarPage.module.scss';
 import { GetStaticProps } from 'next';
-import { SSRConfig, Trans, useTranslation } from 'next-i18next';
+import { SSRConfig, useTranslation } from 'next-i18next';
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, useMemo, VFC } from 'react';
-import { Button, Col, Nav, NavItem, Row } from 'reactstrap';
-import { AVATAR_CREDIT, PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
+import { useEffect, useMemo, useState, VFC } from 'react';
+import { Button, Col, Row } from 'reactstrap';
+import { PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
+import { AVATAR_ARTIST } from 'src/config/avatar-artist';
 import { getGravatarUrl } from 'src/util/common';
 import { typedServerSideTranslations } from 'src/util/i18n-server';
+import { isArtistMe, isOldEnoughForNsfw } from 'src/util/oc';
 
 const seoAvatarSize = 365;
 
-const HomeLink: FC = ({ children }) => (
-  <Link href="/">
-    <a>{children}</a>
-  </Link>
-);
+type AvatarPageProps = Pick<AvatarCreditsProps, 'artist'>;
 
-const AvatarPage: VFC = () => {
+const AvatarPage: VFC<AvatarPageProps> = ({ artist }) => {
   const { t } = useTranslation();
-  const pictureByMe = AVATAR_CREDIT.name === null;
-  const pictureByAnonymous = AVATAR_CREDIT.name === false;
-  const artistMainName: string = useMemo(() => {
-    if (pictureByMe) return PERSONAL_DETAILS.NAME;
-    if (pictureByAnonymous) return t('avatar:unknownArtist');
-    return AVATAR_CREDIT.name as string;
-  }, [pictureByAnonymous, pictureByMe, t]);
+  const pictureBy = useMemo<AvatarBy | undefined>(() => {
+    if (!artist) return AvatarBy.ANONYMOUS;
+
+    if (isArtistMe(artist)) return AvatarBy.ME;
+  }, [artist]);
+  const artistMainName: string = useMemo(() => (artist ? artist.name : t('avatar:unknownArtist')), [artist, t]);
+
+  const [nsfwEnabled, setNsfwEnabled] = useState(false);
+
+  useEffect(() => {
+    setNsfwEnabled(isOldEnoughForNsfw());
+  }, []);
+
   return (
     <Layout>
       <NextSeo
@@ -60,36 +64,12 @@ const AvatarPage: VFC = () => {
             </div>
           </Col>
           <Col xs={12} md={7} lg={5} className="text-center text-md-left mt-3 mt-md-0">
-            <h2 className={classNames('h3', pictureByMe ? 'mb-0' : 'mb-4')}>
+            <h2 className={classNames('h3', pictureBy === AvatarBy.ME ? 'mb-0' : 'mb-4')}>
               <small className="d-block mb-2">{t('avatar:createdBy')}</small>
               <FontAwesomeIcon icon="paint-brush" className="mr-2" />
               <strong>{artistMainName}</strong>
             </h2>
-            {pictureByMe ? (
-              <>
-                <small className="d-block text-muted font-italic mb-3">{t('avatar:thatIsMe')}</small>
-                <p>
-                  <Trans t={t} i18nKey="avatar:noCreditsExplainer">
-                    0<HomeLink />2
-                  </Trans>
-                </p>
-              </>
-            ) : pictureByAnonymous ? (
-              t('avatar:noContactAnonymous')
-            ) : 'credits' in AVATAR_CREDIT ? (
-              <>
-                <p>{t('avatar:contactBelow')}</p>
-                <Nav vertical>
-                  {AVATAR_CREDIT.credits.map((credit, i) => (
-                    <NavItem key={i}>
-                      <ArtworkCredit className="nav-link" url={credit.url} name={credit.name || artistMainName} nsfw={credit.nsfw} />
-                    </NavItem>
-                  ))}
-                </Nav>
-              </>
-            ) : (
-              <p>{t('avatar:noContactAvailable')}</p>
-            )}
+            <AvatarCredits t={t} hideNsfw={!nsfwEnabled} artist={artist} by={pictureBy} />
           </Col>
         </Row>
         <div className="mt-3 text-center">
@@ -107,8 +87,9 @@ const AvatarPage: VFC = () => {
 
 export default AvatarPage;
 
-export const getStaticProps: GetStaticProps<SSRConfig> = async ({ locale }) => ({
+export const getStaticProps: GetStaticProps<AvatarPageProps & SSRConfig> = async ({ locale }) => ({
   props: {
+    artist: AVATAR_ARTIST,
     ...(await typedServerSideTranslations(locale, ['avatar'])),
   },
 });

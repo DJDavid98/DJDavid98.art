@@ -77,12 +77,14 @@
     "howToView": "To see this additional information, click the \"{{viewLink}}\" link in the bottom right corner of the widget, then in the page that opens, click the \"{{viewText}}\" item in the menu.",
     "viewOnText": "View on Coolors",
     "coat": "Coat",
-    "mane": "Mane",
+    "mane": "Mane & Tail",
     "eyes": "Eyes",
     "magic": "Magic",
     "ears": "Ears",
     "muzzle": "Muzzle",
-    "paws": "Paws"
+    "paws": "Paws",
+    "collar": "Collar",
+    "genitals": "Genitals"
   },
   "existingArtwork": {
     "heading": "Recently Finished Artwork",

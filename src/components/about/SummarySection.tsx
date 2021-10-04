@@ -4,7 +4,8 @@ import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { useRef, VFC } from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
-import { AVATAR_CREDIT, PERSONAL_DETAILS } from 'src/config';
+import { PERSONAL_DETAILS } from 'src/config';
+import { AVATAR_ARTIST } from 'src/config/avatar-artist';
 import { AgeDisplay } from './AgeDisplay';
 import { Avatar } from './Avatar';
 import { AvatarCredit } from './AvatarCredit';
@@ -64,7 +65,7 @@ export const SummarySection: VFC = () => {
         </aside>
       </div>
 
-      <AvatarCredit name={AVATAR_CREDIT.name} />
+      <AvatarCredit artist={AVATAR_ARTIST} />
 
       <Quote
         text={t('about:quote.text')}

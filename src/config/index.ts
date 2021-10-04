@@ -1,7 +1,5 @@
 import type { AppI18nNamespaces } from 'react-i18next';
 
-export * from './avatar-credit';
-
 export const CANONICAL_URL = 'https://djdavid98.art';
 export const IS_CLIENT_SIDE = typeof window !== 'undefined';
 
