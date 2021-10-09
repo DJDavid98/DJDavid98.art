@@ -146,7 +146,7 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
           </h3>
           <h4>{DreamWeaverPony.name}</h4>
           <ArtworkCreditsList artist={DreamWeaverPony} compact hideNsfw={!isNsfw} />
-          {isNsfw && (
+          {isNsfw && species === OcSpecies.PONY && (
             <>
               <h4>{SeafoodDinner.name}</h4>
               <ArtworkCreditsList artist={SeafoodDinner} compact />
