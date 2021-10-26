@@ -31,7 +31,8 @@ module.exports = withPlugins([[withESLint], [withCamelCaseCSSModules]], {
           if (/content-security-policy/i.test(headerConfig.key)) {
             const value = headerConfig.value
               .replace(/script-src [^;]+(;|$)/, `script-src * 'unsafe-inline' 'unsafe-hashes' 'unsafe-eval'$1`)
-              .replace(/((?:img|default)-src [^;]+)(;|$)/g, `$1 ${NEXT_PUBLIC_STORAGE_DOMAIN}$2`);
+              .replace(/((?:img|default)-src [^;]+)(;|$)/g, `$1 ${NEXT_PUBLIC_STORAGE_DOMAIN}$2`)
+              .replace(/upgrade-insecure-requests;/, '');
             return {
               ...headerConfig,
               value,
