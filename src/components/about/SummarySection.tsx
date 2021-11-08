@@ -6,6 +6,7 @@ import { useRef, VFC } from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
 import { AVATAR_ARTIST } from 'src/config/avatar-artist';
+import styles from 'modules/SummarySection.module.scss';
 import { AgeDisplay } from './AgeDisplay';
 import { Avatar } from './Avatar';
 import { AvatarCredit } from './AvatarCredit';
@@ -53,7 +54,7 @@ export const SummarySection: VFC = () => {
               {(h, m, s) => (
                 <span id="localtime">
                   <span className={classNames('start', { 'text-white': s === null })}>{h}</span>
-                  <span className={classNames({ invisible: s !== null && s % 2 === 0 })}>:</span>
+                  <span className={styles.tick}>:</span>
                   <span className={classNames('end', { 'text-white': s === null })}>{m}</span>
                 </span>
               )}

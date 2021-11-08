@@ -1,0 +1,14 @@
+.tick {
+  will-change: opacity;
+  animation: time-tick steps(1) 2s infinite;
+}
+
+@keyframes time-tick {
+  from,
+  to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
