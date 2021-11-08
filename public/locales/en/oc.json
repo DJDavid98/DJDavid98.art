@@ -58,7 +58,8 @@
     "sfmModelTooltip": "3D model for Source Filmmaker artists",
     "sfmModelSfw": "Download safe-for-work (without genitals)",
     "sfmModelNsfw": "Download not safe-for-work (with mare genitals)",
-    "artworkBy": "Artwork By"
+    "artworkBy": "Artwork By",
+    "telegramStickers": "Telegram Stickers"
   },
   "ageGate": {
     "title": "Age verification",

@@ -58,7 +58,8 @@
     "sfmModelTooltip": "3D-s modell Source Filmmaker művészek számára",
     "sfmModelSfw": "Munkahely-biztonságos letöltése (nemi szervek nélkül)",
     "sfmModelNsfw": "Nem munkahely-biztonságos letöltése (kanca nemi szervekkel)",
-    "artworkBy": "Rajzokat Készítette"
+    "artworkBy": "Rajzokat Készítette",
+    "telegramStickers": "Telegram Matricák"
   },
   "ageGate": {
     "title": "Életkor ellenőrzés",

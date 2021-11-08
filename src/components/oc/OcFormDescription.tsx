@@ -126,26 +126,31 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
               {t('oc:detail.acceptableKinks')}
             </Button>
           )}
-          {species === OcSpecies.PONY && (
-            <>
-              <hr />
-              <h3>
-                <FontAwesomeIcon icon="file-download" className="mr-2 mr-lg-3" />
-                {t('oc:detail.additionalResources')}
-              </h3>
-              <div className="d-flex flex-column flex-md-row justify-content-lg-start flex-wrap">
+          <hr />
+          <h3>
+            <FontAwesomeIcon icon="file-download" className="mr-2 mr-lg-3" />
+            {t('oc:detail.additionalResources')}
+          </h3>
+          <div className="d-flex flex-column flex-md-row justify-content-lg-start flex-wrap">
+            {species === OcSpecies.FOX ? (
+              <Button color="telegram" tag={ExternalLink} href={PERSONAL_DETAILS.OC_TELEGRAM_STICKERS_URL}>
+                <FontAwesomeIcon icon={['fab', 'telegram-plane']} className="mr-2" />
+                {t('oc:detail.telegramStickers')}
+              </Button>
+            ) : (
+              <>
                 <CutieMarkButton buttonId={cmButtonId} />
                 <SfmModelButton nsfwEnabled={nsfwEnabled} buttonId={sfmButtonId} />
-              </div>
-            </>
-          )}
+              </>
+            )}
+          </div>
           <hr />
           <h3>
             <FontAwesomeIcon icon="paint-brush" className="mr-2 mr-lg-3" />
             {t('oc:detail.artworkBy')}:
           </h3>
           <h4>{DreamWeaverPony.name}</h4>
-          <ArtworkCreditsList artist={DreamWeaverPony} compact hideNsfw={!isNsfw} />
+          <ArtworkCreditsList artist={DreamWeaverPony} compact hideNsfw={!nsfwEnabled} />
           {isNsfw && species === OcSpecies.PONY && (
             <>
               <h4>{SeafoodDinner.name}</h4>

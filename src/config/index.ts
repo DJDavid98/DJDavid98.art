@@ -35,6 +35,7 @@ export const PERSONAL_DETAILS = {
   },
   ARTIST_TAG_URL: 'https://furbooru.org/search?q=artist%3Adjdavid98%2C+gallery_id%3A13&sf=gallery_id%3A13',
   F_LIST_URL: 'https://www.f-list.net/c/double%20colon/',
+  OC_TELEGRAM_STICKERS_URL: 'https://t.me/addstickers/DoubleColon',
 };
 
 export const SITE_TITLE = PERSONAL_DETAILS.NAME;
