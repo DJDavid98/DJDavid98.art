@@ -68,7 +68,7 @@
     "month": "Month",
     "day": "Day",
     "invalidDate": "Please provide a valid date",
-    "storageNotice": "This date is only ever stored in your browser, and is not sent to any servers nor third parties. The date can de deleted at any time from this same page by clicking your calculated age.",
+    "storageNotice": "This date is only ever stored in your browser, and is not sent to any servers nor third parties. The date can be deleted at any time from this same page by clicking your calculated age.",
     "verify": "Verify my age",
     "close": "Go back"
   },
