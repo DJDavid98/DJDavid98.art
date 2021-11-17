@@ -53,6 +53,11 @@ export const resolveSocialIconStyle = (url: string): LinkStyle => {
       return {
         brandLogo: '/logos/kofi.svg',
       };
+    case 'vk.com':
+      return {
+        brandIcon: 'vk',
+        colorClass: brandColorClasses.vkColor,
+      };
     default:
       return {};
   }

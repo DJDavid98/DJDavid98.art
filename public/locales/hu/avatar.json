@@ -1,6 +1,10 @@
 {
   "title": "Profilkép Készítője",
+  "titlePrevious": "Korábbi Profilkép Készítője",
   "heading": "Jelenlegi Profilképem",
+  "headingPrevious": "Korábbi Profilképem",
+  "firstUseDate": "Először használva <1>{{date}}</1>",
+  "inUseSince": "<1>{{date}}</1> óta használt",
   "seoDesc": "A jelenlegi profilképemet {{name}} kész0tette",
   "createdBy": "Készítette:",
   "contactBelow": "Az elérhetőségeit alább találod.",
@@ -8,5 +12,8 @@
   "noContactAnonymous": "A művész neve elhallgatását kérte, vagy egyszerűen fogalmam sincs ki csinálta a képet. Ebből kifolyólag az elérhetőségeit sem tudom itt listázni.",
   "thatIsMe": "Jé, hisz ez én vagyok!",
   "noCreditsExplainer": "Itt szoktam listázni az aktuális profilképemet készítő művész elérhetőségeit, de mivel a mostanit épp én készítettem, semmi értelme megismételnem itt a saját elérhetőségeimet, <1>a főoldalon</1> ezek megtalálhatóak.",
-  "unknownArtist": "egy ismeretlen művész"
+  "unknownArtist": "egy ismeretlen művész",
+  "viewCurrent": "Jelenlegi",
+  "history": "Korábbi Profilképek",
+  "previousProfilePicture": "Régebbi profilkép"
 }

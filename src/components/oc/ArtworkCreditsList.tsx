@@ -4,12 +4,13 @@ import { Nav, NavItem } from 'reactstrap';
 import { ArtistInfo } from 'src/types/oc';
 
 interface ArtworkCreditListProps {
-  artist: ArtistInfo;
+  credits: ArtistInfo['credits'];
+  name: ArtistInfo['name'];
   compact?: boolean;
   hideNsfw?: boolean;
 }
 
-const ArtworkCreditListComponent: VFC<ArtworkCreditListProps> = ({ artist: { credits, name }, compact = false, hideNsfw = false }) => {
+const ArtworkCreditListComponent: VFC<ArtworkCreditListProps> = ({ credits, name, compact = false, hideNsfw = false }) => {
   const creditsElements = useMemo(
     () =>
       credits.reduce(

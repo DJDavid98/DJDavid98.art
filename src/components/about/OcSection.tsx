@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { VFC } from 'react';
 import { Button, Col, Container, Row } from 'reactstrap';
 import { ABOUT_INDICES, ABOUT_SECTIONS, PERSONAL_DETAILS } from 'src/config';
+import { ARTIST_MAP } from 'src/config/artists';
 import { OcSpecies } from 'src/types/oc';
 import { getOcPageRoute } from 'src/util/oc';
 import disyDreamweaver from 'public/disy-dreamweaver.png';
@@ -22,12 +23,7 @@ export const OcSection: VFC = () => {
             </div>
             <small className="d-block text-muted mt-2">
               {`${t('about:myOC.artBy')} `}
-              <ArtworkCredit
-                className="ml-1"
-                spacingClass={false}
-                url="https://www.furaffinity.net/user/dreamweaverpony"
-                name="DreamWeaverPony"
-              />
+              <ArtworkCredit className="ml-1" spacingClass={false} name="DreamWeaverPony" url={ARTIST_MAP.DreamWeaverPony.credits[1].url} />
             </small>
           </Col>
           <Col>

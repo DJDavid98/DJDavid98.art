@@ -38,15 +38,21 @@ export const AvatarCredits: VFC<AvatarCreditsProps> = ({ t, by, artist, hideNsfw
     case AvatarBy.ANONYMOUS:
       return t('avatar:noContactAnonymous');
     default:
-      if (typeof artist !== 'object' || artist === null || !('credits' in artist) || artist.credits.length === 0) {
-        return <p>{t('avatar:noContactAvailable')}</p>;
+      if (typeof artist === 'object' && artist !== null) {
+        let credits = artist.credits;
+        if (hideNsfw) {
+          credits = credits.filter((c) => !c.nsfw);
+        }
+        if (credits.length > 0) {
+          return (
+            <>
+              <p>{t('avatar:contactBelow')}</p>
+              <ArtworkCreditsList name={artist.name} credits={credits} hideNsfw={hideNsfw} />
+            </>
+          );
+        }
       }
 
-      return (
-        <>
-          <p>{t('avatar:contactBelow')}</p>
-          <ArtworkCreditsList artist={artist} hideNsfw={hideNsfw} />
-        </>
-      );
+      return <p>{t('avatar:noContactAvailable')}</p>;
   }
 };

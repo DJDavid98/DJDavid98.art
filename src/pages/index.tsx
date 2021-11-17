@@ -9,8 +9,7 @@ import { ImageResponse } from 'src/types/furbooru-api';
 import { getGravatarUrl } from 'src/util/common';
 import { typedServerSideTranslations } from 'src/util/i18n-server';
 import { FurbooruGalleryId, searchFurbooru } from 'src/util/search-furbooru';
-
-const seoAvatarSize = 365;
+import { AVATAR_IMAGE_SIZE } from 'src/util/avatars';
 
 type AboutPageProps = RecentArtworkProps;
 
@@ -32,9 +31,9 @@ const AboutPage: VFC<AboutPageProps> = ({ recentArtwork }) => {
           images: [
             {
               alt: t('common:avatarImageAlt', { name: PERSONAL_DETAILS.NAME }),
-              url: getGravatarUrl(seoAvatarSize),
-              width: seoAvatarSize,
-              height: seoAvatarSize,
+              url: getGravatarUrl(AVATAR_IMAGE_SIZE),
+              width: AVATAR_IMAGE_SIZE,
+              height: AVATAR_IMAGE_SIZE,
             },
           ],
         }}

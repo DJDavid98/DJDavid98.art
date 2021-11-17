@@ -11,7 +11,7 @@ import Image from 'next/image';
 import { useCallback, useState, VFC } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
-import { DreamWeaverPony, SeafoodDinner } from 'src/config/artists';
+import { ARTIST_MAP } from 'src/config/artists';
 import { OcSpecies } from 'src/types/oc';
 
 const cmButtonId = 'cutie-mark-btn';
@@ -149,12 +149,12 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
             <FontAwesomeIcon icon="paint-brush" className="mr-2 mr-lg-3" />
             {t('oc:detail.artworkBy')}:
           </h3>
-          <h4>{DreamWeaverPony.name}</h4>
-          <ArtworkCreditsList artist={DreamWeaverPony} compact hideNsfw={!nsfwEnabled} />
+          <h4>{ARTIST_MAP.DreamWeaverPony.name}</h4>
+          <ArtworkCreditsList {...ARTIST_MAP.DreamWeaverPony} compact hideNsfw={!nsfwEnabled} />
           {isNsfw && species === OcSpecies.PONY && (
             <>
-              <h4>{SeafoodDinner.name}</h4>
-              <ArtworkCreditsList artist={SeafoodDinner} compact />
+              <h4>{ARTIST_MAP.SeafoodDinner.name}</h4>
+              <ArtworkCreditsList {...ARTIST_MAP.SeafoodDinner} compact />
             </>
           )}
         </div>

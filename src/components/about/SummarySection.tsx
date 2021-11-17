@@ -1,12 +1,11 @@
 import classNames from 'classnames';
 import { DetailBlock } from 'components/common/DetailBlock';
+import styles from 'modules/SummarySection.module.scss';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { useRef, VFC } from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
-import { AVATAR_ARTIST } from 'src/config/avatar-artist';
-import styles from 'modules/SummarySection.module.scss';
 import { AgeDisplay } from './AgeDisplay';
 import { Avatar } from './Avatar';
 import { AvatarCredit } from './AvatarCredit';
@@ -66,7 +65,7 @@ export const SummarySection: VFC = () => {
         </aside>
       </div>
 
-      <AvatarCredit artist={AVATAR_ARTIST} />
+      <AvatarCredit />
 
       <Quote
         text={t('about:quote.text')}

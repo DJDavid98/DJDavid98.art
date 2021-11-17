@@ -8,8 +8,7 @@ import 'src/app.scss';
 import { SITE_TITLE } from 'src/config';
 import 'src/fontawesome';
 import { assembleSeoUrl, getGravatarUrl } from 'src/util/common';
-
-const avatarSize = 512;
+import { AVATAR_IMAGE_SIZE } from 'src/util/avatars';
 
 const App: AppComponent = ({ Component, pageProps }) => {
   const { asPath, defaultLocale, locale, locales } = useRouter();
@@ -22,6 +21,8 @@ const App: AppComponent = ({ Component, pageProps }) => {
       })),
     [asPath, defaultLocale, locales],
   );
+
+  const canonicalUrl = useMemo(() => assembleSeoUrl(asPath), [asPath]);
 
   return (
     <>
@@ -43,16 +44,17 @@ const App: AppComponent = ({ Component, pageProps }) => {
           type: 'website',
           locale,
           site_name: 'DJDavid98',
-          url: assembleSeoUrl(asPath),
+          url: canonicalUrl,
           images: [
             {
               alt: 'Avatar of DJDavid98',
-              url: getGravatarUrl(avatarSize),
-              width: avatarSize,
-              height: avatarSize,
+              url: getGravatarUrl(AVATAR_IMAGE_SIZE),
+              width: AVATAR_IMAGE_SIZE,
+              height: AVATAR_IMAGE_SIZE,
             },
           ],
         }}
+        canonical={canonicalUrl}
         twitter={{
           cardType: 'summary',
           handle: '@DJDavid98',
