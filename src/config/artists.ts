@@ -79,14 +79,53 @@ const Dbleki: ArtistInfo = {
   ],
 };
 
+const Pridark: ArtistInfo = {
+  name: 'Pridark',
+  credits: [
+    { url: 'https://twitter.com/Pridark_', name: 'Pridark_', nsfw: true },
+    { url: 'https://www.patreon.com/pridark', nsfw: true },
+    { url: 'https://www.deviantart.com/pridark' },
+    { url: 'https://www.furaffinity.net/user/pridarky/', name: 'pridarky' },
+    { url: 'https://derpibooru.org/profiles/Pridark' },
+  ],
+};
+
+const AriaMidnighters: ArtistInfo = {
+  name: 'AriaMidnighters',
+  credits: [
+    { url: 'https://www.deviantart.com/ariamidnighters' },
+    { url: 'https://twitter.com/AMidnighters', name: 'AMidnighters' },
+    { url: 'https://www.furaffinity.net/user/ariamidnighters/', name: 'ariamidnighters' },
+  ],
+};
+
+const Noxi: ArtistInfo = {
+  name: 'Noxi',
+  credits: [{ url: 'https://twitter.com/Noxi1_48', name: 'Noxi1_48' }],
+};
+
+const WitchTaunter: ArtistInfo = {
+  name: 'WitchTaunter',
+  credits: [
+    { url: 'https://www.youtube.com/user/witchtaunter' },
+    { url: 'https://twitter.com/Witch_Taunter', name: 'Witch_Taunter', nsfw: true },
+    { url: 'https://www.patreon.com/WitchTaunter', nsfw: true },
+    { url: 'https://www.deviantart.com/witchtaunter' },
+  ],
+};
+
 export const ARTIST_MAP = {
+  AriaMidnighters,
   DJDavid98,
   Dbleki,
   DreamWeaverPony,
   ElisaWind,
   NightyCloud,
+  Noxi,
+  Pridark,
   SeafoodDinner,
   Vensual99,
+  WitchTaunter,
 };
 
 export type ArtistName = keyof typeof ARTIST_MAP;

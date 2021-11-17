@@ -26,6 +26,26 @@ export const AVATAR_HISTORY: AvatarDefinition[] = [
     artist: 'Dbleki',
     firstUsed: 1613169284000,
   },
+  {
+    artist: 'DreamWeaverPony',
+    firstUsed: 1603623600000,
+  },
+  {
+    artist: 'Pridark',
+    firstUsed: 1601114400000,
+  },
+  {
+    artist: 'AriaMidnighters',
+    firstUsed: 1591869600000,
+  },
+  {
+    artist: 'Noxi',
+    firstUsed: 1590141600000,
+  },
+  {
+    artist: 'WitchTaunter',
+    firstUsed: 1580727600000,
+  },
 ];
 
 export const CURRENT_AVATAR_INDEX = 0;

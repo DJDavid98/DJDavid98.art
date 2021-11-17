@@ -44,6 +44,10 @@ export const resolveSocialIconStyle = (url: string): LinkStyle => {
       return {
         brandLogo: '/logos/pillowfort-black.svg',
       };
+    case 'derpibooru.org':
+      return {
+        brandLogo: '/logos/derpibooru-color.svg',
+      };
     case 'www.subscribestar.com':
     case 'subscribestar.adult':
       return {
@@ -57,6 +61,11 @@ export const resolveSocialIconStyle = (url: string): LinkStyle => {
       return {
         brandIcon: 'vk',
         colorClass: brandColorClasses.vkColor,
+      };
+    case 'www.youtube.com':
+      return {
+        brandIcon: 'youtube',
+        colorClass: brandColorClasses.youtubeColor,
       };
     default:
       return {};
