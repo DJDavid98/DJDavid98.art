@@ -1,11 +1,11 @@
 import { differenceInYears } from 'date-fns';
 import { useTranslation } from 'next-i18next';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { FC, useEffect, useMemo, useRef, useState } from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
 import styles from 'modules/AgeDisplay.module.scss';
 
-export const AgeDisplay: React.FC = (props) => {
+export const AgeDisplay: FC = (props) => {
   const { t } = useTranslation();
   const [now, setNow] = useState(new Date());
   const age = useMemo(() => String(differenceInYears(now, PERSONAL_DETAILS.BIRTH_DATE)), [now]);

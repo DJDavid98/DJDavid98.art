@@ -16,6 +16,7 @@ import { ARTIST_MAP } from 'src/config/artists';
 import { AVATAR_HISTORY, CURRENT_AVATAR_INDEX } from 'src/config/avatars';
 import { Translatable } from 'src/types/common';
 import { AVATAR_IMAGE_SIZE, getAvatarImageUrl } from 'src/util/avatars';
+import { useLocale } from 'src/util/common';
 import { translatableValue } from 'src/util/i18n';
 import { typedServerSideTranslations } from 'src/util/i18n-server';
 import { isArtistMe, isOldEnoughForNsfw } from 'src/util/oc';
@@ -25,7 +26,11 @@ const AVATAR_PREVIEW_SIZE = AVATAR_IMAGE_SIZE / 2;
 export type AvatarPageProps = { avatarIndex?: number };
 
 export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
+  const locale = useLocale(language);
   const avatarIndexValid = typeof avatarIndex === 'number' && avatarIndex in AVATAR_HISTORY;
   const displayCurrentAvatar = !avatarIndexValid || avatarIndex === CURRENT_AVATAR_INDEX;
   const effectiveAvatarIndex = displayCurrentAvatar ? CURRENT_AVATAR_INDEX : avatarIndex;
@@ -33,7 +38,7 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
   const { artist: artistKey, firstUsed } = displayedAvatar;
   const artist = useMemo(() => ARTIST_MAP[artistKey], [artistKey]);
   const firstUsedDate = useMemo(() => new Date(firstUsed), [firstUsed]);
-  const firstUsedDateString = useMemo(() => formatRelative(firstUsedDate, new Date()), [firstUsedDate]);
+  const firstUsedDateString = useMemo(() => formatRelative(firstUsedDate, new Date(), { locale }), [firstUsedDate, locale]);
   const avatarUrl = getAvatarImageUrl(firstUsed);
   const pictureBy = useMemo<AvatarBy | undefined>(() => {
     if (!artist) return AvatarBy.ANONYMOUS;
