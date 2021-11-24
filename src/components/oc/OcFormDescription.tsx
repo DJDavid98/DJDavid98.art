@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 import { CustomIcon, ImageViewer } from 'components/common';
 import { ExternalLink } from 'components/common/ExternalLink';
 import { ArtworkCreditsList } from 'components/oc/ArtworkCreditsList';
@@ -47,30 +48,74 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
   const openImageViewer = useCallback(() => setIsViewerOpen(true), []);
   const closeImageViewer = useCallback(() => setIsViewerOpen(false), []);
 
-  const imageClass = species === OcSpecies.FOX ? styles.sheetImageFox : undefined;
-
   const furbooruGalleryUrl = PERSONAL_DETAILS.OC_FURBOORU_GALLERY_URL(species);
+  const showNsfwPonyArtworkCredit = isNsfw && species === OcSpecies.PONY;
 
   return (
-    <Row tag="section" className={className}>
-      <Col xs={12} lg={6} xl={8}>
-        <div className={`${styles.refSheetWrapper} mb-3 mb-lg-0`}>
-          {sheetFilePath && (
-            <Image
-              key={sheetFilePath}
-              src={sheetFilePath}
-              alt={downloadFileName}
-              onClick={openImageViewer}
-              unoptimized
-              width={dimensions[0]}
-              height={dimensions[1]}
-              className={imageClass}
-            />
+    <Row tag="section" className={classNames(className, styles.ocFormSection)}>
+      <Col className={styles.refSheetWrapper}>
+        {sheetFilePath && (
+          <Image
+            key={sheetFilePath}
+            src={sheetFilePath}
+            alt={downloadFileName}
+            onClick={openImageViewer}
+            unoptimized
+            width={dimensions[0]}
+            height={dimensions[1]}
+            className={styles.sheetImage}
+          />
+        )}
+
+        <div className="d-flex flex-column flex-md-row justify-content-lg-start flex-wrap">
+          <Button
+            tag="a"
+            color="primary"
+            download={`${downloadFileName}.${fileFormat}`}
+            href={sheetFilePath}
+            className="d-block d-md-inline-block mb-2 mr-md-2"
+          >
+            <FontAwesomeIcon icon="download" className="mr-2" />
+            {t('oc:detail.downloadRefSheet', { format: fileFormat.toUpperCase() })}
+          </Button>
+          {species === OcSpecies.FOX ? (
+            <Button
+              color="telegram"
+              tag={ExternalLink}
+              href={PERSONAL_DETAILS.OC_TELEGRAM_STICKERS_URL}
+              className="d-block d-md-inline-block mb-2 mr-md-2"
+            >
+              <FontAwesomeIcon icon={['fab', 'telegram-plane']} className="mr-2" />
+              {t('oc:detail.telegramStickers')}
+            </Button>
+          ) : (
+            <>
+              <CutieMarkButton buttonId={cmButtonId} />
+              <SfmModelButton nsfwEnabled={nsfwEnabled} buttonId={sfmButtonId} />
+            </>
+          )}
+          <Button color="furbooru" tag={ExternalLink} href={furbooruGalleryUrl} className="d-block d-md-inline-block mb-2 mr-md-2">
+            <CustomIcon src="/logos/furbooru.svg" className="mr-2" />
+            {t('oc:detail.previousArt')}
+          </Button>
+          {nsfwEnabled && (
+            <Button color="f-list" tag={ExternalLink} href={PERSONAL_DETAILS.F_LIST_URL} className="d-block d-md-inline-block mb-2 mr-md-2">
+              <FontAwesomeIcon icon="heart" className="mr-2" />
+              {t('oc:detail.acceptableKinks')}
+            </Button>
           )}
         </div>
-        {sheetFilePath && isViewerOpen && <ImageViewer onCloseRequest={closeImageViewer} mainSrc={sheetFilePath} />}
+
+        <p className="font-weight-bold my-2 mx-2">
+          <FontAwesomeIcon icon="paint-brush" className="mr-2" />
+          {t('oc:detail.artworkBy')}: {ARTIST_MAP.DreamWeaverPony.name}
+          {showNsfwPonyArtworkCredit && ` & ${ARTIST_MAP.SeafoodDinner.name}`}
+        </p>
+        <ArtworkCreditsList {...ARTIST_MAP.DreamWeaverPony} compact hideNsfw={!nsfwEnabled} />
+        {showNsfwPonyArtworkCredit && <ArtworkCreditsList {...ARTIST_MAP.SeafoodDinner} compact />}
       </Col>
-      <Col xs={12} lg={6} xl={4}>
+      {sheetFilePath && isViewerOpen && <ImageViewer onCloseRequest={closeImageViewer} mainSrc={sheetFilePath} />}
+      <Col className={styles.descriptionWrapper}>
         <div className="text-center text-lg-left">
           <h2 className="mb-0">{t('oc:detail.heading', { form })}</h2>
           <OcStats species={species} nsfwShown={isNsfw} />
@@ -95,8 +140,7 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
           />
         </p>
         <p>
-          {t('oc:detail.p2')}
-          {t('oc:detail.p3')}
+          {`${t('oc:detail.p2')} ${t('oc:detail.p3')}`}
           {nsfwEnabled && (
             <>
               {` ${t('oc:detail.p3Lewd.select')} `}
@@ -105,59 +149,6 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
             </>
           )}
         </p>
-        <div>
-          <Button
-            tag="a"
-            color="primary"
-            download={`${downloadFileName}.${fileFormat}`}
-            href={sheetFilePath}
-            className="d-block d-md-inline-block mb-2 mr-md-2"
-          >
-            <FontAwesomeIcon icon="download" className="mr-2" />
-            {t('oc:detail.downloadRefSheet', { format: fileFormat.toUpperCase() })}
-          </Button>
-          <Button color="furbooru" tag={ExternalLink} href={furbooruGalleryUrl} className="d-block d-md-inline-block mb-2 mr-md-2">
-            <CustomIcon src="/logos/furbooru.svg" className="mr-2" />
-            {t('oc:detail.previousArt')}
-          </Button>
-          {nsfwEnabled && (
-            <Button color="f-list" tag={ExternalLink} href={PERSONAL_DETAILS.F_LIST_URL} className="d-block d-md-inline-block mb-2 mr-md-2">
-              <FontAwesomeIcon icon="heart" className="mr-2" />
-              {t('oc:detail.acceptableKinks')}
-            </Button>
-          )}
-          <hr />
-          <h3>
-            <FontAwesomeIcon icon="file-download" className="mr-2 mr-lg-3" />
-            {t('oc:detail.additionalResources')}
-          </h3>
-          <div className="d-flex flex-column flex-md-row justify-content-lg-start flex-wrap">
-            {species === OcSpecies.FOX ? (
-              <Button color="telegram" tag={ExternalLink} href={PERSONAL_DETAILS.OC_TELEGRAM_STICKERS_URL}>
-                <FontAwesomeIcon icon={['fab', 'telegram-plane']} className="mr-2" />
-                {t('oc:detail.telegramStickers')}
-              </Button>
-            ) : (
-              <>
-                <CutieMarkButton buttonId={cmButtonId} />
-                <SfmModelButton nsfwEnabled={nsfwEnabled} buttonId={sfmButtonId} />
-              </>
-            )}
-          </div>
-          <hr />
-          <h3>
-            <FontAwesomeIcon icon="paint-brush" className="mr-2 mr-lg-3" />
-            {t('oc:detail.artworkBy')}:
-          </h3>
-          <h4>{ARTIST_MAP.DreamWeaverPony.name}</h4>
-          <ArtworkCreditsList {...ARTIST_MAP.DreamWeaverPony} compact hideNsfw={!nsfwEnabled} />
-          {isNsfw && species === OcSpecies.PONY && (
-            <>
-              <h4>{ARTIST_MAP.SeafoodDinner.name}</h4>
-              <ArtworkCreditsList {...ARTIST_MAP.SeafoodDinner} compact />
-            </>
-          )}
-        </div>
       </Col>
     </Row>
   );

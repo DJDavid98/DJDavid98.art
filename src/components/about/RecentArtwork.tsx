@@ -35,7 +35,7 @@ export const RecentArtwork: VFC<RecentArtworkProps> = ({ recentArtwork }) => {
     <>
       <section className="artwork-section py-5" id={ABOUT_SECTIONS[ABOUT_INDICES.ARTWORK][0]}>
         <Container>
-          <h1>{t('about:artwork.heading')}</h1>
+          <h2>{t('about:artwork.heading')}</h2>
           {artwork.length > 0 ? (
             <Gallery images={artwork} />
           ) : (

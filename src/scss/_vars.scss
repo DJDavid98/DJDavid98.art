@@ -1,7 +1,9 @@
 $font-family-base: 'Catamaran', sans-serif;
 $font-family-monospace: 'Source Code Pro', 'Consolas', monospace;
 
-$secondary: #6181b6;
+$favourite-color: #6181b6;
+
+$secondary: $favourite-color;
 $deviantart: #05ae40;
 $discord: #5865f2;
 $protonmail: #8b8cc1;
@@ -27,6 +29,7 @@ $furaffinity: #faaf39;
 $f-list: #1b446f;
 $vk: #2787f5;
 $matrix: #222;
+$spotify: darken(#1ed760, 5%);
 
 $body-bg: transparent;
 

@@ -1,5 +1,5 @@
 $about-section-bg: $light;
-$artwork-section-bg: lighten($secondary, 40%);
+$artwork-section-bg: lighten($furbooru, 35%);
 
 #lightboxBackdrop button {
   filter: drop-shadow(0 0 1px black);
@@ -80,21 +80,19 @@ $artwork-section-bg: lighten($secondary, 40%);
     }
 
     .detail {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-flow: row wrap;
       margin-top: rem(5px);
       user-select: none;
-
-      @include media-breakpoint-up(md) {
-        br {
-          display: none;
-        }
-      }
+      padding: 0 25%;
 
       .detail-block {
         display: inline-block;
         font-size: rem(26px);
         line-height: 1em;
-        padding: rem(5px);
+        padding: rem(8px);
         vertical-align: middle;
 
         .detail-block-label {
@@ -113,23 +111,19 @@ $artwork-section-bg: lighten($secondary, 40%);
       .loc .country-container {
         font-size: 0;
 
-        > div {
+        span:not(.sr-only),
+        img {
           display: block !important;
         }
       }
 
       .color .color-holder {
-        color: $secondary;
-
-        &:before {
-          $size: rem(20px);
-          background: $secondary;
-          content: '';
-          display: inline-block;
-          height: $size;
-          margin-right: rem(6px);
-          width: $size;
-        }
+        background: $favourite-color;
+        color: color-yiq($favourite-color);
+        padding: rem(6px);
+        font-size: 1.2rem;
+        border-radius: 0.25em;
+        line-height: 1em;
       }
     }
   }
@@ -171,6 +165,7 @@ $artwork-section-bg: lighten($secondary, 40%);
       height: $divider-size-desktop;
     }
 
+    &.about-divider-top-arrow,
     &.about-divider-top {
       top: -$divider-size-mobile;
 
@@ -190,10 +185,6 @@ $artwork-section-bg: lighten($secondary, 40%);
 
   .artwork-section {
     background-color: $artwork-section-bg;
-
-    .ReactGridGallery_tile {
-      background-color: transparent !important;
-    }
   }
 
   .oc-section {
@@ -222,7 +213,7 @@ $artwork-section-bg: lighten($secondary, 40%);
       height: $height;
       position: absolute;
       width: 100%;
-      @include stampy-background('inv-dark', $height);
+      @include stampy-background('dark', $height);
     }
   }
 
@@ -238,7 +229,7 @@ $artwork-section-bg: lighten($secondary, 40%);
       height: $height;
       position: absolute;
       width: 100%;
-      @include stampy-background('white', $height, true);
+      @include stampy-background('inv-white', $height, true);
     }
   }
 }

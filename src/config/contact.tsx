@@ -205,4 +205,11 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
     url: 'https://soundcloud.com/DJDavid98',
     renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'soundcloud']} {...props} />,
   },
+  {
+    id: 'spotify',
+    name: 'Spotify',
+    url: 'https://open.spotify.com/playlist/4A0PhLrsC5BtKYHIV5kk26?si=5a178f5e614c4548',
+    renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'spotify']} {...props} />,
+    visitText: ['about:contact.playlist'],
+  },
 ];

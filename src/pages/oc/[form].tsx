@@ -145,16 +145,16 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
           <span className="d-block d-lg-inline mr-lg-2">{t('oc:speciesSelect')}:</span>
 
           <ButtonGroup>
-            <Link href={getOcPageRoute(isNsfw, OcSpecies.PONY)} passHref replace {...routeReplaceProps}>
-              <Button size="sm" teg="a" active={species === OcSpecies.PONY}>
-                <FontAwesomeIcon icon="horse-head" className="mr-2" />
-                {t(`oc:pony`)}
-              </Button>
-            </Link>
             <Link href={getOcPageRoute(isNsfw, OcSpecies.FOX)} passHref replace {...routeReplaceProps}>
               <Button size="sm" teg="a" active={species === OcSpecies.FOX}>
                 <FontAwesomeIcon icon="paw" className="mr-2" />
                 {t(`oc:fox`)}
+              </Button>
+            </Link>
+            <Link href={getOcPageRoute(isNsfw, OcSpecies.PONY)} passHref replace {...routeReplaceProps}>
+              <Button size="sm" teg="a" active={species === OcSpecies.PONY}>
+                <FontAwesomeIcon icon="horse-head" className="mr-2" />
+                {t(`oc:pony`)}
               </Button>
             </Link>
           </ButtonGroup>

@@ -1,8 +1,9 @@
 {
   "title": "Homepage",
   "seoDesc": "Hobbyist Digital Artist from Hungary - My artwork, OCs, and contact information",
-  "years": "y/o",
-  "yearsOld": "years old",
+  "age": "age",
+  "agePlacement": "prepend",
+  "birthday": "birthday",
   "gender": "pronouns",
   "genderPlacement": "prepend",
   "male": "he/him",
@@ -10,6 +11,7 @@
   "hungary": "Hungary",
   "localTime": "local time",
   "favoriteColor": "favorite color",
+  "favoriteColorName": "glaucous",
   "avatarBy": "Current avatar by",
   "quote": {
     "text": "Creativity is contagious. Pass it on.",
@@ -20,14 +22,9 @@
   "summary": "Summary",
   "aboutMe": {
     "heading": "About Me",
-    "p1": {
-      "t1": "I’m a hobbyist digital artist mostly creating artwork in relation to the TV show ",
-      "t2": "My Little Pony: Friendship is Magic",
-      "t3": " and taking part in various art-related events that happen in its fandom. Sometimes I might offer to help out with Hungarian translations for certain community projects as well."
-    },
-    "mlpWikipediaUrl": "https://en.wikipedia.org/wiki/My_Little_Pony:_Friendship_Is_Magic",
-    "p2": "In addition to creating art I also have a tendency to support independent artists from the fandom in the form of purchasing commissions featuring various original characters, ranging from my own to friends’ or even the artists’.",
-    "p3": "My favorite character from the show is Vinyl Scratch, also known as DJ P0n-3. As obvious it might seem given my name, the reason is actually the simple fact that I really like her color scheme. If I had to pick from the Mane 6 I’d choose Rainbow Dash."
+    "p1": "I’m a hobbyist digital artist who loves drawing animals in his free time. My personal favourite species are foxes, but I like canines in general, besides other four-legged creatures. I consider myself to be part of the larger furry community. I occasionally participate in related events to relax, or to hang out with friends.",
+    "p2": "In addition to creating art myself, I also have a tendency to support independent artists from the furry fandom in the form of purchasing commissions featuring various original characters, ranging from my own to friends’ or even the artists’.",
+    "p3": "When I'm not drawing, my favorite activities include listening to music, watching movies or series, and playing video games. You can find my favourites at the links in the contact section below. My native language is Hungarian, but I'm also fluent in English and I'm actively trying to learn Russian."
   },
   "artwork": {
     "heading": "Recent Artwork",
@@ -58,6 +55,7 @@
     "joinServer": "Join server",
     "sendMessage": "Send Message",
     "invite": "Invite",
+    "playlist": "Playlist",
     "copyStatus": {
       "info": "Click to copy",
       "copied": "Copied to clipboard"

@@ -49,6 +49,7 @@ $contact-card-icon-size-desktop: 4rem;
   @include contact-card($furaffinity, 'furaffinity');
   @include contact-card($vk, 'vk');
   @include contact-card($matrix, 'matrix');
+  @include contact-card($spotify, 'spotify');
 
   .contact-card-icon {
     height: $contact-card-icon-size-mobile !important;

@@ -10,6 +10,7 @@ import {
   faPatreon,
   faPlaystation,
   faSoundcloud,
+  faSpotify,
   faSteam,
   faSteamSymbol,
   faTelegramPlane,
@@ -20,7 +21,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import {
   faArrowRight,
-  faBirthdayCake,
   faClipboard,
   faClock,
   faDog,
@@ -68,13 +68,14 @@ const brandIcons = [
   faPatreon,
   faPlaystation,
   faSoundcloud,
+  faSpotify,
   faSteam,
   faSteamSymbol,
   faTelegramPlane,
   faTwitter,
+  faVk,
   faXbox,
   faYoutube,
-  faVk,
 ];
 
 // List of used icons - amend if new icons are needed
@@ -111,6 +112,5 @@ library.add(
   faPlayCircle,
   faPaintBrush,
   faFileDownload,
-  faBirthdayCake,
   faExclamationTriangle,
 );

@@ -1,8 +1,9 @@
 {
   "title": "Főoldal",
   "seoDesc": "Hobbi Digitális Művész Magyarországról - Rajzaim, karaktereim és elérhetőségek",
-  "years": "éves",
-  "yearsOld": " ",
+  "age": "éves",
+  "agePlacement": "append",
+  "birthday": "születésnap",
   "gender": "nemű",
   "genderPlacement": "append",
   "male": "férfi",
@@ -10,6 +11,7 @@
   "hungary": "Magyarország",
   "localTime": "helyi idő",
   "favoriteColor": "kedvenc szín",
+  "favoriteColorName": "kékeszöld",
   "avatarBy": "A jelenlegi profilképem készítette:",
   "quote": {
     "text": "A kreativitás ragályos. Add tovább.",
@@ -20,14 +22,9 @@
   "summary": "Összefoglaló",
   "aboutMe": {
     "heading": "Rólam",
-    "p1": {
-      "t1": "Amatőr digitális művész vagyok, és legfőképp az ",
-      "t2": "Én Kicsi Pónim: Varázslatos Barátság",
-      "t3": " című TV  sorozattal kapcsolatban készítek rajzokat, illetve részt szoktam venni a rajongótábor által szervezett rajzolással kapcsolatos eseményeken. Néhanapján előfordul, hogy felajánlom a segítségem magyar fordítások készítéséhez egyes közösségi projekteknek."
-    },
-    "mlpWikipediaUrl": "https://hu.wikipedia.org/wiki/%C3%89n_kicsi_p%C3%B3nim:_Var%C3%A1zslatos_bar%C3%A1ts%C3%A1g",
-    "p2": "Amellett, hogy én magam is rajzolok, támogatni szoktam független művészeket  is a rajongótáborból rajz rendelések formájában, amin többnyire a saját, a barátaim, vagy akár a rajzoló eredetei karakterei szerepelnek.",
-    "p3": "A sorozatból a kedvenc karakterem Vinyl Scratch, más néven DJ P0n-3. Akármennyire is egyértelműnek tűnhet a nevemből, az oka csupán az, hogy tetszenek a színei. Ha csak a Mane 6-et vesszük, akkor Rainbow Dash-t választanám."
+    "p1": "Amatőr digitális művész vagyok, aki szabadidejében szeret állatokat rajzolni. A róka a kedvenc állatfajom, de általánosságban kedvelem a kutyaféléket és más négylábú élőlényeket is. A szélesebb furry közösség részének tartom magam. Időnként részt veszek különféle kapcsolódó eseményeken kikapcsolódásként, vagy azért, hogy a barátaimmal szórakozzak.",
+    "p2": "Amellett, hogy én magam is rajzolok, támogatni szoktam független művészeket is a furry közösségből műalkotások vásárlásával, amin többnyire a saját, a barátaim, vagy akár a művész által alkotott karakterek szerepelnek.",
+    "p3": "Amikor nem rajzolok, a kedvenc időtöltéseim a zenehallgatás, filmek vagy sorozatok nézése, és a videójátékokkal játszás. A kedvenceimet a lenti kapcsolat szekcióban levő linkeken megtalálod. Az anyanyelvem a magyar, de folyékonyan tudok angolul és aktívan próbálok megtanulni oroszul."
   },
   "artwork": {
     "heading": "Nemrég Készült Rajzaim",
@@ -39,7 +36,7 @@
   },
   "myOC": {
     "artBy": "Rajzot készítette:",
-    "heading": "Az Eredeti Karaktereim",
+    "heading": "Saját Karaktereim",
     "navLabel": "Karaktereim",
     "artAlt": "Egy világoskék póni és egy róka egy áttetsző barikád két oldalán áll, mindketten egyik lábukat azonos magasságban a barikád feléjük eső oldalára téve",
     "p1": "Nem is egy, hanem két eredeti karakter büszke tulajdonosa vagyok. Azaz, nos, attól függ, hogy hogyan definiálod az „eredeti” szót. Lehet hogy a színsémájuk pontosan ugyan az és lehet hogy egy két személyiségjegyük is hasonló… Jól van, megfogtál, ő tulajdonképp egy karakter két különböző alakkal, de számomra ezek két külön karakternek minősülnek.",
@@ -49,7 +46,7 @@
   "contact": {
     "contact": "Elérhetőségek",
     "heading": "Elérhetőségek és Közösségi Média",
-    "p1": "Alább láthatsz egy listát, ami olyan weboldalakat és alkalmazásokat tartalmaz, ahol van fiókom. Ha fel szeretnéd venni velem a kapcsolatot, akkor ha megoldható, a lista elejéről válassz.",
+    "p1": "Alább láthatsz egy listát a weboldalakról és alkalmazásokról, ahol van fiókom. Ha fel szeretnéd venni velem a kapcsolatot, akkor lehetőség szerint a lista tetejéről válassz.",
     "sendEmail": "E-mail Küldése",
     "visitProfile": "Profiloldal",
     "visitPage": "Oldal",
@@ -58,9 +55,10 @@
     "joinServer": "Csatlakozz a szerverhez",
     "sendMessage": "Üzenet Küldése",
     "invite": "Meghívás",
+    "playlist": "Lejátszási Lista",
     "copyStatus": {
       "info": "Kattints a másoláshoz",
-      "copied": "Kimásolva a vágólapra"
+      "copied": "Vágólapra másolva"
     }
   }
 }

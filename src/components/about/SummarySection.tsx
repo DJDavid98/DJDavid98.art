@@ -26,7 +26,7 @@ export const SummarySection: VFC = () => {
       <h1 className="sr-only">{PERSONAL_DETAILS.NAME}</h1>
       <div className="text-center">
         <aside className="detail">
-          <DetailBlock className="age" append={<Birthday />}>
+          <DetailBlock className="age" {...{ [t('about:agePlacement')]: t('about:age') }}>
             <AgeDisplay />
           </DetailBlock>
           <DetailBlock className="gender" {...{ [t('about:genderPlacement')]: t('about:gender') }}>
@@ -60,7 +60,10 @@ export const SummarySection: VFC = () => {
             </Clock>
           </DetailBlock>
           <DetailBlock className="color" prepend={t('about:favoriteColor')}>
-            <span className="color-holder">#68B</span>
+            <span className="color-holder">{t('about:favoriteColorName')}</span>
+          </DetailBlock>
+          <DetailBlock className="bday" prepend={t('about:birthday')}>
+            <Birthday />
           </DetailBlock>
         </aside>
       </div>

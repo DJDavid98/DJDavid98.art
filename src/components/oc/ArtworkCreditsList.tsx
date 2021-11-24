@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ArtworkCredit } from 'components/oc/ArtworkCredit';
 import { memo, useMemo, VFC } from 'react';
 import { Nav, NavItem } from 'reactstrap';
@@ -11,6 +12,7 @@ interface ArtworkCreditListProps {
 }
 
 const ArtworkCreditListComponent: VFC<ArtworkCreditListProps> = ({ credits, name, compact = false, hideNsfw = false }) => {
+  const btnClasses = useMemo(() => classNames('btn btn-link', { 'btn-sm': compact }), [compact]);
   const creditsElements = useMemo(
     () =>
       credits.reduce(
@@ -19,11 +21,11 @@ const ArtworkCreditListComponent: VFC<ArtworkCreditListProps> = ({ credits, name
             ? finalCredits
             : [
                 ...finalCredits,
-                <ArtworkCredit key={i} className="btn btn-link" url={credit.url} name={credit.name || name} nsfw={credit.nsfw} />,
+                <ArtworkCredit key={i} className={btnClasses} url={credit.url} name={credit.name || name} nsfw={credit.nsfw} />,
               ],
         [] as JSX.Element[],
       ),
-    [credits, name, hideNsfw],
+    [credits, hideNsfw, btnClasses, name],
   );
 
   if (compact) {

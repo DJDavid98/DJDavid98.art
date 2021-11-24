@@ -39,7 +39,7 @@ export const OcSection: VFC = () => {
               })}
             </p>
 
-            <Link href={getOcPageRoute(false, OcSpecies.PONY)} passHref>
+            <Link href={getOcPageRoute(false, OcSpecies.FOX)} passHref>
               <Button tag="a" className="d-block d-md-inline-block mb-2 mr-md-2">
                 <FontAwesomeIcon icon="id-card" className="mr-2" />
                 {t('about:myOC.refSheet')}

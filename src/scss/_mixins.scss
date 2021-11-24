@@ -13,6 +13,8 @@
   background-size: rem($width) rem($real-height);
   background-image: url('/stamp-#{$color}.svg');
   @if ($bottom) {
+    background-position: 0 0;
+  } @else {
     background-position: 0 #{-$height};
   }
   overflow: hidden;

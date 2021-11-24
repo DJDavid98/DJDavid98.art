@@ -3,24 +3,23 @@
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/variables';
 
-.ref-sheet-wrapper img {
-  width: 100%;
-  cursor: zoom-in;
-}
-
-.sheet-image-fox {
-  border-radius: 0.9rem;
-}
-
-.page-section:not(:last-child) {
-  margin-bottom: 1rem;
-
-  @include media-breakpoint-up(m) {
-    margin-bottom: 1.5rem;
+.page-section {
+  &::after {
+    display: block;
+    clear: both;
+    content: '';
   }
 
-  @include media-breakpoint-up(xl) {
-    margin-bottom: 2rem;
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+
+    @include media-breakpoint-up(m) {
+      margin-bottom: 1.5rem;
+    }
+
+    @include media-breakpoint-up(xl) {
+      margin-bottom: 2rem;
+    }
   }
 }
 
@@ -60,6 +59,41 @@
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+}
+
+.oc-form-section {
+  display: block !important;
+
+  @media (min-width: 1500px) {
+    display: flex !important;
+    justify-content: stretch;
+    flex-flow: row nowrap;
+
+    .ref-sheet-wrapper {
+      margin: 0;
+      float: none;
+    }
+  }
+
+  .ref-sheet-wrapper {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    .sheet-image {
+      cursor: zoom-in;
+      border-radius: 0.5rem;
+
+      @include media-breakpoint-up(xl) {
+        border-radius: 0.75rem;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      max-width: 50%;
+      margin: 0 2rem 0.5rem 0;
+      float: left;
     }
   }
 }

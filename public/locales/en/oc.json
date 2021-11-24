@@ -52,7 +52,6 @@
       "species": "Fox",
       "occupation": "Botanist"
     },
-    "additionalResources": "Additional Resources",
     "sfmModel": "SFM Model",
     "sfmModelDownload": "Download SFM Model",
     "sfmModelTooltip": "3D model for Source Filmmaker artists",
