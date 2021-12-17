@@ -114,8 +114,14 @@ const WitchTaunter: ArtistInfo = {
   ],
 };
 
+const creamy_roux: ArtistInfo = {
+  name: 'creamy_roux',
+  credits: [{ url: 'https://twitter.com/creamy_roux' }, { url: 'https://ko-fi.com/creamy_roux' }],
+};
+
 export const ARTIST_MAP = {
   AriaMidnighters,
+  creamy_roux,
   DJDavid98,
   Dbleki,
   DreamWeaverPony,
