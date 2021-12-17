@@ -16,7 +16,7 @@ import { ARTIST_MAP } from 'src/config/artists';
 import { AVATAR_HISTORY, CURRENT_AVATAR_INDEX } from 'src/config/avatars';
 import { Translatable } from 'src/types/common';
 import { AVATAR_IMAGE_SIZE, getAvatarImageUrl } from 'src/util/avatars';
-import { useLocale } from 'src/util/common';
+import { assembleSeoUrl, useLocale } from 'src/util/common';
 import { translatableValue } from 'src/util/i18n';
 import { typedServerSideTranslations } from 'src/util/i18n-server';
 import { isArtistMe, isOldEnoughForNsfw } from 'src/util/oc';
@@ -66,7 +66,7 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
           images: [
             {
               alt: t('common:avatarImageAlt', { name: PERSONAL_DETAILS.NAME }),
-              url: avatarUrl,
+              url: assembleSeoUrl(avatarUrl),
               width: AVATAR_IMAGE_SIZE,
               height: AVATAR_IMAGE_SIZE,
             },
