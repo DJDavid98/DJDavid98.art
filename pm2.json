@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "DJDavid98.art",
+      "script": "npm start",
+      "log_date_format": "YYYY-MM-DD HH:mm:ss Z",
+      "env": {
+        "PORT": "6902"
+      }
+    }
+  ]
+}
