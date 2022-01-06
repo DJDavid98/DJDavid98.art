@@ -8,7 +8,7 @@ if [[ "$refname" ==  "$RUN_FOR_REF" ]]; then
     GIT="env -i git"
     CMD_CD="cd $(readlink -nf "$PWD/..")"
     CMD_FETCH="$GIT fetch"
-    CMD_YARN="npm"
+    CMD_NPM_INSTALL="npm ci"
     CMD_BUILD="nice npm run build"
     CMD_RESTART="pm2 reload pm2.json"
 
