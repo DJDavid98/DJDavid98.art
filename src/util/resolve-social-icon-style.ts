@@ -57,6 +57,10 @@ export const resolveSocialIconStyle = (url: string): LinkStyle => {
       return {
         brandLogo: '/logos/kofi.svg',
       };
+    case 'inkbunny.net':
+      return {
+        brandLogo: '/logos/inkbunny-color.png',
+      };
     case 'vk.com':
       return {
         brandIcon: 'vk',

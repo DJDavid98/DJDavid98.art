@@ -22,7 +22,7 @@ export const LANGUAGES: LanguagesConfig = {
 };
 
 export const PERSONAL_DETAILS = {
-  NAME: 'DJDavid98',
+  NAME: 'DJDavid98' as const,
   BIRTH_DATE: new Date('1998-10-28T12:00:00Z'),
   TIMEZONE: 'Europe/Budapest',
   OC_NAME: 'Double Colon',

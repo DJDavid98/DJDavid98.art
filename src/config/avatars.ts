@@ -1,4 +1,5 @@
 import { ArtistName } from 'src/config/artists';
+import { PERSONAL_DETAILS } from 'src/config/index';
 
 export interface AvatarDefinition {
   artist: ArtistName;
@@ -49,6 +50,50 @@ export const AVATAR_HISTORY: AvatarDefinition[] = [
   {
     artist: 'WitchTaunter',
     firstUsed: 1580727600000,
+  },
+  {
+    artist: 'Luximus17',
+    firstUsed: 1578325320000,
+  },
+  {
+    artist: 'SugarMorning',
+    firstUsed: 1567976580000,
+  },
+  {
+    artist: 'FluffyXai',
+    firstUsed: 1563386880000,
+  },
+  {
+    artist: 'Sinrar',
+    firstUsed: 1553464980000,
+  },
+  {
+    artist: 'Discorded',
+    firstUsed: 1512676800000,
+  },
+  {
+    artist: 'Ayvie',
+    firstUsed: 1504789440000,
+  },
+  {
+    artist: 'Dbleki',
+    firstUsed: 1491422220000,
+  },
+  {
+    artist: PERSONAL_DETAILS.NAME,
+    firstUsed: 1470256740000,
+  },
+  {
+    artist: 'Conrie',
+    firstUsed: 1453567560000,
+  },
+  {
+    artist: 'Pirill',
+    firstUsed: 1446838980000,
+  },
+  {
+    artist: PERSONAL_DETAILS.NAME,
+    firstUsed: 1442732220000,
   },
 ];
 
