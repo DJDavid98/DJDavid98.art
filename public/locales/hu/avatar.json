@@ -6,6 +6,7 @@
   "firstUseDate": "Először használva: <1>{{date}}</1>",
   "inUseSince": "Használat kezdete: <1>{{date}}</1>",
   "seoDesc": "A jelenlegi profilképemet {{name}} kész0tette",
+  "seoDescByMe": "Én készítettem a jelenlegi profilképemet",
   "createdBy": "Készítette:",
   "contactBelow": "Az elérhetőségeit alább találod.",
   "noContactAvailable": "Ehhez a művészhez semmilyen elérhetőség nincs megadva.",

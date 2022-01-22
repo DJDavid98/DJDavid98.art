@@ -6,6 +6,7 @@
   "firstUseDate": "First used <1>{{date}}</1>",
   "inUseSince": "Used since <1>{{date}}</1>",
   "seoDesc": "My current avatar was created by {{name}}",
+  "seoDescByMe": "I made my current avatar myself",
   "createdBy": "Created by:",
   "contactBelow": "You can find this artist's contact information below.",
   "noContactAvailable": "No contact details are available for this artist.",

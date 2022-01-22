@@ -60,7 +60,7 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
     <Layout>
       <NextSeo
         title={`${translatableValue(t, titleI18nKey)} - ${SITE_TITLE}`}
-        description={t('avatar:seoDesc', { name: artistMainName })}
+        description={pictureBy === AvatarBy.ME ? t('avatar:seoDescByMe') : t('avatar:seoDesc', { name: artistMainName })}
         openGraph={{
           type: 'website',
           images: [
