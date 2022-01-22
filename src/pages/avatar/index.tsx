@@ -90,12 +90,14 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
             </div>
           </Col>
           <Col xs={12} sm={6} className="text-center text-sm-left mt-3 mt-md-0">
-            <h2 className={classNames('h3', pictureBy === AvatarBy.ME ? 'mb-0' : 'mb-4')}>
-              <small className="d-block mb-2">{t('avatar:createdBy')}</small>
-              <FontAwesomeIcon icon="paint-brush" className="mr-2" />
-              <strong>{artistMainName}</strong>
-            </h2>
-            <AvatarCredits t={t} hideNsfw={!nsfwEnabled} artist={artist} by={pictureBy} />
+            <div className="pr-md-3">
+              <h2 className={classNames('h3', pictureBy === AvatarBy.ME ? 'mb-0' : 'mb-4')}>
+                <small className="d-block mb-2">{t('avatar:createdBy')}</small>
+                <FontAwesomeIcon icon="paint-brush" className="mr-2" />
+                <strong>{artistMainName}</strong>
+              </h2>
+              <AvatarCredits t={t} hideNsfw={!nsfwEnabled} artist={artist} by={pictureBy} />
+            </div>
           </Col>
         </Row>
         <div className="mt-3 text-center">
@@ -124,6 +126,7 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
                     height={AVATAR_PREVIEW_SIZE}
                     alt={t('avatar:previousProfilePicture')}
                     className={styles.historicAvatarImage}
+                    quality={50}
                   />
                 </a>
               </Link>
