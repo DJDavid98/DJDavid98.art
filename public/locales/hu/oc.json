@@ -72,7 +72,7 @@
     "close": "Vissza"
   },
   "colorPalette": {
-    "heading": "Szín paletta",
+    "heading": "Szín Paletta",
     "intro": "Ezek a dobozok egy vizuális áttekintést adnak a karakter kinézetéről pontos HEX színkódokkal, melyeket erről az oldalról egy kattintással kimásolhatsz, amellett, hogy a Coolors-ra linkelnek, amely egy egy szín paletta oldal, ami további információt ad neked ezekről a színekről.",
     "howToView": "Ennek az információnak a megtekintéséhez kattints a \"{{viewLink}}\" linkre a doboz jobb alsó sarkában, majd a megnyitott oldalon kattints a \"{{viewText}}\" menüelemre.",
     "viewOnText": "Megtekintés a Coolors-on",
