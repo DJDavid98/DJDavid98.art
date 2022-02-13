@@ -19,7 +19,7 @@
     "p1": "A neve furcsa választásnak tűnhet, de tükrözi a PHP programozási nyelv, illetve úgy általában a kódolás iránti érdeklődésem. Az élesebb szeműek akár némi hasonlóságot is felfedezhetnek a karakter kinézete és a <0>PHP nyelv logója</0> közt. Ez az elnevezés konkrétan olyan hibaüzenetekben látható, amelyek az alkalmazás kódjában a hatókör feloldó operátor (<1>::</1>) helytelen használatára figyelmeztetnek. <2>További Infó</2>",
     "moreInfoUrl": "http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=10#section_3_20",
     "p2": "Ha azért tévedtél ide, mert vettem tőled egy rajzot, amin ó szerepel, akkor kérlek használd ezt a referencia lapot, ami tartalmazza a kinézetével kapcsolatos összes lényeges információt.",
-    "p3": "A korábbi rajzok pedig átvisz a karakter címkéjének az oldalára a Furbooru-n, ami lényegében egy képgaléria oldal, ahol elérhetővé próbálom tenni az összes róla készült képet.",
+    "p3": "A kész rajzok gomb a karakter címkéjének az oldalára visz a Furbooru-n, ami lényegében egy képgaléria oldal, ahol elérhetővé próbálom tenni az összes róla készült képet.",
     "p3Lewd": {
       "select": "Az NSFW rajzok megtekintéséhez ki kell választanod a ",
       "toSee": "szűrőt a Furbooru-n, ha még nincs saját szűrőd, ami láthatóvá teszi az ilyen képeket."
