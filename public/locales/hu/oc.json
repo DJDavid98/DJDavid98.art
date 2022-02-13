@@ -55,14 +55,14 @@
     "sfmModel": "SFM Modell",
     "sfmModelDownload": "SFM Modell Letöltése",
     "sfmModelTooltip": "3D-s modell Source Filmmaker művészek számára",
-    "sfmModelSfw": "Munkahely-biztonságos letöltése (nemi szervek nélkül)",
-    "sfmModelNsfw": "Nem munkahely-biztonságos letöltése (kanca nemi szervekkel)",
+    "sfmModelSfw": "Ártatlan verzió (nemi szervek nélkül)",
+    "sfmModelNsfw": "Munkahely-veszélyeztető (NSFW) verzió (nemi szervekkel)",
     "artworkBy": "Rajzokat Készítette",
     "telegramStickers": "Telegram Matricák"
   },
   "ageGate": {
     "title": "Életkor ellenőrzés",
-    "explanation": "Nem munkahely-biztonságos tartalmat próbálsz megtekinteni. Kérlek add meg a születési dátumod, hogy megerősítsd, elég idős vagy az ilyen tartalmak megtekintéséhez.",
+    "explanation": "Munkahely-veszélyeztető (NSFW) tartalmat próbálsz megtekinteni. Kérlek add meg a születési dátumod, hogy megerősítsd, elég idős vagy az ilyen tartalmak megtekintéséhez.",
     "year": "Év",
     "month": "Hónap",
     "day": "Nap",
