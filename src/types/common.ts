@@ -1,4 +1,4 @@
-import { TFunction } from 'react-i18next';
+import { TFunction } from 'next-i18next';
 
 export type Nullable<T> = T | null;
 

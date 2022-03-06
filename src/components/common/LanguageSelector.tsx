@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import Image from 'next/image';
-import { TFunction } from 'i18next';
+import { TFunction } from 'next-i18next';
 import toPairs from 'lodash/toPairs';
 import styles from 'modules/LanguageSelector.module.scss';
 import Link from 'next/link';

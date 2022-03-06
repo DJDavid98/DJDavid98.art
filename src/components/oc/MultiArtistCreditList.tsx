@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ArtworkCreditsList } from 'components/oc/ArtworkCreditsList';
 import { useMemo, VFC } from 'react';
-import { TFunction } from 'react-i18next';
+import { TFunction } from 'next-i18next';
 import { ARTIST_MAP, ArtistName } from 'src/config/artists';
 
 export const MultiArtistCreditList: VFC<{ artists: ArtistName[]; t: TFunction; nsfwEnabled: boolean }> = ({ artists, t, nsfwEnabled }) => {
