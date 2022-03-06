@@ -4,6 +4,7 @@ import { AgeGateModal } from 'components/oc';
 import { OcColorPalette } from 'components/oc/OcColorPalette';
 import { OcExistingArtwork } from 'components/oc/OcExistingArtwork';
 import { OcFormDescription } from 'components/oc/OcFormDescription';
+import { OcStickers } from 'components/oc/OcStickers';
 import { StoredAge } from 'components/oc/StoredAge';
 import styles from 'modules/OcFormPage.module.scss';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps, NextPage } from 'next';
@@ -195,6 +196,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
           fileFormat={fileFormat}
         />
         <OcColorPalette className={styles.pageSection} t={t} form={form} species={species} isNsfw={isNsfw} />
+        {species === OcSpecies.FOX && <OcStickers className={styles.pageSection} isNsfw={isNsfw} />}
         <OcExistingArtwork className={styles.pageSection} existingArtwork={existingArtwork} furbooruGalleryUrl={furbooruGalleryUrl} />
       </AppContainer>
       <AgeGateModal visible={showAgeGate} close={closeAgeGate} verify={handleAgeVerification} />

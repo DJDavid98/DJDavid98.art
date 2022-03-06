@@ -90,5 +90,10 @@
     "heading": "Recently Finished Artwork",
     "explainer": "Below you can see some of the most recent artwork of this character, created by various artists.",
     "viewFullGallery": "View full gallery"
+  },
+  "stickerPack": {
+    "heading": "Sticker Pack",
+    "packAlt": "16 portrait drawings of a blue fox arranged in a 4 by 4 grid, each with a different facial expression and a white outline to separate them from the dark blue background.",
+    "explainer": "Disy has her own set of stickers with over a dozen expressive drawings matching her personality. The link to the Telegram pack can be found below."
   }
 }

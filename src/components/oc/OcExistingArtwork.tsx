@@ -1,12 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ImageSource } from 'components/common/ImageSource';
-import { ImageTags } from 'components/common/ImageTags';
 import { CustomIcon } from 'components/common/CustomIcon';
 import { ExternalLink } from 'components/common/ExternalLink';
 import { defaultColumns, Gallery } from 'components/common/Gallery';
+import { ImageSource } from 'components/common/ImageSource';
+import { ImageTags } from 'components/common/ImageTags';
+import { OcSectionHeading } from 'components/oc/OcSectionHeading';
 import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
-import { useEffect, useMemo, useState, VFC } from 'react';
+import { useMemo, VFC } from 'react';
 import { Button } from 'reactstrap';
 import { ImageResponse } from 'src/types/furbooru-api';
 import { BsBreakpoint, BsBreakpointColumns } from 'src/types/gallery';
@@ -45,34 +44,13 @@ export const OcExistingArtwork: VFC<RecentArtworkProps> = ({ existingArtwork, fu
     [existingArtwork, nsfwTagsSet],
   );
 
-  const [firstLoad, setFirstLoad] = useState(true);
-
-  useEffect(() => {
-    const scrollIntoView = firstLoad && window.location.hash === `#${existingArtworkId}`;
-
-    if (scrollIntoView) {
-      const paletteHeading = document.getElementById(existingArtworkId);
-      if (paletteHeading) paletteHeading.scrollIntoView();
-    }
-  }, [firstLoad, t]);
-
-  useEffect(() => {
-    setFirstLoad(false);
-  }, []);
-
   if (!artwork.length) return null;
 
   return (
     <section className={className}>
-      <h3 id={existingArtworkId}>
-        <FontAwesomeIcon icon="images" className="mr-2 mr-lg-3" />
+      <OcSectionHeading id={existingArtworkId} icon="images">
         {t('oc:existingArtwork.heading')}
-        <Link href={`#${existingArtworkId}`} passHref>
-          <Button tag="a" color="link" className="ml-2 mr-lg-3">
-            <FontAwesomeIcon icon="link" />
-          </Button>
-        </Link>
-      </h3>
+      </OcSectionHeading>
       <p>{t('oc:existingArtwork.explainer')}</p>
       <Gallery images={artwork} columns={existingArtColumns} />
       <div className="mt-3 text-center">

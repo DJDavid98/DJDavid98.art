@@ -1,0 +1,12 @@
+@use '../functions';
+
+.stickers-image-wrap {
+  max-width: functions.rem(225px);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+
+  * {
+    display: block !important;
+  }
+}

@@ -90,5 +90,10 @@
     "heading": "Nemrég Készült Rajzok",
     "explainer": "Alább láthatod az erről a karakterről különféle művészek által mostanában rajzolt képeket.",
     "viewFullGallery": "Teljes galéria megtekintése"
+  },
+  "stickerPack": {
+    "heading": "Matrica Csomag",
+    "packAlt": "16 portré rajz egy kék rókáról négyszer négyes rácsban elrendezve, mindegyiken más arckifejezéssel és fehér körvonallal, ami elválasztja őket a sötétkék háttértől.",
+    "explainer": "Disy-nek van egy saját matrica csomagja több, mint egy tucat kifejező rajzzal, melyek illenek a személyiségéhez. A Telegram csomag linkjét alább megtalálod."
   }
 }

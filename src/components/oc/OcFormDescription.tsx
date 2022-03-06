@@ -2,17 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import { CustomIcon, ImageViewer } from 'components/common';
 import { ExternalLink } from 'components/common/ExternalLink';
-import { ArtworkCreditsList } from 'components/oc/ArtworkCreditsList';
 import { CutieMarkButton } from 'components/oc/CutieMarkButton';
+import { MultiArtistCreditList } from 'components/oc/MultiArtistCreditList';
 import { OcStats } from 'components/oc/OcStats';
 import { SfmModelButton } from 'components/oc/SfmModelButton';
 import styles from 'modules/OcFormPage.module.scss';
 import { TFunction, Trans } from 'next-i18next';
 import Image from 'next/image';
-import { useCallback, useState, VFC } from 'react';
+import { useCallback, useMemo, useState, VFC } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
-import { ARTIST_MAP } from 'src/config/artists';
+import { ArtistName } from 'src/config/artists';
 import { OcSpecies } from 'src/types/oc';
 
 const cmButtonId = 'cutie-mark-btn';
@@ -51,6 +51,12 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
   const furbooruGalleryUrl = PERSONAL_DETAILS.OC_FURBOORU_GALLERY_URL(species);
   const showNsfwPonyArtworkCredit = isNsfw && species === OcSpecies.PONY;
 
+  const refCreditList = useMemo(() => {
+    const list: ArtistName[] = ['DreamWeaverPony'];
+    if (showNsfwPonyArtworkCredit) list.push('SeafoodDinner');
+    return list;
+  }, [showNsfwPonyArtworkCredit]);
+
   return (
     <Row tag="section" className={classNames(className, styles.ocFormSection)}>
       <Col className={styles.refSheetWrapper}>
@@ -78,17 +84,7 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
             <FontAwesomeIcon icon="download" className="mr-2" />
             {t('oc:detail.downloadRefSheet', { format: fileFormat.toUpperCase() })}
           </Button>
-          {species === OcSpecies.FOX ? (
-            <Button
-              color="telegram"
-              tag={ExternalLink}
-              href={PERSONAL_DETAILS.OC_TELEGRAM_STICKERS_URL}
-              className="d-block d-md-inline-block mb-2 mr-md-2"
-            >
-              <FontAwesomeIcon icon={['fab', 'telegram-plane']} className="mr-2" />
-              {t('oc:detail.telegramStickers')}
-            </Button>
-          ) : (
+          {species === OcSpecies.PONY && (
             <>
               <CutieMarkButton buttonId={cmButtonId} />
               <SfmModelButton nsfwEnabled={nsfwEnabled} buttonId={sfmButtonId} />
@@ -106,13 +102,7 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
           )}
         </div>
 
-        <p className="font-weight-bold my-2 mx-2">
-          <FontAwesomeIcon icon="paint-brush" className="mr-2" />
-          {t('oc:detail.artworkBy')}: {ARTIST_MAP.DreamWeaverPony.name}
-          {showNsfwPonyArtworkCredit && ` & ${ARTIST_MAP.SeafoodDinner.name}`}
-        </p>
-        <ArtworkCreditsList {...ARTIST_MAP.DreamWeaverPony} compact hideNsfw={!nsfwEnabled} />
-        {showNsfwPonyArtworkCredit && <ArtworkCreditsList {...ARTIST_MAP.SeafoodDinner} compact />}
+        <MultiArtistCreditList artists={refCreditList} nsfwEnabled={nsfwEnabled} t={t} />
       </Col>
       {sheetFilePath && isViewerOpen && <ImageViewer onCloseRequest={closeImageViewer} mainSrc={sheetFilePath} />}
       <Col className={styles.descriptionWrapper}>
