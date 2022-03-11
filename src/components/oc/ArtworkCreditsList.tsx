@@ -21,7 +21,14 @@ const ArtworkCreditListComponent: VFC<ArtworkCreditListProps> = ({ credits, name
             ? finalCredits
             : [
                 ...finalCredits,
-                <ArtworkCredit key={i} className={btnClasses} url={credit.url} name={credit.name || name} nsfw={credit.nsfw} />,
+                <ArtworkCredit
+                  key={i}
+                  className={btnClasses}
+                  url={credit.url}
+                  name={credit.name || name}
+                  label={credit.label}
+                  nsfw={credit.nsfw}
+                />,
               ],
         [] as JSX.Element[],
       ),

@@ -12,6 +12,10 @@ export interface AvatarDefinition {
 export const AVATAR_HISTORY: AvatarDefinition[] = [
   // Add new entries to the start
   {
+    artist: 'Potto',
+    firstUsed: 1647028129567,
+  },
+  {
     artist: PERSONAL_DETAILS.NAME,
     firstUsed: 1642861934152,
   },

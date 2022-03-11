@@ -32,6 +32,7 @@ export interface ArtistContactDetails {
   url: string;
   name: string;
   nsfw?: true;
+  label?: string;
 }
 
 export interface ArtistInfo {

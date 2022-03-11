@@ -13,19 +13,20 @@ interface PropTypes extends ArtistContactDetails, Pick<ExternalLinkProps, 'class
   spacingClass?: false | 'mr-1' | 'mr-2' | 'mr-3' | 'mr-4' | 'mr-5';
 }
 
-const ArtworkCreditComponent: VFC<PropTypes> = ({ url, name, nsfw, className, spacingClass = 'mr-1', tag }) => {
+const ArtworkCreditComponent: VFC<PropTypes> = ({ url, name, label, nsfw, className, spacingClass = 'mr-1', tag }) => {
   const { colorClass, ...restProps } = useMemo(() => resolveSocialIconStyle(url), [url]);
   const customIconRef = useRef<HTMLImageElement>(null);
 
   return (
     <ExternalLink tag={tag} href={url} className={className}>
+      {'icon' in restProps && <FontAwesomeIcon icon={restProps.icon} className={classNames(spacingClass, colorClass)} />}
       {'brandIcon' in restProps && <FontAwesomeIcon icon={['fab', restProps.brandIcon]} className={classNames(spacingClass, colorClass)} />}
       {'brandLogo' in restProps && (
         <span className={classNames(styles.brandLogo, spacingClass)}>
           <Image src={restProps.brandLogo} alt="website logo" width={32} height={32} layout="responsive" />
         </span>
       )}
-      {`/${name}`}
+      {label ? <span className="ml-1">{label}</span> : `/${name}`}
       {nsfw && (
         <>
           <CustomIcon src="/logos/18.svg" className="ml-2" innerRef={customIconRef} />

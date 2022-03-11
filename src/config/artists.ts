@@ -320,6 +320,20 @@ const Pirill: ArtistInfo = {
   ],
 };
 
+const Potto: ArtistInfo = {
+  name: 'Potto',
+  credits: [
+    {
+      url: 'https://twitter.com/Potto2292',
+      name: 'Potto2292',
+    },
+    {
+      url: 'https://potato22.github.io/commission/',
+      label: 'Website',
+    },
+  ],
+};
+
 export const ARTIST_MAP = {
   AriaMidnighters,
   Ayvie,
@@ -335,6 +349,7 @@ export const ARTIST_MAP = {
   NightyCloud,
   Noxi,
   Pirill,
+  Potto,
   Pridark,
   SeafoodDinner,
   Sinrar,

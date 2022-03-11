@@ -6,6 +6,9 @@ type LinkStyle = {
   colorClass?: string;
 } & (
   | {
+      icon: IconName;
+    }
+  | {
       brandIcon: IconName;
     }
   | {
@@ -72,6 +75,8 @@ export const resolveSocialIconStyle = (url: string): LinkStyle => {
         colorClass: brandColorClasses.youtubeColor,
       };
     default:
-      return {};
+      return {
+        icon: 'globe',
+      };
   }
 };
