@@ -53,10 +53,13 @@ export const OcStats: VFC<OcStatsProps> = ({ species, nsfwShown }) => {
     ],
   ];
   if (nsfwShown) {
+    const flagFileName = species === OcSpecies.FOX ? 'bisexual' : 'lesbian';
+    const flagAlt = species === OcSpecies.FOX ? t('oc:detail.bisexualPrideFlag') : t('oc:detail.lesbianPrideFlag');
+    const label = species === OcSpecies.FOX ? t('oc:detail.bisexual') : t('oc:detail.lesbian');
     stats.push([
-      <StatText tooltipId={orientationTooltipId} className={styles.lesbianFlag}>
-        <CustomIcon src="/flags/lesbian.svg" alt={t('oc:detail.lesbianPrideFlag')} className="mr-1" />
-        {t('oc:detail.lesbian')}
+      <StatText tooltipId={orientationTooltipId} className={styles.orientationFlag}>
+        <CustomIcon src={`/flags/${flagFileName}.svg`} alt={flagAlt} className="mr-1" />
+        {label}
       </StatText>,
       <StatTooltip id={orientationTooltipId}>{t('oc:detail.orientation')}</StatTooltip>,
     ]);

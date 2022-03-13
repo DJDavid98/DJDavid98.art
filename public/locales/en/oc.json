@@ -40,6 +40,8 @@
     "orientation": "Sexual Orientation",
     "lesbian": "Lesbian",
     "lesbianPrideFlag": "Lesbian Pride flag",
+    "bisexual": "Bisexual",
+    "bisexualPrideFlag": "Bisexual pride flag",
     "genitals": "{{type}} Genitals Preferred",
     "humanGenitals": "Human",
     "animalGenitals": "Animal",

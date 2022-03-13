@@ -23,13 +23,18 @@
   }
 }
 
-.lesbian-flag img {
-  height: 1em;
-  width: 1.77em;
+@mixin flag-wrapper($source-width, $source-height, $bottom-offset) {
+  $target-height: 1em;
+  height: $target-height;
+  width: $target-height * ($source-width / $source-height);
   display: inline-block;
   vertical-align: baseline;
   position: relative;
-  bottom: -0.1em;
+  bottom: -($bottom-offset * $target-height);
+}
+
+.orientation-flag img {
+  @include flag-wrapper(20, 15, 0.1);
 }
 
 .few-words-quote {

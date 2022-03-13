@@ -104,7 +104,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
   }, [handleAgeVerification]);
 
   const heading = t('oc:heading', { name: PERSONAL_DETAILS.OC_NAME });
-  const cacheBust = species === OcSpecies.FOX ? 7 : isNsfw ? 8 : 7;
+  const cacheBust = isNsfw ? 8 : 7;
   const fileFormat = 'png';
   const nsfwSuffix = isNsfw ? '_nsfw' : '';
   const sheetFilePath = getStoragePath(`refs/${species}${nsfwSuffix}.${fileFormat}?v=${cacheBust}`);
