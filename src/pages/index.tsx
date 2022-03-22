@@ -59,7 +59,10 @@ export const getStaticProps: GetStaticProps<AboutPageProps & SSRConfig> = async 
   let recentArtwork: ImageResponse[] = [];
 
   try {
-    recentArtwork = await searchFurbooru({ query: 'safe', galleryId: FurbooruGalleryId.OWN_ARTWORK });
+    recentArtwork = await searchFurbooru({
+      query: 'safe,-trace',
+      galleryId: FurbooruGalleryId.OWN_ARTWORK,
+    });
   } catch (e) {
     // Ignore
   }

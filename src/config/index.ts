@@ -33,7 +33,9 @@ export const PERSONAL_DETAILS = {
     const query = encodeURI(`oc:double colon, gallery_id:12${species ? `, ${species}` : ''}`);
     return `https://furbooru.org/search?q=${query}&sf=gallery_id%3A12`;
   },
-  ARTIST_TAG_URL: 'https://furbooru.org/search?q=artist%3Adjdavid98%2C+gallery_id%3A13&sf=gallery_id%3A13',
+  ARTIST_TAG_URL: `https://furbooru.org/search?q=${encodeURIComponent('artist:djdavid98,gallery_id:13,-trace')}&sf=${encodeURIComponent(
+    'gallery_id:13',
+  )}`,
   F_LIST_URL: 'https://www.f-list.net/c/double%20colon/',
   OC_TELEGRAM_STICKERS_URL: 'https://t.me/addstickers/DoubleColon',
 };
