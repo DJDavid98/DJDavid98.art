@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 import { ArtworkCreditsList } from 'components/oc/ArtworkCreditsList';
 import { TFunction, Trans } from 'next-i18next';
 import Link from 'next/link';
@@ -20,23 +22,43 @@ export interface AvatarCreditsProps {
   by?: AvatarBy;
   hideNsfw: boolean;
   artist?: ArtistInfo | null | false;
+  basedOnArtist?: ArtistInfo;
+  artistMainName: string;
+  basedOn?: boolean;
 }
 
-export const AvatarCredits: VFC<AvatarCreditsProps> = ({ t, by, artist, hideNsfw }) => {
+export const AvatarCredits: VFC<AvatarCreditsProps> = ({ t, by, artist, basedOnArtist, artistMainName, hideNsfw, basedOn = false }) => {
+  const heading = (
+    <h2 className={classNames('h3', by === AvatarBy.ME ? 'mb-0' : 'mb-3')}>
+      <small className="d-block mb-2">{t(basedOn ? 'avatar:basedOn' : 'avatar:createdBy')}</small>
+      <FontAwesomeIcon icon="paint-brush" className="mr-2" />
+      <strong>{artistMainName}</strong>
+    </h2>
+  );
   switch (by) {
     case AvatarBy.ME:
       return (
         <>
+          {heading}
           <small className="d-block text-muted font-italic mb-3">{t('avatar:thatIsMe')}</small>
-          <p>
-            <Trans t={t} i18nKey="avatar:noCreditsExplainer">
-              0<HomeLink />2
-            </Trans>
-          </p>
+          {basedOnArtist ? (
+            <AvatarCredits t={t} artist={basedOnArtist} hideNsfw={hideNsfw} artistMainName={basedOnArtist.name} basedOn />
+          ) : (
+            <p>
+              <Trans t={t} i18nKey="avatar:noCreditsExplainer">
+                0<HomeLink />2
+              </Trans>
+            </p>
+          )}
         </>
       );
     case AvatarBy.ANONYMOUS:
-      return t('avatar:noContactAnonymous');
+      return (
+        <>
+          {heading}
+          {t('avatar:noContactAnonymous')}
+        </>
+      );
     default:
       if (typeof artist === 'object' && artist !== null) {
         let credits = artist.credits;
@@ -46,6 +68,7 @@ export const AvatarCredits: VFC<AvatarCreditsProps> = ({ t, by, artist, hideNsfw
         if (credits.length > 0) {
           return (
             <>
+              {heading}
               <p>{t('avatar:contactBelow')}</p>
               <ArtworkCreditsList name={artist.name} credits={credits} hideNsfw={hideNsfw} />
             </>
@@ -53,6 +76,11 @@ export const AvatarCredits: VFC<AvatarCreditsProps> = ({ t, by, artist, hideNsfw
         }
       }
 
-      return <p>{t('avatar:noContactAvailable')}</p>;
+      return (
+        <>
+          {heading}
+          <p>{t('avatar:noContactAvailable')}</p>
+        </>
+      );
   }
 };

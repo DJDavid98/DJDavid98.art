@@ -30,6 +30,12 @@ $avatar-gradient-bottom: #7aa7f0;
 .avatar-history {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-between;
+
+  &::after {
+    content: '';
+    flex: 1 0 auto;
+  }
 
   .avatar-history-item {
     margin: 0 1rem 1rem 0;

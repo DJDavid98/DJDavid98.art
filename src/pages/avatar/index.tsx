@@ -35,8 +35,9 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
   const displayCurrentAvatar = !avatarIndexValid || avatarIndex === CURRENT_AVATAR_INDEX;
   const effectiveAvatarIndex = displayCurrentAvatar ? CURRENT_AVATAR_INDEX : avatarIndex;
   const displayedAvatar = AVATAR_HISTORY[effectiveAvatarIndex];
-  const { artist: artistKey, firstUsed } = displayedAvatar;
+  const { artist: artistKey, basedOnArtist: basedOnArtistKey, firstUsed } = displayedAvatar;
   const artist = useMemo(() => ARTIST_MAP[artistKey], [artistKey]);
+  const basedOnArtist = useMemo(() => basedOnArtistKey && ARTIST_MAP[basedOnArtistKey], [basedOnArtistKey]);
   const firstUsedDate = useMemo(() => new Date(firstUsed), [firstUsed]);
   const firstUsedDateString = useMemo(() => formatRelative(firstUsedDate, new Date(), { locale }), [firstUsedDate, locale]);
   const avatarUrl = getAvatarImageUrl(firstUsed);
@@ -46,6 +47,18 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
     if (isArtistMe(artist)) return AvatarBy.ME;
   }, [artist]);
   const artistMainName: string = useMemo(() => (artist ? artist.name : t('avatar:unknownArtist')), [artist, t]);
+
+  const seoDescription = useMemo(() => {
+    if (pictureBy === AvatarBy.ME) {
+      return basedOnArtist ? t('avatar:seoDescByMeBasedOn', { basedOnArtist: basedOnArtist.name }) : t('avatar:seoDescByMe');
+    }
+    return basedOnArtist
+      ? t('avatar:seoDescBasedOn', {
+          artist: artistMainName,
+          basedOnArtist: basedOnArtist.name,
+        })
+      : t('avatar:seoDesc', { artist: artistMainName });
+  }, [artistMainName, basedOnArtist, pictureBy, t]);
 
   const [nsfwEnabled, setNsfwEnabled] = useState(false);
 
@@ -60,7 +73,7 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
     <Layout>
       <NextSeo
         title={`${translatableValue(t, titleI18nKey)} - ${SITE_TITLE}`}
-        description={pictureBy === AvatarBy.ME ? t('avatar:seoDescByMe') : t('avatar:seoDesc', { name: artistMainName })}
+        description={seoDescription}
         openGraph={{
           type: 'website',
           images: [
@@ -91,30 +104,19 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
           </Col>
           <Col xs={12} sm={6} className="text-center text-sm-left mt-3 mt-md-0">
             <div className="pr-md-3">
-              <h2 className={classNames('h3', pictureBy === AvatarBy.ME ? 'mb-0' : 'mb-4')}>
-                <small className="d-block mb-2">{t('avatar:createdBy')}</small>
-                <FontAwesomeIcon icon="paint-brush" className="mr-2" />
-                <strong>{artistMainName}</strong>
-              </h2>
-              <AvatarCredits t={t} hideNsfw={!nsfwEnabled} artist={artist} by={pictureBy} />
+              <AvatarCredits
+                t={t}
+                hideNsfw={!nsfwEnabled}
+                artist={artist}
+                by={pictureBy}
+                artistMainName={artistMainName}
+                basedOnArtist={basedOnArtist}
+              />
             </div>
           </Col>
         </Row>
-        <div className="mt-3 text-center">
-          <Link href="/avatar" passHref>
-            <Button tag="a" color="link" size="lg" disabled={!avatarIndexValid}>
-              <FontAwesomeIcon icon="clock" className="mr-2" />
-              {t('avatar:viewCurrent')}
-            </Button>
-          </Link>
-          <Link href="/" passHref>
-            <Button tag="a" color="link" size="lg">
-              <FontAwesomeIcon icon="home" className="mr-2" />
-              {t('common:returnHome')}
-            </Button>
-          </Link>
-        </div>
-        <h2>{t('avatar:history')}</h2>
+        <h2 className="mt-2">{t('avatar:history')}</h2>
+        <p>{t('avatar:clickForDetails')}</p>
         <div className={styles.avatarHistory}>
           {AVATAR_HISTORY.map((def) => (
             <div key={def.firstUsed} className={styles.avatarHistoryItem}>
@@ -132,6 +134,20 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
               </Link>
             </div>
           ))}
+        </div>
+        <div className="mt-2 text-center">
+          <Link href="/avatar" passHref>
+            <Button tag="a" color="link" size="lg" disabled={!avatarIndexValid}>
+              <FontAwesomeIcon icon="clock" className="mr-2" />
+              {t('avatar:viewCurrent')}
+            </Button>
+          </Link>
+          <Link href="/" passHref>
+            <Button tag="a" color="link" size="lg">
+              <FontAwesomeIcon icon="home" className="mr-2" />
+              {t('common:returnHome')}
+            </Button>
+          </Link>
         </div>
       </AppContainer>
     </Layout>

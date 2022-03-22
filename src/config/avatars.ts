@@ -4,6 +4,10 @@ import { PERSONAL_DETAILS } from 'src/config/index';
 export interface AvatarDefinition {
   artist: ArtistName;
   /**
+   * If the artwork is based on another artist's work, indicate the original artist here
+   */
+  basedOnArtist?: ArtistName;
+  /**
    * Unix timestamp of first use in milliseconds
    */
   firstUsed: number;
@@ -12,7 +16,8 @@ export interface AvatarDefinition {
 export const AVATAR_HISTORY: AvatarDefinition[] = [
   // Add new entries to the start
   {
-    artist: 'Tosca',
+    artist: PERSONAL_DETAILS.NAME,
+    basedOnArtist: 'Tosca',
     firstUsed: 1647928824646,
   },
   {
@@ -100,7 +105,8 @@ export const AVATAR_HISTORY: AvatarDefinition[] = [
     firstUsed: 1453567560000,
   },
   {
-    artist: 'Pirill',
+    artist: PERSONAL_DETAILS.NAME,
+    basedOnArtist: 'Pirill',
     firstUsed: 1446838980000,
   },
   {

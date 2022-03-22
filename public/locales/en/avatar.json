@@ -5,8 +5,10 @@
   "headingPrevious": "Previous Avatar",
   "firstUseDate": "First used <1>{{date}}</1>",
   "inUseSince": "Used since <1>{{date}}</1>",
-  "seoDesc": "My current avatar was created by {{name}}",
+  "seoDesc": "My current avatar was created by {{artist}}",
+  "seoDescBasedOn": "My current avatar was created by {{artist}},  based on the work of {{basedOnArtist}}",
   "seoDescByMe": "I made my current avatar myself",
+  "seoDescByMeBasedOn": "I made my current avatar myself based on the work of {{artist}}",
   "createdBy": "Created by:",
   "contactBelow": "You can find this artist's contact information below.",
   "noContactAvailable": "No contact details are available for this artist.",
@@ -14,7 +16,9 @@
   "thatIsMe": "Oh hey, that's me!",
   "noCreditsExplainer": "This is where I would list all the contact details for the artist who made the avatar, but since this one was made by me, there is no reason to repeat all my contact information here, you can find it on <1>the homepage</1>.",
   "unknownArtist": "an unknown artist",
+  "basedOn": "Based on the work of:",
   "viewCurrent": "Current",
   "history": "Avatar History",
+  "clickForDetails": "Click on any of the avatars below to see when it was first used and who made it.",
   "previousProfilePicture": "Previous avatar"
 }

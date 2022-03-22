@@ -5,8 +5,10 @@
   "headingPrevious": "Korábbi Profilképem",
   "firstUseDate": "Először használva: <1>{{date}}</1>",
   "inUseSince": "Használat kezdete: <1>{{date}}</1>",
-  "seoDesc": "A jelenlegi profilképemet {{name}} kész0tette",
+  "seoDesc": "A jelenlegi profilképemet {{artist}} kész0tette",
+  "seoDescBasedOn": "A jelenlegi profilképemet {{artist}} kész0tette, {{basedOnArtist}} munkájára építve",
   "seoDescByMe": "Én készítettem a jelenlegi profilképemet",
+  "seoDescByMeBasedOn": "A jelenlegi profilképemet én készítettem, {{artist}} munkájára építve",
   "createdBy": "Készítette:",
   "contactBelow": "Az elérhetőségeit alább találod.",
   "noContactAvailable": "Ehhez a művészhez semmilyen elérhetőség nincs megadva.",
@@ -14,7 +16,9 @@
   "thatIsMe": "Jé, hisz ez én vagyok!",
   "noCreditsExplainer": "Itt látszanának a profilképet készítő művész elérhetőségei, de mivel a ezt épp én készítettem, semmi értelme itt megismételni a saját elérhetőségeimet, azok <1>a főoldalon</1> megtalálhatóak.",
   "unknownArtist": "egy ismeretlen művész",
+  "basedOn": "Az alábbi művész munkájára építve:",
   "viewCurrent": "Jelenlegi",
   "history": "Korábbi Profilképek",
+  "clickForDetails": "Kattints bármelyik avatárra alább, hogy megtudd mikor volt először használva és ki készítette.",
   "previousProfilePicture": "Régebbi profilkép"
 }
