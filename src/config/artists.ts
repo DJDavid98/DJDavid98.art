@@ -334,6 +334,20 @@ const Potto: ArtistInfo = {
   ],
 };
 
+const Tosca: ArtistInfo = {
+  name: 'Tosca',
+  credits: [
+    {
+      url: 'https://twitter.com/x_skulleh',
+      name: 'x_skulleh',
+    },
+    {
+      url: 'https://gumroad.com/xtosca',
+      name: 'xtosca',
+    },
+  ],
+};
+
 export const ARTIST_MAP = {
   AriaMidnighters,
   Ayvie,
@@ -354,6 +368,7 @@ export const ARTIST_MAP = {
   SeafoodDinner,
   Sinrar,
   SugarMorning,
+  Tosca,
   Vensual99,
   WitchTaunter,
 };

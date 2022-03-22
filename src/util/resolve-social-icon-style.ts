@@ -74,6 +74,10 @@ export const resolveSocialIconStyle = (url: string): LinkStyle => {
         brandIcon: 'youtube',
         colorClass: brandColorClasses.youtubeColor,
       };
+    case 'gumroad.com':
+      return {
+        brandLogo: '/logos/gumroad.svg',
+      };
     default:
       return {
         icon: 'globe',
