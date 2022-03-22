@@ -13,6 +13,7 @@
   "favoriteColor": "favorite color",
   "favoriteColorName": "glaucous",
   "avatarBy": "Current avatar by",
+  "avatarBasedOn": "Current avatar based on the work of <1>{{basedOnArtist}}</1>",
   "avatarHistory": "Avatar history",
   "quote": {
     "text": "Creativity is contagious. Pass it on.",
