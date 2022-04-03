@@ -60,8 +60,9 @@ export const getStaticProps: GetStaticProps<AboutPageProps & SSRConfig> = async 
 
   try {
     recentArtwork = await searchFurbooru({
-      query: 'safe,-trace',
+      query: 'safe,-trace,-collaboration',
       galleryId: FurbooruGalleryId.OWN_ARTWORK,
+      perPage: 25,
     });
   } catch (e) {
     // Ignore
