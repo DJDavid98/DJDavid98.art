@@ -15,7 +15,7 @@ import { Quote } from './Quote';
 
 export const SummarySection: VFC = () => {
   const { t } = useTranslation();
-  const countryIconRef = useRef<HTMLAnchorElement>(null);
+  const locationIconRef = useRef<HTMLSpanElement>(null);
   return (
     <div className="summary pb-4">
       <div className="avatar-wrap">
@@ -33,18 +33,12 @@ export const SummarySection: VFC = () => {
             {t('about:male')}
           </DetailBlock>
           <DetailBlock className="loc" prepend={t('about:livesIn')}>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`https://www.google.com/maps/place/${t('about:hungary')}/`}
-              className="country-container"
-              ref={countryIconRef}
-            >
-              <Image src="/hungary.svg" alt={t('about:hungary')} unoptimized width={41} height={26} priority />
-              <span className="sr-only">{t('about:hungary')}</span>
-            </a>
-            <UncontrolledTooltip target={countryIconRef} placement="bottom">
-              {t('about:hungary')}
+            <span className="location-container" ref={locationIconRef}>
+              <Image src="/flags/eu.svg" alt={t('about:location')} unoptimized width={35} height={26} priority />
+              <span className="sr-only">{t('about:location')}</span>
+            </span>
+            <UncontrolledTooltip target={locationIconRef} placement="bottom">
+              {t('about:location')}
             </UncontrolledTooltip>
           </DetailBlock>
           <br />

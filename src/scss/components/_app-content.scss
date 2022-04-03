@@ -108,11 +108,10 @@ $artwork-section-bg: lighten($furbooru, 35%);
         }
       }
 
-      .loc .country-container {
+      .loc .location-container {
         font-size: 0;
 
-        span:not(.sr-only),
-        img {
+        span:not(.sr-only) {
           display: block !important;
         }
       }

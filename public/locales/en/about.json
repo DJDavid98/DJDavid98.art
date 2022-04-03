@@ -1,6 +1,6 @@
 {
   "title": "Homepage",
-  "seoDesc": "Hobbyist Digital Artist from Hungary - My artwork, OCs, and contact information",
+  "seoDesc": "Hobbyist Digital Artist - My artwork, OCs, and contact information",
   "age": "age",
   "agePlacement": "prepend",
   "birthday": "birthday",
@@ -8,7 +8,7 @@
   "genderPlacement": "prepend",
   "male": "he/him",
   "livesIn": "lives in",
-  "hungary": "Hungary",
+  "location": "European Union",
   "localTime": "local time",
   "favoriteColor": "favorite color",
   "favoriteColorName": "glaucous",
