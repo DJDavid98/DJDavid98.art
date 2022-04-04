@@ -12,7 +12,7 @@ const avatarPage = '/avatar';
 const AvatarCreditComponent: VFC = () => {
   const { t } = useTranslation();
   const { artist: artistKay, basedOnArtist: basedOnArtistKey } = CURRENT_AVATAR;
-  const artist = ARTIST_MAP[artistKay];
+  let artist = artistKay && ARTIST_MAP[artistKay];
   const basedOnArtist = basedOnArtistKey && ARTIST_MAP[basedOnArtistKey];
 
   const LinkTag: FunctionComponent<{ className?: string }> = useCallback(
@@ -34,15 +34,17 @@ const AvatarCreditComponent: VFC = () => {
         </Trans>
       );
     } else {
-      contents = (
-        <LinkTag>
-          <FontAwesomeIcon icon="history" className="mr-2" size="sm" />
-          {t('about:avatarHistory')}
-        </LinkTag>
-      );
+      artist = null;
     }
   }
-  if (!contents) {
+  if (artist === null) {
+    contents = (
+      <LinkTag>
+        <FontAwesomeIcon icon="history" className="mr-2" size="sm" />
+        {t('about:avatarHistory')}
+      </LinkTag>
+    );
+  } else if (!contents) {
     contents = (
       <>
         {t('about:avatarBy')}

@@ -2,7 +2,7 @@ import { ArtistName } from 'src/config/artists';
 import { PERSONAL_DETAILS } from 'src/config/index';
 
 export interface AvatarDefinition {
-  artist: ArtistName;
+  artist: ArtistName | null;
   /**
    * If the artwork is based on another artist's work, indicate the original artist here
    */
@@ -15,6 +15,10 @@ export interface AvatarDefinition {
 
 export const AVATAR_HISTORY: AvatarDefinition[] = [
   // Add new entries to the start
+  {
+    artist: null,
+    firstUsed: 1649015100000,
+  },
   {
     artist: PERSONAL_DETAILS.NAME,
     basedOnArtist: 'Tosca',

@@ -112,4 +112,4 @@ export const resolveFormParameter = (query?: ParsedUrlQuery): OcSpecies => {
 
 export const getOtherSpecies = (species: OcSpecies): OcSpecies => (species === OcSpecies.FOX ? OcSpecies.PONY : OcSpecies.FOX);
 
-export const isArtistMe = (artist?: ArtistInfo): boolean => artist?.name === PERSONAL_DETAILS.NAME;
+export const isArtistMe = (artist?: ArtistInfo | null): boolean => artist?.name === PERSONAL_DETAILS.NAME;

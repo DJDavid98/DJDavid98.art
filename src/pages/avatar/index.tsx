@@ -36,7 +36,7 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
   const effectiveAvatarIndex = displayCurrentAvatar ? CURRENT_AVATAR_INDEX : avatarIndex;
   const displayedAvatar = AVATAR_HISTORY[effectiveAvatarIndex];
   const { artist: artistKey, basedOnArtist: basedOnArtistKey, firstUsed } = displayedAvatar;
-  const artist = useMemo(() => ARTIST_MAP[artistKey], [artistKey]);
+  const artist = useMemo(() => artistKey && ARTIST_MAP[artistKey], [artistKey]);
   const basedOnArtist = useMemo(() => basedOnArtistKey && ARTIST_MAP[basedOnArtistKey], [basedOnArtistKey]);
   const firstUsedDate = useMemo(() => new Date(firstUsed), [firstUsed]);
   const firstUsedDateString = useMemo(() => formatRelative(firstUsedDate, new Date(), { locale }), [firstUsedDate, locale]);
