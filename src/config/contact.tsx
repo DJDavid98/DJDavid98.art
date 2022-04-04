@@ -173,13 +173,6 @@ const facebook: ContactCardSettings = {
   renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'facebook-square']} {...props} />,
   visitText: ['about:contact.visitPage'],
 };
-const vk: ContactCardSettings = {
-  id: 'vk',
-  name: 'VK',
-  url: 'https://vk.com/djdavid98',
-  renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'vk']} {...props} />,
-  visitText: ['about:contact.visitPage'],
-};
 const newgrounds: ContactCardSettings = {
   id: 'newgrounds',
   name: 'Newgrounds',
@@ -230,7 +223,6 @@ export const CONTACT_DETAILS: ContactCardSettings[] = [
   pillowfort,
   mastodon,
   facebook,
-  vk,
   newgrounds,
   guilded,
   kongregate,
