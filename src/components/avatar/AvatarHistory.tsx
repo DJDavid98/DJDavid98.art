@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { VFC } from 'react';
 import { Col, Row } from 'reactstrap';
 import { AVATAR_HISTORY } from 'src/config/avatars';
-import { AVATAR_IMAGE_SIZE, getAvatarImageUrl } from 'src/util/avatars';
+import { AVATAR_IMAGE_SIZE, getAvatarImagePath } from 'src/util/avatars';
 
 export const AvatarHistoryComponent: VFC<{ selectedIndex: number }> = ({ selectedIndex }) => {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ export const AvatarHistoryComponent: VFC<{ selectedIndex: number }> = ({ selecte
         {AVATAR_HISTORY.reverse().map((def, i) => (
           <Col key={def.firstUsed} xs={6} s={4} m={3} l={2} xl={1} className={classNames({ 'bg-dark text-white': selectedIndex === i })}>
             <Image
-              src={getAvatarImageUrl(def.firstUsed)}
+              src={getAvatarImagePath(def.firstUsed)}
               width={AVATAR_IMAGE_SIZE}
               height={AVATAR_IMAGE_SIZE}
               alt={t('avatar:previousProfilePicture')}

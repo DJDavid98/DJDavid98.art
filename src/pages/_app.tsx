@@ -1,17 +1,19 @@
-import { appWithTranslation } from 'next-i18next';
+import { appWithTranslation, useTranslation } from 'next-i18next';
 import { DefaultSeo } from 'next-seo';
 import { AppComponent } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import 'src/app.scss';
-import { SITE_TITLE } from 'src/config';
+import { PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
+import { AVATAR_HISTORY } from 'src/config/avatars';
 import 'src/fontawesome';
-import { assembleSeoUrl, getGravatarUrl } from 'src/util/common';
-import { AVATAR_IMAGE_SIZE } from 'src/util/avatars';
+import { AVATAR_IMAGE_SIZE, getAvatarImagePath } from 'src/util/avatars';
+import { assembleSeoUrl } from 'src/util/common';
 
 const App: AppComponent = ({ Component, pageProps }) => {
   const { asPath, defaultLocale, locale, locales } = useRouter();
+  const { t } = useTranslation();
 
   const languageAlternates = useMemo(
     () =>
@@ -39,7 +41,7 @@ const App: AppComponent = ({ Component, pageProps }) => {
       </Head>
       <DefaultSeo
         title={SITE_TITLE}
-        description="Personal website of DJDavid98"
+        description={t('common:seo.description', { name: PERSONAL_DETAILS.NAME })}
         openGraph={{
           type: 'website',
           locale,
@@ -47,8 +49,8 @@ const App: AppComponent = ({ Component, pageProps }) => {
           url: canonicalUrl,
           images: [
             {
-              alt: 'Avatar of DJDavid98',
-              url: getGravatarUrl(AVATAR_IMAGE_SIZE),
+              alt: t('common:seo.avatarImageAlt', { name: PERSONAL_DETAILS.NAME }),
+              url: assembleSeoUrl(getAvatarImagePath(AVATAR_HISTORY[0].firstUsed)),
               width: AVATAR_IMAGE_SIZE,
               height: AVATAR_IMAGE_SIZE,
             },

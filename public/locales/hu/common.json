@@ -17,10 +17,13 @@
   },
   "openSource": "Ez a weboldal nyílt forráskódú szoftver",
   "viewSource": "Forráskód megtekintése",
-  "avatarImageAlt": "{{name}} profil képe",
   "returnHome": "Főoldal",
   "gallery": {
     "source": "Forrás",
     "tagged": "Címkék"
+  },
+  "seo": {
+    "description": "{{name}} személyes weboldala",
+    "imageAlt": "{{name}} profil képe"
   }
 }

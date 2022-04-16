@@ -1,16 +1,6 @@
-import { url } from 'gravatar';
 import { useMemo } from 'react';
-import { AvailableLanguage, CANONICAL_URL, CONTACT_EMAIL, IS_CLIENT_SIDE } from 'src/config';
+import { AvailableLanguage, CANONICAL_URL, IS_CLIENT_SIDE } from 'src/config';
 import { enLocale, huLocale } from 'src/date-fns-locales';
-
-export const isClientSide = typeof window !== 'undefined';
-
-export const getGravatarUrl = (size: string | number) =>
-  url(CONTACT_EMAIL, {
-    protocol: 'https',
-    s: typeof size !== 'string' ? String(size) : size,
-    r: 'g',
-  });
 
 export const localeMap: Record<AvailableLanguage, Locale> = {
   en: enLocale,

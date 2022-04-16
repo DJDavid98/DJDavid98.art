@@ -15,7 +15,7 @@ import { PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
 import { ARTIST_MAP } from 'src/config/artists';
 import { AVATAR_HISTORY, CURRENT_AVATAR_INDEX } from 'src/config/avatars';
 import { Translatable } from 'src/types/common';
-import { AVATAR_IMAGE_SIZE, getAvatarImageUrl } from 'src/util/avatars';
+import { AVATAR_IMAGE_SIZE, getAvatarImagePath } from 'src/util/avatars';
 import { assembleSeoUrl, useLocale } from 'src/util/common';
 import { translatableValue } from 'src/util/i18n';
 import { typedServerSideTranslations } from 'src/util/i18n-server';
@@ -40,7 +40,7 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
   const basedOnArtist = useMemo(() => basedOnArtistKey && ARTIST_MAP[basedOnArtistKey], [basedOnArtistKey]);
   const firstUsedDate = useMemo(() => new Date(firstUsed), [firstUsed]);
   const firstUsedDateString = useMemo(() => formatRelative(firstUsedDate, new Date(), { locale }), [firstUsedDate, locale]);
-  const avatarUrl = getAvatarImageUrl(firstUsed);
+  const avatarUrl = getAvatarImagePath(firstUsed);
   const pictureBy = useMemo<AvatarBy | undefined>(() => {
     if (!artist) return AvatarBy.ANONYMOUS;
 
@@ -78,7 +78,7 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
           type: 'website',
           images: [
             {
-              alt: t('common:avatarImageAlt', { name: PERSONAL_DETAILS.NAME }),
+              alt: t('common:seo.avatarImageAlt', { name: PERSONAL_DETAILS.NAME }),
               url: assembleSeoUrl(avatarUrl),
               width: AVATAR_IMAGE_SIZE,
               height: AVATAR_IMAGE_SIZE,
@@ -123,7 +123,7 @@ export const AvatarPage: VFC<AvatarPageProps> = ({ avatarIndex }) => {
               <Link href={`/avatar/${def.firstUsed}`} shallow={false}>
                 <a className={classNames(styles.historicAvatarLink, { [styles.current]: def.firstUsed === firstUsed })}>
                   <Image
-                    src={getAvatarImageUrl(def.firstUsed)}
+                    src={getAvatarImagePath(def.firstUsed)}
                     width={AVATAR_PREVIEW_SIZE}
                     height={AVATAR_PREVIEW_SIZE}
                     alt={t('avatar:previousProfilePicture')}

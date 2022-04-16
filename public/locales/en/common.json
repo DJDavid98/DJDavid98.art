@@ -17,10 +17,13 @@
   },
   "openSource": "This website is open-source software",
   "viewSource": "View source code",
-  "avatarImageAlt": "Profile picture of {{name}}",
   "returnHome": "Homepage",
   "gallery": {
     "source": "Source",
     "tagged": "Tags"
+  },
+  "seo": {
+    "description": "Personal website of {{name}}",
+    "avatarImageAlt": "Profile picture of {{name}}"
   }
 }
