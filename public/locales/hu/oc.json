@@ -60,7 +60,7 @@
     "sfmModelSfw": "Ártatlan verzió (nemi szervek nélkül)",
     "sfmModelNsfw": "Munkahely-veszélyeztető (NSFW) verzió (nemi szervekkel)",
     "artworkBy": "Rajzokat Készítette",
-    "telegramStickers": "Telegram Matricák"
+    "stickers": "Matricák"
   },
   "ageGate": {
     "title": "Életkor ellenőrzés",
@@ -96,6 +96,8 @@
   "stickerPack": {
     "heading": "Matrica Csomag",
     "packAlt": "16 portré rajz egy kék rókáról négyszer négyes rácsban elrendezve, mindegyiken más arckifejezéssel és fehér körvonallal, ami elválasztja őket a sötétkék háttértől.",
-    "explainer": "Disy-nek van egy saját matrica csomagja több, mint egy tucat kifejező rajzzal, melyek illenek a személyiségéhez. A Telegram csomag linkjét alább megtalálod."
+    "explainer1": "Disy-nek van egy saját matrica csomagja több, mint egy tucat kifejező rajzzal, melyek illenek a személyiségéhez.",
+    "explainer2": "Az alábbi link egy másik oldalra visz, ahol láthatod az egyes matricákat, és tartalmaz egy linket a Telegram csomagra is.",
+    "explainer3": "A képekre kattintva kimásolhatod a linkjeiket más csevegőprogramokhoz is."
   }
 }

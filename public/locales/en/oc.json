@@ -60,7 +60,7 @@
     "sfmModelSfw": "Download safe-for-work (without genitals)",
     "sfmModelNsfw": "Download not safe-for-work (with mare genitals)",
     "artworkBy": "Artwork By",
-    "telegramStickers": "Telegram Stickers"
+    "stickers": "Stickers"
   },
   "ageGate": {
     "title": "Age verification",
@@ -96,6 +96,8 @@
   "stickerPack": {
     "heading": "Sticker Pack",
     "packAlt": "16 portrait drawings of a blue fox arranged in a 4 by 4 grid, each with a different facial expression and a white outline to separate them from the dark blue background.",
-    "explainer": "Disy has her own set of stickers with over a dozen expressive drawings matching her personality. The link to the Telegram pack can be found below."
+    "explainer1": "Disy has her own set of stickers with over a dozen expressive drawings matching her personality.",
+    "explainer2": "The link below takes you to a site where you can see the individual stickers, and it also contains a link to the Telegram pack.",
+    "explainer3": "You can click the images to copy their URLs for other chat apps as well."
   }
 }

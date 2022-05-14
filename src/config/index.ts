@@ -37,7 +37,7 @@ export const PERSONAL_DETAILS = {
     'gallery_id:13',
   )}`,
   F_LIST_URL: 'https://www.f-list.net/c/double%20colon/',
-  OC_TELEGRAM_STICKERS_URL: 'https://t.me/addstickers/DoubleColon',
+  OC_STICKERS_BASE_URL: 'https://disy.cyou',
 };
 
 export const SITE_TITLE = PERSONAL_DETAILS.NAME;

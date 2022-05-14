@@ -348,6 +348,20 @@ const Tosca: ArtistInfo = {
   ],
 };
 
+const KPVT: ArtistInfo = {
+  name: 'KPVT',
+  credits: [
+    {
+      url: 'https://twitter.com/KPVT_ARTS',
+      name: 'KPVT_ARTS',
+      nsfw: true,
+    },
+    {
+      url: 'https://derpibooru.org/profiles/KPVT',
+    },
+  ],
+};
+
 export const ARTIST_MAP = {
   AriaMidnighters,
   Ayvie,
@@ -359,6 +373,7 @@ export const ARTIST_MAP = {
   DreamWeaverPony,
   ElisaWind,
   FluffyXai,
+  KPVT,
   Luximus17,
   NightyCloud,
   Noxi,

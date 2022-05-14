@@ -26,6 +26,7 @@ import {
   faDog,
   faDownload,
   faExclamationTriangle,
+  faExternalLink,
   faFileDownload,
   faGlobe,
   faHeart,
@@ -113,6 +114,7 @@ library.add(
   faArrowRight,
   faPlayCircle,
   faPaintBrush,
+  faExternalLink,
   faFileDownload,
   faExclamationTriangle,
 );

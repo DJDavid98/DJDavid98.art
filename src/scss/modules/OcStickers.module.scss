@@ -1,7 +1,7 @@
 @use '../functions';
 
 .stickers-image-wrap {
-  max-width: functions.rem(225px);
+  max-width: functions.rem(275px);
   overflow: hidden;
   pointer-events: none;
   z-index: -1;

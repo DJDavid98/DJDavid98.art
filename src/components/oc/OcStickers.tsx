@@ -5,7 +5,7 @@ import { MultiArtistCreditList } from 'components/oc/MultiArtistCreditList';
 import styles from 'modules/OcStickers.module.scss';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import { VFC } from 'react';
+import { useMemo, VFC } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import { PERSONAL_DETAILS } from 'src/config';
 import { ArtistName } from 'src/config/artists';
@@ -19,10 +19,14 @@ export interface RecentArtworkProps {
   isNsfw: boolean;
 }
 
-const stickersArtistCredits: ArtistName[] = ['DreamWeaverPony'];
-
 export const OcStickers: VFC<RecentArtworkProps> = ({ className, isNsfw }) => {
   const { t } = useTranslation();
+  const stickersArtistCredits = useMemo(() => {
+    const artists: ArtistName[] = ['DreamWeaverPony'];
+    if (isNsfw) artists.push('KPVT');
+    return artists;
+  }, [isNsfw]);
+  const stickersUrl = useMemo(() => PERSONAL_DETAILS.OC_STICKERS_BASE_URL + (isNsfw ? '/mature' : ''), [isNsfw]);
 
   return (
     <section className={className}>
@@ -40,16 +44,17 @@ export const OcStickers: VFC<RecentArtworkProps> = ({ className, isNsfw }) => {
             </OcSectionHeading>
           </div>
 
-          <p>{t('oc:stickerPack.explainer')}</p>
+          <p>
+            {t('oc:stickerPack.explainer1')}
+            <br />
+            {t('oc:stickerPack.explainer2')}
+            <br />
+            {t('oc:stickerPack.explainer3')}
+          </p>
 
-          <Button
-            color="telegram"
-            tag={ExternalLink}
-            href={PERSONAL_DETAILS.OC_TELEGRAM_STICKERS_URL}
-            className="d-block d-md-inline-block mb-2 mr-md-2"
-          >
-            <FontAwesomeIcon icon={['fab', 'telegram-plane']} className="mr-2" />
-            {t('oc:detail.telegramStickers')}
+          <Button tag={ExternalLink} href={stickersUrl} className="d-block d-md-inline-block mb-2 mr-md-2">
+            {t('oc:detail.stickers')}
+            <FontAwesomeIcon icon="external-link" className="ml-2" />
           </Button>
           <MultiArtistCreditList artists={stickersArtistCredits} nsfwEnabled={isNsfw} t={t} />
         </Col>
