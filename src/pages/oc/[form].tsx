@@ -4,7 +4,7 @@ import { AgeGateModal } from 'components/oc';
 import { OcColorPalette } from 'components/oc/OcColorPalette';
 import { OcExistingArtwork } from 'components/oc/OcExistingArtwork';
 import { OcFormDescription } from 'components/oc/OcFormDescription';
-import { OcStickers } from 'components/oc/OcStickers';
+import { OcFoxStickers } from 'components/oc/OcFoxStickers';
 import { StoredAge } from 'components/oc/StoredAge';
 import styles from 'modules/OcFormPage.module.scss';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps, NextPage } from 'next';
@@ -13,7 +13,7 @@ import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, ButtonGroup, ButtonToolbar, UncontrolledTooltip } from 'reactstrap';
 import { LANGUAGES, PERSONAL_DETAILS, SITE_TITLE } from 'src/config';
 import { useCurrentAge } from 'src/hooks/oc';
@@ -103,7 +103,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
     handleAgeVerification(false);
   }, [handleAgeVerification]);
 
-  const heading = t('oc:heading', { name: PERSONAL_DETAILS.OC_NAME });
+  const heading = useMemo(() => t('oc:heading', { name: PERSONAL_DETAILS.OC_NAME }), [t]);
   const cacheBust = isNsfw ? 8 : 7;
   const fileFormat = 'png';
   const nsfwSuffix = isNsfw ? '_nsfw' : '';
@@ -111,8 +111,8 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
   const downloadFileName = `${heading}${form ? ` ${form}` : ''}${isNsfw ? ' NSFW' : ''}`;
   const dimensions = species === OcSpecies.FOX ? [4500, 2532] : [4175, isNsfw ? 3100 : 1843];
 
-  const title = `${form ? `${isNsfw ? 'NSFW ' : ''}${form} - ` : ''}${heading} - ${SITE_TITLE}`;
-  const furbooruGalleryUrl = PERSONAL_DETAILS.OC_FURBOORU_GALLERY_URL(species);
+  const title = useMemo(() => `${form ? `${isNsfw ? 'NSFW ' : ''}${form} - ` : ''}${heading} - ${SITE_TITLE}`, [form, heading, isNsfw]);
+  const furbooruGalleryUrl = useMemo(() => PERSONAL_DETAILS.OC_FURBOORU_GALLERY_URL(species), [species]);
 
   return (
     <Layout>
@@ -196,7 +196,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
           fileFormat={fileFormat}
         />
         <OcColorPalette className={styles.pageSection} t={t} form={form} species={species} isNsfw={isNsfw} />
-        {species === OcSpecies.FOX && <OcStickers className={styles.pageSection} isNsfw={isNsfw} />}
+        {species === OcSpecies.FOX && <OcFoxStickers className={styles.pageSection} isNsfw={isNsfw} />}
         <OcExistingArtwork className={styles.pageSection} existingArtwork={existingArtwork} furbooruGalleryUrl={furbooruGalleryUrl} />
       </AppContainer>
       <AgeGateModal visible={showAgeGate} close={closeAgeGate} verify={handleAgeVerification} />

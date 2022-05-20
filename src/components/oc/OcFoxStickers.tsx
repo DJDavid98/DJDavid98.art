@@ -19,7 +19,7 @@ export interface RecentArtworkProps {
   isNsfw: boolean;
 }
 
-export const OcStickers: VFC<RecentArtworkProps> = ({ className, isNsfw }) => {
+export const OcFoxStickers: VFC<RecentArtworkProps> = ({ className, isNsfw }) => {
   const { t } = useTranslation();
   const stickersArtistCredits = useMemo(() => {
     const artists: ArtistName[] = ['DreamWeaverPony'];
