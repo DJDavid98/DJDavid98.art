@@ -64,7 +64,7 @@ export type ContactCardProps<T extends ContactCardSettings> = T & {
 const discord: ContactCardSettings = {
   id: 'discord',
   name: 'Discord',
-  url: 'https://discord.djdavid98.art',
+  url: '',
   discordTag: 'DJDavid98#6174',
   renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'discord']} {...props} />,
   visitText: null,
