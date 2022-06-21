@@ -38,11 +38,11 @@
   },
   "myOC": {
     "artBy": "Rajzot készítette:",
-    "heading": "Saját Karaktereim",
+    "heading": "Karaktereim",
     "navLabel": "Karaktereim",
     "artAlt": "Egy világoskék póni és egy róka egy áttetsző barikád két oldalán áll, mindketten egyik lábukat azonos magasságban a barikád feléjük eső oldalára téve",
-    "p1": "Nem is egy, hanem két eredeti karakter büszke tulajdonosa vagyok. Azaz, nos, attól függ, hogy hogyan definiálod az „eredeti” szót. Lehet hogy a színsémájuk pontosan ugyan az és lehet hogy egy két személyiségjegyük is hasonló… Jól van, megfogtál, ő tulajdonképp egy karakter két különböző alakkal, de számomra ezek két külön karakternek minősülnek.",
-    "p2": "A neve {{name}}, de a barátainak csak {{nick}}. Ha többet szeretnél megtudni róla, azt javaslom, hogy látogasd meg az alább linkelt referencia lapot. Az magyarázatot ad a furcsa névválasztásra is, ha kíváncsi vagy az okára.",
+    "p1": "Nem is egy, hanem három különböző karakter büszke tulajdonosa vagyok. Azaz, nos, attól függ, hogy hogyan definiálod a „különböző” szót. Lehet hogy a színsémájuk pontosan ugyan az és lehet hogy egy-két személyiségjegyük is hasonló… Jól van, megfogtál, ő tulajdonképp egy karakter három különböző alakkal, de számomra ők külön karaktereknek minősülnek.",
+    "p2": "A neve {{name}}, de hívhatod nyugodtan {{nick}}-nek is. Ha többet szeretnél megtudni róla, azt javaslom, hogy látogasd meg az alább linkelt referencia lapot. Az magyarázatot ad a furcsa névválasztásra is, ha kíváncsi vagy az okára.",
     "refSheet": "Referencia Lap"
   },
   "contact": {

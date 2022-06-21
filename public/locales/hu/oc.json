@@ -2,8 +2,9 @@
   "heading": "{{name}} Referencia Lap",
   "seoDesc": "Referencia lap a sajt {{species}} eredeti karakteremhez",
   "speciesSelect": "Válassz alakot",
-  "fox": "Furry",
+  "fox": "Róka",
   "pony": "Póni",
+  "rex": "Rexouium",
   "yourAge": "Életkorod: {{age}}",
   "clearSavedDate": "Mentett születési dátum törlése",
   "detail": {
@@ -13,7 +14,8 @@
       "selfIntroCommon": "A nevem Dupla Kettőspontot jelent, de hívj csak nyugodtan {{nick}}-nek.",
       "selfIntro": {
         "fox": "Magányos nőstény róka vagyok, és időtöltésképp egymagamban fel-alá járkálok a szülőerdőmben, felfedezek és keresem az életem célját. Introvertáltnak tartom magam; nagyon félénk vagyok, és nehezen ismerkedek új teremtményekkel. Ha őszintén meg akarsz ismerni, csak add önmagad és légy őszinte, és ha látom, hogy jó szándékkal közeledsz, nem félek megnyílni. Ha csak ki akarsz használni, akkor biztos lehetsz benne, hogy átlátok rajtad, és szerencsés leszel, ha nem kelek fel és állok odébb azonnal. Az egész erdőmben csak a virágokban bízok feltétel nélkül, akikkel mióta az eszemet tudom egy társaságban vagyunk. Arra szenteltem az életem, hogy megismerjem és mindenben segítsem őket a legjobb tudásom szerint, és cserébe ők is ugyanezt teszik velem. Akár azt is mondhatnánk, hogy egy igencsak… <1>szimbiotikus</1> kapcsolat van köztünk~",
-        "pony": "Félénk kanca unikornis vagyok, aki a legtöbb idejét a négy fal közt a PC-je és rágcsálnivalói társaságában tölti. A kedvenc ételeim a csipszek és különféle pizzák, a hawaii-t beleértve. Nagy rajongója vagyok az elektronikus zenének, és ha el kell nyomnom egy kis háttérzajt, mindig kéznél tartok egy lejátszási listát. Nem vagyok az a fajta, aki beszélgetéseket kezdeményez vagy megteszi az első lépést, amikor új teremtményekkel találkozok, de ha sikerül valami számomra érdekes témára terelni a szót, akkor minden bizonnyal jól megleszünk. Ne is kérdezd, hogy leszünk-e barátok, mert az én gondolkodás módommal ez összeférhetetlen. Azt a bizalmi szintet elérni egy folyamat, amit nem lehet sürgetni, és ha bármennyire is közzel akarsz kerülni hozzám, a türelem rózsát terem. Időnként hajlamos vagyok firkákat készíteni, hogy gyakoroljam a rajzolást, de sokkal több örömmel tölt el, amikor anyagilag támogatom a nálam sokkal tapasztaltabbakat olyan rajzok vásárlásával, ahol én (és időnként a barátaim) <1>jól szórakoznak</1>~"
+        "pony": "Félénk kanca unikornis vagyok, aki a legtöbb idejét a négy fal közt a PC-je és rágcsálnivalói társaságában tölti. A kedvenc ételeim a csipszek és különféle pizzák, a hawaii-t beleértve. Nagy rajongója vagyok az elektronikus zenének, és ha el kell nyomnom egy kis háttérzajt, mindig kéznél tartok egy lejátszási listát. Nem vagyok az a fajta, aki beszélgetéseket kezdeményez vagy megteszi az első lépést, amikor új teremtményekkel találkozok, de ha sikerül valami számomra érdekes témára terelni a szót, akkor minden bizonnyal jól megleszünk. Ne is kérdezd, hogy leszünk-e barátok, mert az én gondolkodás módommal ez összeférhetetlen. Azt a bizalmi szintet elérni egy folyamat, amit nem lehet sürgetni, és ha bármennyire is közzel akarsz kerülni hozzám, a türelem rózsát terem. Időnként hajlamos vagyok firkákat készíteni, hogy gyakoroljam a rajzolást, de sokkal több örömmel tölt el, amikor anyagilag támogatom a nálam sokkal tapasztaltabbakat olyan rajzok vásárlásával, ahol én (és időnként a barátaim) <1>jól szórakoznak</1>~",
+        "rex": "Dávid fursonája vagyok, és őt jelképezem. Ha többet szeretnél megtudni az érdekeltségi köreimről és hobbijaimról, látogasd meg a főoldalt, amit a bal felső sarokban levő logóval érhetsz el."
       }
     },
     "p1": "A neve furcsa választásnak tűnhet, de tükrözi a PHP programozási nyelv, illetve úgy általában a kódolás iránti érdeklődésem. Az élesebb szeműek akár némi hasonlóságot is felfedezhetnek a karakter kinézete és a <0>PHP nyelv logója</0> közt. Ez az elnevezés konkrétan olyan hibaüzenetekben látható, amelyek az alkalmazás kódjában a hatókör feloldó operátor (<1>::</1>) helytelen használatára figyelmeztetnek. <2>További Infó</2>",
@@ -33,6 +35,7 @@
     "previousArt": "Kész Rajzok",
     "acceptableKinks": "Perverziók (F-Lista)",
     "feral": "Vad",
+    "anthro": "Emberszerű",
     "bodyType": "Testtípus",
     "species": "Faj",
     "gender": "Nem",
@@ -53,6 +56,10 @@
     "fox": {
       "species": "Róka",
       "occupation": "Botanikus"
+    },
+    "rex": {
+      "species": "Tollatlan Rexouium",
+      "occupation": "Digitális Művész"
     },
     "sfmModel": "SFM Modell",
     "sfmModelDownload": "SFM Modell Letöltése",

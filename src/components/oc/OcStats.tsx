@@ -5,7 +5,7 @@ import { StatText } from 'components/oc/StatText';
 import { StatTooltip } from 'components/oc/StatTooltip';
 import styles from 'modules/OcFormPage.module.scss';
 import { useTranslation } from 'next-i18next';
-import { Fragment, VFC } from 'react';
+import { Fragment, useMemo, VFC } from 'react';
 import { OcSpecies } from 'src/types/oc';
 
 const bodyTypeTooltipId = 'body-type-tt';
@@ -21,21 +21,48 @@ interface OcStatsProps {
 
 export const OcStats: VFC<OcStatsProps> = ({ species, nsfwShown }) => {
   const { t } = useTranslation();
+  const formIcon = useMemo<FontAwesomeIconProps['icon']>(() => {
+    switch (species) {
+      case OcSpecies.FOX:
+        return 'dog';
+      case OcSpecies.PONY:
+        return 'horse';
+      case OcSpecies.REX:
+        return 'person';
+      default:
+        throw new Error(`Could not get form icon for species ${species as string}`);
+    }
+  }, [species]);
   const speciesIcon: FontAwesomeIconProps['icon'] = species === OcSpecies.PONY ? 'horse-head' : 'paw';
-  const occupationIcon: FontAwesomeIconProps['icon'] = species === OcSpecies.PONY ? 'paint-brush' : 'leaf';
+  const occupationIcon: FontAwesomeIconProps['icon'] = useMemo(() => {
+    switch (species) {
+      case OcSpecies.PONY:
+        return 'paint-brush';
+      case OcSpecies.FOX:
+        return 'leaf';
+      case OcSpecies.REX:
+        return 'pen-to-square';
+      default:
+        throw new Error(`Could not get occupation icon for species ${species as string}`);
+    }
+  }, [species]);
   const preferredGenitals = species === OcSpecies.FOX ? t('oc:detail.humanGenitals') : t('oc:detail.animalGenitals');
 
   /* eslint-disable react/jsx-key */
   const stats: JSX.Element[][] = [
     [
-      <StatText tooltipId={bodyTypeTooltipId} icon={species === OcSpecies.PONY ? 'horse' : 'dog'}>
-        {t('oc:detail.feral')}
+      <StatText tooltipId={bodyTypeTooltipId} icon={formIcon}>
+        {species === OcSpecies.REX ? t('oc:detail.anthro') : t('oc:detail.feral')}
       </StatText>,
       <StatTooltip id={bodyTypeTooltipId}>{t('oc:detail.bodyType')}</StatTooltip>,
     ],
     [
-      <StatText tooltipId={genderTooltipId} icon="venus" iconClassName="gender-female">
-        {t('oc:detail.female')}
+      <StatText
+        tooltipId={genderTooltipId}
+        icon={species === OcSpecies.REX ? 'mars' : 'venus'}
+        iconClassName={species === OcSpecies.REX ? 'gender-male' : 'gender-female'}
+      >
+        {species === OcSpecies.REX ? t('oc:detail.male') : t('oc:detail.female')}
       </StatText>,
       <StatTooltip id={genderTooltipId}>{t('oc:detail.gender')}</StatTooltip>,
     ],
@@ -52,7 +79,7 @@ export const OcStats: VFC<OcStatsProps> = ({ species, nsfwShown }) => {
       <StatTooltip id={occupationTooltipId}>{t('oc:detail.occupation')}</StatTooltip>,
     ],
   ];
-  if (nsfwShown) {
+  if (nsfwShown && species !== OcSpecies.REX) {
     const flagFileName = species === OcSpecies.FOX ? 'bisexual' : 'lesbian';
     const flagAlt = species === OcSpecies.FOX ? t('oc:detail.bisexualPrideFlag') : t('oc:detail.lesbianPrideFlag');
     const label = species === OcSpecies.FOX ? t('oc:detail.bisexual') : t('oc:detail.lesbian');

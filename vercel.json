@@ -9,6 +9,13 @@
       "destination": "https://storage.djdavid98.art/refs/:match*"
     }
   ],
+  "redirects": [
+    {
+      "source": "/oc-mature/rex",
+      "destination": "/oc/rex",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

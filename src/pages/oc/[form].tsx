@@ -24,13 +24,13 @@ import { typedServerSideTranslations } from 'src/util/i18n-server';
 import {
   clearAgeGateValue,
   getOcPageRoute,
-  getOtherSpecies,
+  getNegatedOtherSpeciesTags,
   getStoragePath,
   isOldEnoughForNsfw,
   resolveFormParameter,
   setAgeGateValue,
 } from 'src/util/oc';
-import { FurbooruGalleryId, searchFurbooru, SearchFurbooruOptions } from 'src/util/search-furbooru';
+import { FurbooruGalleryId, getFurbooruSpeciesTag, searchFurbooru, SearchFurbooruOptions } from 'src/util/search-furbooru';
 
 const lockNsfwButtonId = 'lock-nsfw-btn';
 
@@ -104,12 +104,23 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
   }, [handleAgeVerification]);
 
   const heading = useMemo(() => t('oc:heading', { name: PERSONAL_DETAILS.OC_NAME }), [t]);
-  const cacheBust = isNsfw ? 8 : 7;
+  const cacheBust = OcSpecies.REX === species ? 1 : isNsfw ? 8 : 7;
   const fileFormat = 'png';
   const nsfwSuffix = isNsfw ? '_nsfw' : '';
   const sheetFilePath = getStoragePath(`refs/${species}${nsfwSuffix}.${fileFormat}?v=${cacheBust}`);
   const downloadFileName = `${heading}${form ? ` ${form}` : ''}${isNsfw ? ' NSFW' : ''}`;
-  const dimensions = species === OcSpecies.FOX ? [4500, 2532] : [4175, isNsfw ? 3100 : 1843];
+  const dimensions = useMemo(() => {
+    switch (species) {
+      case OcSpecies.FOX:
+        return [4500, 2532];
+      case OcSpecies.PONY:
+        return [4175, isNsfw ? 3100 : 1843];
+      case OcSpecies.REX:
+        return [3568, 2550];
+      default:
+        throw new Error(`No ref dimensions found for species ${species as string}`);
+    }
+  }, [isNsfw, species]);
 
   const title = useMemo(() => `${form ? `${isNsfw ? 'NSFW ' : ''}${form} - ` : ''}${heading} - ${SITE_TITLE}`, [form, heading, isNsfw]);
   const furbooruGalleryUrl = useMemo(() => PERSONAL_DETAILS.OC_FURBOORU_GALLERY_URL(species), [species]);
@@ -152,6 +163,12 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
                 {t(`oc:fox`)}
               </Button>
             </Link>
+            <Link href={getOcPageRoute(isNsfw, OcSpecies.REX)} passHref replace {...routeReplaceProps}>
+              <Button size="sm" teg="a" active={species === OcSpecies.REX}>
+                <FontAwesomeIcon icon="shirt" className="mr-2" />
+                {t(`oc:rex`)}
+              </Button>
+            </Link>
             <Link href={getOcPageRoute(isNsfw, OcSpecies.PONY)} passHref replace {...routeReplaceProps}>
               <Button size="sm" teg="a" active={species === OcSpecies.PONY}>
                 <FontAwesomeIcon icon="horse-head" className="mr-2" />
@@ -164,7 +181,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
             <Button id="sfw-button" size="sm" active={!isNsfw} onClick={handleChangeNsfw(false)}>
               SFW
             </Button>
-            <Button id="nsfw-button" size="sm" active={isNsfw} onClick={handleChangeNsfw(true)}>
+            <Button id="nsfw-button" size="sm" active={isNsfw} onClick={handleChangeNsfw(true)} disabled={species === OcSpecies.REX}>
               NSFW
               {!nsfwEnabled && <FontAwesomeIcon icon="lock" className="ml-2" size="xs" />}
             </Button>
@@ -207,7 +224,7 @@ const OcFormPage: NextPage<OcFormPageProps> = ({ isNsfw = false, existingArtwork
 export const requestSafeArtwork = (species: OcSpecies, perPage?: number) => {
   const parameters: SearchFurbooruOptions = {
     ...existingArtworkSearchOptions,
-    query: `${species},-${getOtherSpecies(species)},-suggestive`,
+    query: `${getFurbooruSpeciesTag(species)},${getNegatedOtherSpeciesTags(species)},-suggestive`,
   };
   if (perPage) parameters.perPage = perPage;
   return searchFurbooru(parameters);
@@ -232,19 +249,26 @@ export const getStaticProps: GetStaticProps<OcFormPageProps & SSRConfig> = async
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => ({
-  paths: Array.from(VALID_OC_SPECIES).reduce((acc, form) => {
-    const newParams: typeof acc = [];
-    const locales = ctx.locales || Object.keys(LANGUAGES);
-    locales.forEach((locale) => {
-      newParams.push({
-        params: { form },
-        locale,
+export const getStaticPathsFactory =
+  (skipForms?: Set<string>): GetStaticPaths =>
+  async (ctx) => ({
+    paths: Array.from(VALID_OC_SPECIES).reduce((acc, form) => {
+      if (skipForms && skipForms.has(form)) {
+        return acc;
+      }
+      const newParams: typeof acc = [];
+      const locales = ctx.locales || Object.keys(LANGUAGES);
+      locales.forEach((locale) => {
+        newParams.push({
+          params: { form },
+          locale,
+        });
       });
-    });
-    return [...acc, ...newParams];
-  }, [] as GetStaticPathsResult['paths']),
-  fallback: false,
-});
+      return [...acc, ...newParams];
+    }, [] as GetStaticPathsResult['paths']),
+    fallback: false,
+  });
+
+export const getStaticPaths: GetStaticPaths = getStaticPathsFactory();
 
 export default OcFormPage;

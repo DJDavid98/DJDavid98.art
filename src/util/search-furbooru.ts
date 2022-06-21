@@ -1,5 +1,5 @@
-import { PERSONAL_DETAILS } from 'src/config';
 import { ImageResponse } from 'src/types/furbooru-api';
+import { OcSpecies } from 'src/types/oc';
 import { isImageResponse } from 'src/util/is-image-response';
 import urlcat from 'urlcat';
 
@@ -34,12 +34,19 @@ export const searchFurbooru = async ({
       per_page: perPage,
       filter_id: filterId,
     }),
-    {
-      headers: {
-        'user-agent': PERSONAL_DETAILS.OC_NAME,
-      },
-    },
   ).then((r) => r.json());
   if (!isImageResponse(resp)) throw new Error('Invalid data received');
   return resp.images;
+};
+export const getFurbooruSpeciesTag = (species: string) => {
+  switch (species) {
+    case OcSpecies.REX:
+      return 'rexouium';
+    case OcSpecies.PONY:
+      return 'pony';
+    case OcSpecies.FOX:
+      return 'fox';
+    default:
+      throw new Error(`Could not find Furbooru tag for species ${species}`);
+  }
 };

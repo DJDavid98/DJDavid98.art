@@ -49,13 +49,21 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
   const closeImageViewer = useCallback(() => setIsViewerOpen(false), []);
 
   const furbooruGalleryUrl = PERSONAL_DETAILS.OC_FURBOORU_GALLERY_URL(species);
-  const showNsfwPonyArtworkCredit = isNsfw && species === OcSpecies.PONY;
 
-  const refCreditList = useMemo(() => {
-    const list: ArtistName[] = ['DreamWeaverPony'];
-    if (showNsfwPonyArtworkCredit) list.push('SeafoodDinner');
-    return list;
-  }, [showNsfwPonyArtworkCredit]);
+  const refCreditList = useMemo<ArtistName[]>(() => {
+    switch (species) {
+      case OcSpecies.REX:
+        return ['Cass'];
+      case OcSpecies.FOX:
+      case OcSpecies.PONY: {
+        const list: ArtistName[] = ['DreamWeaverPony'];
+        if (isNsfw && species === OcSpecies.PONY) list.push('SeafoodDinner');
+        return list;
+      }
+      default:
+        throw new Error(`Could not find credits list for species ${species as string}`);
+    }
+  }, [isNsfw, species]);
 
   return (
     <Row tag="section" className={classNames(className, styles.ocFormSection)}>
@@ -94,7 +102,7 @@ export const OcFormDescription: VFC<FormDescriptionProps> = ({
             <CustomIcon src="/logos/furbooru.svg" className="mr-2" />
             {t('oc:detail.previousArt')}
           </Button>
-          {nsfwEnabled && (
+          {nsfwEnabled && species !== OcSpecies.REX && (
             <Button color="f-list" tag={ExternalLink} href={PERSONAL_DETAILS.F_LIST_URL} className="d-block d-md-inline-block mb-2 mr-md-2">
               <FontAwesomeIcon icon="heart" className="mr-2" />
               {t('oc:detail.acceptableKinks')}

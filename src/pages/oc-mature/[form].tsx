@@ -2,16 +2,16 @@ import { GetStaticPaths, NextPage } from 'next';
 import { ImageResponse } from 'src/types/furbooru-api';
 import { OcSpecies } from 'src/types/oc';
 import { typedServerSideTranslations } from 'src/util/i18n-server';
-import { getOtherSpecies, resolveFormParameter } from 'src/util/oc';
+import { getNegatedOtherSpeciesTags, resolveFormParameter } from 'src/util/oc';
 import { FurbooruFilterId, searchFurbooru } from 'src/util/search-furbooru';
 import type { getStaticProps as gsProps } from '../oc/[form]';
-import OcFormPage, { existingArtworkSearchOptions, getStaticPaths as gsPaths, OcFormPageProps, requestSafeArtwork } from '../oc/[form]';
+import OcFormPage, { existingArtworkSearchOptions, getStaticPathsFactory, OcFormPageProps, requestSafeArtwork } from '../oc/[form]';
 
 const OcMatureFormPage: NextPage<OcFormPageProps> = (props) => <OcFormPage {...props} />;
 
 const requestUnsafeArtwork = (species: OcSpecies) => {
   const refSheetUploadId = species === OcSpecies.PONY ? 70682 : 9322;
-  const excludeOtherSpecies = species === OcSpecies.PONY ? `,-${getOtherSpecies(species)}` : '';
+  const excludeOtherSpecies = species === OcSpecies.PONY ? `,${getNegatedOtherSpeciesTags(species)}` : '';
   return searchFurbooru({
     ...existingArtworkSearchOptions,
     query: `${species}${excludeOtherSpecies},-watersports,-safe,-id:${refSheetUploadId}`,
@@ -21,6 +21,10 @@ const requestUnsafeArtwork = (species: OcSpecies) => {
 
 export const getStaticProps: typeof gsProps = async ({ locale, params }) => {
   const species = resolveFormParameter(params);
+  if (species === OcSpecies.REX) {
+    return { notFound: true };
+  }
+
   let existingArtwork: ImageResponse[] = [];
 
   try {
@@ -60,6 +64,6 @@ export const getStaticProps: typeof gsProps = async ({ locale, params }) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths = gsPaths;
+export const getStaticPaths: GetStaticPaths = getStaticPathsFactory(new Set(OcSpecies.REX));
 
 export default OcMatureFormPage;

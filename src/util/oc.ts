@@ -2,6 +2,7 @@ import { differenceInYears, getDate, getMonth, getYear, isValid } from 'date-fns
 import { ParsedUrlQuery } from 'querystring';
 import { PERSONAL_DETAILS } from 'src/config';
 import { ArtistInfo, OcSpecies, VALID_OC_SPECIES } from 'src/types/oc';
+import { getFurbooruSpeciesTag } from 'src/util/search-furbooru';
 
 export const getOcPageRoute = (nsfwEnabled: boolean, species: string) => `/oc${nsfwEnabled ? `-mature` : ''}/${species}`;
 
@@ -110,6 +111,10 @@ export const resolveFormParameter = (query?: ParsedUrlQuery): OcSpecies => {
   return OcSpecies.PONY;
 };
 
-export const getOtherSpecies = (species: OcSpecies): OcSpecies => (species === OcSpecies.FOX ? OcSpecies.PONY : OcSpecies.FOX);
+export const getNegatedOtherSpeciesTags = (species: OcSpecies): string =>
+  Array.from(VALID_OC_SPECIES)
+    .filter((val) => val !== species)
+    .map((val) => `-${getFurbooruSpeciesTag(val)}`)
+    .join(',');
 
 export const isArtistMe = (artist?: ArtistInfo | null): boolean => artist?.name === PERSONAL_DETAILS.NAME;

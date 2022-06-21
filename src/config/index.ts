@@ -1,4 +1,5 @@
 import type { AppI18nNamespaces } from 'react-i18next';
+import { getFurbooruSpeciesTag } from 'src/util/search-furbooru';
 
 export const CANONICAL_URL = 'https://djdavid98.art';
 export const IS_CLIENT_SIDE = typeof window !== 'undefined';
@@ -30,7 +31,8 @@ export const PERSONAL_DETAILS = {
   OC_REF_SHEET_URL: 'https://oc.djdavid98.art',
   OC_CUTIE_MARK_URL: 'https://www.deviantart.com/djdavid98/art/Double-Colon-Cutie-Mark-545185280',
   OC_FURBOORU_GALLERY_URL: (species: string | null) => {
-    const query = encodeURI(`oc:double colon, gallery_id:12${species ? `, ${species}` : ''}`);
+    const speciesTag = species && getFurbooruSpeciesTag(species);
+    const query = encodeURI(`oc:double colon, gallery_id:12${speciesTag ? `, ${speciesTag}` : ''}`);
     return `https://furbooru.org/search?q=${query}&sf=gallery_id%3A12`;
   },
   ARTIST_TAG_URL: `https://furbooru.org/search?q=${encodeURIComponent('artist:djdavid98,gallery_id:13,-trace')}&sf=${encodeURIComponent(

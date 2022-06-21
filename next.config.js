@@ -23,6 +23,7 @@ module.exports = withPlugins([[withESLint], [withCamelCaseCSSModules]], {
       return entry;
     });
   },
+  redirects: async () => vercelConfig.redirects,
   async headers() {
     return vercelConfig.headers.reduce((acc, config) => {
       // Allow all scripts in development mode

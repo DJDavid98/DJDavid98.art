@@ -38,11 +38,11 @@
   },
   "myOC": {
     "artBy": "Art by",
-    "heading": "My Original Characters",
-    "navLabel": "My OCs",
+    "heading": "My Characters",
+    "navLabel": "My Characters",
     "artAlt": "A light blue pony and fox standing on opposite sides of a transparent barrier, placing their feet on said barrier at the same height on their own side",
-    "p1": "I'm a proud owner of not one, but two original characters. Or, well, depends on how you define “original”. While their color schemes might be exactly the same and they might have very similar personality traits… Okay, fine, you caught me, she's basically a single character with two different forms, but the two forms count as separate characters in my book.",
-    "p2": "Her name is {{name}}, but for her friends it's simply {{nick}}. If you want to find out more about her I suggest you check out the reference sheet linked below. It will also explain the strange name choice if you are curious about the reasoning behind it.",
+    "p1": "I'm a proud owner of not one, but three different characters. Or, well, depends on how you define “different”. While their color schemes might be exactly the same and they might have very similar personality traits… Okay, fine, you caught me, they're basically a single character with three different forms, but these forms count as separate characters in my book.",
+    "p2": "Their name is {{name}}, but you can simply call them {{nick}}. If you want to find out more about them I suggest you check out the reference sheet linked below. It will also explain the strange name choice if you are curious about the reasoning behind it.",
     "refSheet": "Reference Sheet"
   },
   "contact": {

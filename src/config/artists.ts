@@ -362,9 +362,20 @@ const KPVT: ArtistInfo = {
   ],
 };
 
+const Cass: ArtistInfo = {
+  name: 'Cass',
+  credits: [
+    {
+      url: 'https://twitter.com/ItsDisastrously',
+      name: 'ItsDisastrously',
+    },
+  ],
+};
+
 export const ARTIST_MAP = {
   AriaMidnighters,
   Ayvie,
+  Cass,
   Conrie,
   creamy_roux,
   Dbleki,
