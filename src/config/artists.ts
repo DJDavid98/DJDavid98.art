@@ -372,6 +372,19 @@ const Cass: ArtistInfo = {
   ],
 };
 
+const kitauart: ArtistInfo = {
+  name: 'kitauart',
+  credits: [
+    {
+      url: 'https://twitter.com/kitauart',
+    },
+    {
+      url: 'https://kitauartcommissions.carrd.co/',
+      label: 'Website',
+    },
+  ],
+};
+
 export const ARTIST_MAP = {
   AriaMidnighters,
   Ayvie,
@@ -384,6 +397,7 @@ export const ARTIST_MAP = {
   DreamWeaverPony,
   ElisaWind,
   FluffyXai,
+  kitauart,
   KPVT,
   Luximus17,
   NightyCloud,
