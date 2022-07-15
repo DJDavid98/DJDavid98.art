@@ -65,7 +65,7 @@ const discord: ContactCardSettings = {
   id: 'discord',
   name: 'Discord',
   url: '',
-  discordTag: 'DJDavid98#6174',
+  discordTag: 'DJDavid98#1028',
   renderIcon: (props?: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon icon={['fab', 'discord']} {...props} />,
   visitText: null,
 };
